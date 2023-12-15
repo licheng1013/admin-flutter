@@ -15,7 +15,7 @@ jobs:
       - name: Set up Flutter actions
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.16.0'    # 这里修改为你的 Flutter 版本
+          #flutter-version: '3.16.0'    # 这里修改为你的 Flutter 版本
           channel: 'master'
 
       - name: Install dependencies
