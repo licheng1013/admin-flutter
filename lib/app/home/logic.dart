@@ -7,10 +7,5 @@ import 'state.dart';
 class HomeLogic extends GetxController {
   final HomeState state = HomeState();
 
-  void logout() {
-     AppData.easySave((p0) => {
-       p0.token = "",
-       Get.offAll(() => LoginPage())
-     });
-  }
+
 }

@@ -1,3 +1,7 @@
+import 'package:app_template/app/home/head/view.dart';
+import 'package:app_template/app/home/pages/analysis/view.dart';
+import 'package:app_template/app/home/sidebar/view.dart';
+import 'package:app_template/theme/theme_util.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -12,12 +16,20 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: OutlinedButton(onPressed: () {
-          logic.logout();
-        },
-        child: const Text("退出登录")),
-      )
+      body: Column(
+        children: [
+          HeadPage(),
+          Expanded(
+            child: Row(
+              children: [
+                SidebarPage(),
+                ThemeUtil.lineV(),
+                Expanded(child: AnalysisPage())
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 }

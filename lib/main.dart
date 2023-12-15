@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
       builder: BotToastInit(), //1.调用BotToastInit
       navigatorObservers: [BotToastNavigatorObserver()],//2.注册路由观察者
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: 'MyFont',
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
