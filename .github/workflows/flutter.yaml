@@ -1,0 +1,31 @@
+name: Build and Deploy Flutter Web
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up Flutter actions
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.16.0'    # 这里修改为你的 Flutter 版本
+          channel: 'master'
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build Web
+        run: flutter build web --wasm --base-href /admin-flutter/
+
+      - name: Deploy to Github Pages
+        uses: peaceiris/actions-gh-pages@v3 # 需要在仓库开启写入权限  settings/actions/General/Workflow permissions 选择 Read and write permissions
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build/web
