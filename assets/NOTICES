@@ -28752,6 +28752,7 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 MATERIALS OR THE USE OR OTHER DEALINGS IN THE MATERIALS.
 --------------------------------------------------------------------------------
 leak_tracker
+leak_tracker_flutter_testing
 leak_tracker_testing
 
 Copyright 2022, the Dart project authors.
