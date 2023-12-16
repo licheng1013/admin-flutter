@@ -1,5 +1,6 @@
 import 'package:app_template/app/home/head/view.dart';
 import 'package:app_template/app/home/pages/analysis/view.dart';
+import 'package:app_template/app/home/sidebar/logic.dart';
 import 'package:app_template/app/home/sidebar/view.dart';
 import 'package:app_template/theme/theme_util.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +12,9 @@ class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
 
   final logic = Get.put(HomeLogic());
-  final state = Get.find<HomeLogic>().state;
+  final state = Get
+      .find<HomeLogic>()
+      .state;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +27,15 @@ class HomePage extends StatelessWidget {
               children: [
                 SidebarPage(),
                 ThemeUtil.lineV(),
-                Expanded(child: AnalysisPage())
+                Expanded(child: Obx(() {
+                  return IndexedStack(
+                    index: SidebarLogic.treeList.indexWhere((element) =>
+                    element.name == SidebarLogic.selectName.value),
+                    children: [
+                      for (var item in SidebarLogic.treeList) item.page
+                    ],
+                  );
+                }))
               ],
             ),
           )

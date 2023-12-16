@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 class ThemeUtil {
   /// 圆角
-  static BoxDecoration boxDecoration({Color? color}) {
+  static BoxDecoration boxDecoration({Color? color, double radius = 6}) {
     // 圆角
     return BoxDecoration(
       color: color,
-      borderRadius: const BorderRadius.all(Radius.circular(6)),
+      borderRadius:  BorderRadius.all(Radius.circular(radius)),
     );
   }
 
