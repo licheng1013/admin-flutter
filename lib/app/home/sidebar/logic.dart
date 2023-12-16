@@ -7,6 +7,8 @@ import 'state.dart';
 class SidebarLogic extends GetxController {
   final SidebarState state = SidebarState();
   static var selectName = "".obs;
+  //展开
+  static var isExpanded = true.obs;
   static List<SidebarTree> treeList = [
     SidebarTree(
       name: "首页1",

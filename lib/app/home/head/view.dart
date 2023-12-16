@@ -1,3 +1,4 @@
+import 'package:app_template/app/home/sidebar/logic.dart';
 import 'package:app_template/theme/theme_util.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,6 +19,12 @@ class HeadPage extends StatelessWidget {
           height: 60,
           child: Row(
             children: [
+              ThemeUtil.rowWidth(),
+              IconButton(
+                  onPressed: () {
+                    SidebarLogic.isExpanded.value = !SidebarLogic.isExpanded.value;
+                  },
+                  icon: const Icon(Icons.list)),
               const Spacer(),
               IconButton(
                   onPressed: () {

@@ -1,4 +1,3 @@
-import 'package:app_template/common/message_util.dart';
 import 'package:app_template/theme/theme_util.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,13 +12,10 @@ class SidebarPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 250,
-      child: ListView(
-        children: [
-          for (var item in SidebarLogic.treeList) _text(item),
-        ],
-      ),
+    return ListView(
+      children: [
+        for (var item in SidebarLogic.treeList) _text(item),
+      ],
     );
   }
 
@@ -37,7 +33,8 @@ class SidebarPage extends StatelessWidget {
               decoration: ThemeUtil.boxDecoration(
                   color: SidebarLogic.selectName.value == item.name
                       ? Colors.grey.shade200
-                      : Colors.white,radius: 12),
+                      : Colors.white,
+                  radius: 12),
               height: 50,
               child: Center(child: Text(item.name)));
         }),

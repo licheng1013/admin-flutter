@@ -12,16 +12,18 @@ class LaunchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image.asset(
-            "assets/images/image.png",
-            height: 200,
-            width: 400,
-          ),
-          const Text("启动闪屏")
-        ],
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              "assets/images/image.png",
+              height: 200,
+              width: 400,
+            ),
+            const Text("启动闪屏")
+          ],
+        ),
       ),
     );
   }

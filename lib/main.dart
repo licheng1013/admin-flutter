@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      defaultTransition: Transition.noTransition,
       builder: BotToastInit(), //1.调用BotToastInit
       navigatorObservers: [BotToastNavigatorObserver()],//2.注册路由观察者
       title: 'Flutter Demo',
