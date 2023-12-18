@@ -7,31 +7,53 @@ import 'state.dart';
 class SidebarLogic extends GetxController {
   final SidebarState state = SidebarState();
   static var selectName = "".obs;
-  //展开
+  static Widget selectPage = const SizedBox(
+    child: Text("空"),
+  );
   static var isExpanded = true.obs;
   static List<SidebarTree> treeList = [
     SidebarTree(
       name: "首页1",
       icon: const Icon(Icons.home),
       page: AnalysisPage(),
+      children: childTreeList1,
     ),
     SidebarTree(
       name: "首页2",
       icon: const Icon(Icons.home),
+      children: childTreeList2,
     ),
     SidebarTree(
       name: "首页3",
       icon: const Icon(Icons.home),
     ),
+  ];
+
+  static List<SidebarTree> childTreeList1 = [
     SidebarTree(
-      name: "首页4",
+      name: "首页1-1",
       icon: const Icon(Icons.home),
+      page: AnalysisPage(),
     ),
     SidebarTree(
-      name: "首页5",
+      name: "首页2-1",
       icon: const Icon(Icons.home),
-    )
+    ),
   ];
+
+  static List<SidebarTree> childTreeList2 = [
+    SidebarTree(
+      name: "首页1-2",
+      icon: const Icon(Icons.home),
+      page: AnalysisPage(),
+    ),
+    SidebarTree(
+      name: "首页2-2",
+      icon: const Icon(Icons.home),
+    ),
+  ];
+
+  var expansionTile = "".obs;
 }
 
 class SidebarTree {

@@ -27,20 +27,18 @@ class HomePage extends StatelessWidget {
                 // 宽度扩大动画
                 Obx(() {
                   return AnimateUtil.widthScaleAnimation(
-                      SidebarPage(), 250, SidebarLogic.isExpanded.value);
+                    // 这里暂时展开时会出错 TODO 但不影响使用
+                      SidebarLogic.isExpanded.value
+                          ? SidebarPage()
+                          : const SizedBox(),
+                      250,
+                      SidebarLogic.isExpanded.value);
                 }),
                 ThemeUtil.lineV(),
                 Expanded(child: Obx(() {
                   return Visibility(
-                    visible: SidebarLogic.selectName.value != "",
-                    child: IndexedStack(
-                      index: SidebarLogic.treeList.indexWhere((element) =>
-                          element.name == SidebarLogic.selectName.value),
-                      children: [
-                        for (var item in SidebarLogic.treeList) item.page
-                      ],
-                    ),
-                  );
+                      visible: SidebarLogic.selectName.value != "",
+                      child: SidebarLogic.selectPage);
                 }))
               ],
             ),
