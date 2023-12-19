@@ -1,3 +1,4 @@
+import 'package:app_template/common/message_util.dart';
 import 'package:app_template/component/table/table.dart';
 import 'package:app_template/theme/theme_util.dart';
 import 'package:flutter/material.dart';
@@ -20,9 +21,15 @@ class TablePage extends StatelessWidget {
     };
   }
 
+
+
   @override
   Widget build(BuildContext context) {
     var tableData = TableData(isIndex: true, columns: [
+      TableData.multipleSelect(selectList: (e)=>{
+        MessageUtil.show("选择了: ${e.length} 个")
+      }),
+      TableData.index(),
       ColumnData(title: "姓名", key: "name"),
       ColumnData(title: "年龄", key: "age"),
       ColumnData(title: "性别", key: "sex"),
@@ -44,22 +51,15 @@ class TablePage extends StatelessWidget {
                   height: tableData.cellHeight,
                   child: Row(
                     children: [
-                      Visibility(
-                          visible: tableData.isIndex,
-                          child: Expanded(
-                            child: Align(
-                                alignment: Alignment.center,
-                                child: Text("${i + 1}")),
-                          )),
                       for (var column in tableData.columns)
                         Expanded(
                             child: Align(
-                          alignment: column.alignment,
-                          child: column.render != null
-                              ? column.render!(tableData.rows[i][column.key],
-                                  tableData.rows[i], i)
-                              : Text(tableData.rows[i][column.key].toString()),
-                        ))
+                              alignment: column.alignment,
+                              child: column.render != null
+                                  ? column.render!(tableData.rows[i][column.key],
+                                  tableData.rows[i], i,tableData)
+                                  : Text(tableData.rows[i][column.key].toString()),
+                            ))
                     ],
                   ),
                 )
@@ -78,25 +78,17 @@ class TablePage extends StatelessWidget {
           height: table.headerHeight,
           child: Row(
             children: [
-              Visibility(
-                  visible: table.isIndex,
-                  child: const Expanded(
-                    child: Align(
-                        alignment: Alignment.center,
-                        child: Text(
-                          "序号",
-                          style: TextStyle(fontSize: 18),
-                        )),
-                  )),
               for (var item in table.columns)
                 Expanded(
                     child: Align(
-                  alignment: item.alignment,
-                  child: Text(
-                    item.title,
-                    style: const TextStyle(fontSize: 18),
-                  ),
-                ))
+                      alignment: item.alignment,
+                      child: item.titleRender == null
+                          ? Text(
+                        item.title,
+                        style: const TextStyle(fontSize: 18),
+                      )
+                          : item.titleRender!(item.title,table),
+                    ))
             ],
           ),
         ),
