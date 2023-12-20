@@ -1,5 +1,5 @@
 import 'package:app_template/common/message_util.dart';
-import 'package:app_template/component/table/table.dart';
+import 'package:app_template/component/table/table_data.dart';
 import 'package:app_template/theme/theme_util.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -55,11 +55,11 @@ class TablePage extends StatelessWidget {
                         Expanded(
                             child: Align(
                               alignment: column.alignment,
-                              child: column.render != null
-                                  ? column.render!(tableData.rows[i][column.key],
-                                  tableData.rows[i], i,tableData)
-                                  : Text(tableData.rows[i][column.key].toString()),
-                            ))
+                          child: column.render == null
+                              ? Text(tableData.rows[i][column.key].toString())
+                              : column.render!(tableData.rows[i][column.key],
+                                  tableData.rows[i], i, tableData),
+                        ))
                     ],
                   ),
                 )

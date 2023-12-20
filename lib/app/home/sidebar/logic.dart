@@ -1,4 +1,5 @@
 import 'package:app_template/app/home/pages/analysis/view.dart';
+import 'package:app_template/component/form/view.dart';
 import 'package:app_template/component/pagination/view.dart';
 import 'package:app_template/component/table/view.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,6 @@ class SidebarLogic extends GetxController {
   static var isExpandedAnim = true.obs;
   var expansionTile = <String>[].obs;
 
-
   static List<SidebarTree> treeList = [
     SidebarTree(
       name: "首页1",
@@ -30,15 +30,11 @@ class SidebarLogic extends GetxController {
       children: childTreeList2,
     ),
     SidebarTree(
-      name: "首页3",
-      icon: const Icon(Icons.home),
-      page: Column(
-        children: [
-          Expanded(child: TablePage()),
-          PaginationPage()
-        ],
-      )
-    ),
+        name: "用户列表",
+        icon: const Icon(Icons.home),
+        page: Column(
+          children: [Expanded(child: TablePage()), PaginationPage()],
+        )),
   ];
 
   static List<SidebarTree> childTreeList1 = [
@@ -48,9 +44,18 @@ class SidebarLogic extends GetxController {
       page: AnalysisPage(),
     ),
     SidebarTree(
-      name: "首页2-1",
-      icon: const Icon(Icons.home),
-    ),
+        name: "表单页面",
+        icon: const Icon(Icons.home),
+        page: Column(
+          children: [
+            const SizedBox(
+              height: 100,
+            ),
+            Card(
+              child: SizedBox(width: 500, child: FormPage()),
+            ),
+          ],
+        )),
   ];
 
   static List<SidebarTree> childTreeList2 = [
@@ -64,9 +69,6 @@ class SidebarLogic extends GetxController {
       icon: const Icon(Icons.home),
     ),
   ];
-
-
-
 }
 
 class SidebarTree {
