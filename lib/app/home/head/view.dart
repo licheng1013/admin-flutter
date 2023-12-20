@@ -24,6 +24,7 @@ class HeadPage extends StatelessWidget {
               IconButton(
                   onPressed: () {
                     SidebarLogic.isExpanded.value = !SidebarLogic.isExpanded.value;
+                    SidebarLogic.isExpandedAnim.value = false;
                   },
                   icon: const Icon(Icons.list)),
               const Spacer(),
@@ -33,13 +34,13 @@ class HeadPage extends StatelessWidget {
                   },
                   icon: const Icon(Icons.settings)),
               ThemeUtil.rowWidth(),
-              OutlinedButton(
+              FilledButton(
                   onPressed: () {
                     MessageUtil.show("还在制作中...");
                   },
                   child: const Text("帮助")),
               ThemeUtil.rowWidth(),
-              OutlinedButton(
+              FilledButton(
                   onPressed: () {
                     logic.logout();
                   },

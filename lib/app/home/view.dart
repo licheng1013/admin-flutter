@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:app_template/app/home/head/view.dart';
 import 'package:app_template/app/home/pages/analysis/view.dart';
 import 'package:app_template/app/home/sidebar/logic.dart';
@@ -15,6 +17,8 @@ class HomePage extends StatelessWidget {
   final logic = Get.put(HomeLogic());
   final state = Get.find<HomeLogic>().state;
 
+  static Widget sidebarPage = SidebarPage();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,12 +31,17 @@ class HomePage extends StatelessWidget {
                 // 宽度扩大动画
                 Obx(() {
                   return AnimateUtil.widthScaleAnimation(
-                    // 这里暂时展开时会出错 TODO 但不影响使用
-                      SidebarLogic.isExpanded.value
-                          ? SidebarPage()
-                          : const SizedBox(),
+                      // 这里暂时展开时会出错 TODO 但不影响使用
+                      Visibility(
+                        visible: SidebarLogic.isExpandedAnim.value,
+                        child: sidebarPage,
+                      ),
                       250,
-                      SidebarLogic.isExpanded.value);
+                      SidebarLogic.isExpanded.value, onEnd: () {
+                        if (SidebarLogic.isExpanded.value) {
+                          SidebarLogic.isExpandedAnim.value = true;
+                        }
+                  });
                 }),
                 ThemeUtil.lineV(),
                 Expanded(child: Obx(() {

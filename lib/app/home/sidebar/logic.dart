@@ -1,4 +1,5 @@
 import 'package:app_template/app/home/pages/analysis/view.dart';
+import 'package:app_template/component/pagination/view.dart';
 import 'package:app_template/component/table/view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,6 +13,10 @@ class SidebarLogic extends GetxController {
     child: Text("空"),
   );
   static var isExpanded = true.obs;
+  static var isExpandedAnim = true.obs;
+  var expansionTile = <String>[].obs;
+
+
   static List<SidebarTree> treeList = [
     SidebarTree(
       name: "首页1",
@@ -27,7 +32,12 @@ class SidebarLogic extends GetxController {
     SidebarTree(
       name: "首页3",
       icon: const Icon(Icons.home),
-      page: TablePage()
+      page: Column(
+        children: [
+          Expanded(child: TablePage()),
+          PaginationPage()
+        ],
+      )
     ),
   ];
 
@@ -55,7 +65,8 @@ class SidebarLogic extends GetxController {
     ),
   ];
 
-  var expansionTile = "".obs;
+
+
 }
 
 class SidebarTree {

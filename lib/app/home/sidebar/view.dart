@@ -38,10 +38,14 @@ class SidebarPage extends StatelessWidget {
                       : null,
                   radius: 12),
               height: 50,
-              child: Center(child: Text(item.name, style:  TextStyle(color: SidebarLogic.selectName.value == item.name
-                  ? Colors.white
-                  : Colors.black
-              ),)));
+              child: Center(
+                  child: Text(
+                item.name,
+                style: TextStyle(
+                    color: SidebarLogic.selectName.value == item.name
+                        ? Colors.white
+                        : Colors.black),
+              )));
         }),
       ),
     );
@@ -51,6 +55,14 @@ class SidebarPage extends StatelessWidget {
     return ExpansionTile(
       title: Text(item.name),
       shape: const LinearBorder(),
+      initiallyExpanded: logic.expansionTile.contains(item.name),
+      onExpansionChanged: (value) {
+        if (value) {
+          logic.expansionTile.add(item.name);
+        } else {
+          logic.expansionTile.remove(item.name);
+        }
+      },
       leading: item.icon,
       children: [
         for (var child in item.children) _text(child),
