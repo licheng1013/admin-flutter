@@ -37,16 +37,17 @@ class TableData {
         key: "multiple-select-key",
         titleRender: (value, table) => Obx(() {
           return Checkbox(
-            value: table.rows.length == table.list.length,
-            onChanged: (value) {
-              table.list.clear();
-              if (value == true) {
-                table.list.addAll(table.rows);
-              }
-              table.list.refresh();
-              selectList?.call(table.list);
-            },
-          );
+            value: table.rows.length == table.list.length &&
+                    table.list.isNotEmpty,
+                onChanged: (value) {
+                  table.list.clear();
+                  if (value == true) {
+                    table.list.addAll(table.rows);
+                  }
+                  table.list.refresh();
+                  selectList?.call(table.list);
+                },
+              );
         }),
         render: (value, row, index, table) => Obx(() {
           return Checkbox(

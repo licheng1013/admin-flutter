@@ -6,20 +6,29 @@ import 'logic.dart';
 
 class PaginationPage extends StatelessWidget {
   final MainAxisAlignment alignment;
+  final Function(int size, int page)? changed;
+  final int total;
 
-  PaginationPage({Key? key, this.alignment = MainAxisAlignment.end})
+  PaginationPage(
+      {Key? key,
+      this.alignment = MainAxisAlignment.end,
+      this.total = 0,
+      this.changed})
       : super(key: key);
 
   final logic = Get.put(PaginationLogic());
   final state = Get.find<PaginationLogic>().state;
 
   final sizeList = [10, 15, 20, 50];
-  var total = 101;
   var size = 10.obs;
   var current = 1.obs;
 
   @override
   Widget build(BuildContext context) {
+    Future.delayed(60.milliseconds, () {
+      refresh();
+    });
+
     return Card(
       child: SizedBox(
         height: 50,
@@ -71,7 +80,7 @@ class PaginationPage extends StatelessWidget {
             }),
             ThemeUtil.rowWidth(),
             FilledButton(
-                // 禁用
+              // 禁用
                 onPressed: () {
                   current.value--;
                   refresh();
@@ -98,5 +107,6 @@ class PaginationPage extends StatelessWidget {
     if (current.value <= 0) {
       current.value = 1;
     }
+    changed?.call(size.value, current.value);
   }
 }

@@ -1,4 +1,7 @@
-import 'package:flutter/cupertino.dart';
+import 'package:app_template/common/message_util.dart';
+import 'package:app_template/component/form/view.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class FormDto {
   /// 字段列表
@@ -38,12 +41,16 @@ class FormColumnDto {
   /// 限制长度
   final int? maxLength;
 
+  /// 占位文字
+  final String? placeholder;
+
   FormColumnDto(
       {required this.label,
       required this.key,
       this.render,
       this.labelRender,
       this.type = FormColumnEnum.text,
+      this.placeholder,
       this.maxLength});
 }
 
@@ -63,4 +70,29 @@ enum FormColumnEnum {
     FormColumnEnum.number: "[0-9]",
     FormColumnEnum.float: "[0-9.]",
   };
+}
+
+void submit() {
+  // 打开全屏窗口
+  Get.dialog(Column(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      Card(
+        child: SizedBox(
+            width: 600,
+            child: FormPage(
+              back: () {
+                Get.back();
+              },
+              submit: (data) {
+                MessageUtil.show(data.toString());
+                //Get.back();
+              },
+            )),
+      ),
+      const SizedBox(
+        height: 100,
+      ),
+    ],
+  ));
 }
