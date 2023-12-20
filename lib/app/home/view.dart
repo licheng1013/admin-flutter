@@ -1,7 +1,5 @@
-import 'dart:ffi';
 
 import 'package:app_template/app/home/head/view.dart';
-import 'package:app_template/app/home/pages/analysis/view.dart';
 import 'package:app_template/app/home/sidebar/logic.dart';
 import 'package:app_template/app/home/sidebar/view.dart';
 import 'package:app_template/common/animate_util.dart';
