@@ -1,4 +1,5 @@
 import 'package:app_template/app/home/sidebar/logic.dart';
+import 'package:app_template/common/assets_util.dart';
 import 'package:app_template/common/message_util.dart';
 import 'package:app_template/theme/theme_util.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +16,10 @@ class HeadPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return _head();
+  }
+
+  Widget _head() {
     return Column(
       children: [
         SizedBox(
@@ -37,34 +42,35 @@ class HeadPage extends StatelessWidget {
                   },
                   child: const Text("Flutter Wasm Demo")),
               ThemeUtil.rowWidth(),
-              IconButton(
+              FilledButton(
                   onPressed: () {
-                    // 打开主页外部链接
                     launchUrl(
                         Uri.parse(
                             "https://github.com/licheng1013/admin-flutter"),
                         mode: LaunchMode.externalApplication);
                   },
-                  icon: const Icon(Icons.home)),
-              ThemeUtil.rowWidth(),
-              IconButton(
-                  onPressed: () {
-                    MessageUtil.show("还在制作中...");
-                  },
-                  icon: const Icon(Icons.settings)),
+                  child: const Text("Github Star")),
               ThemeUtil.rowWidth(),
               FilledButton(
                   onPressed: () {
                     MessageUtil.show("还在制作中...");
                   },
-                  child: const Text("帮助")),
+                  child: const Text("设置")),
               ThemeUtil.rowWidth(),
-              FilledButton(
-                  onPressed: () {
-                    logic.logout();
-                  },
-                  child: const Text("退出登入")),
-              ThemeUtil.rowWidth()
+              InkWell(
+                borderRadius: BorderRadius.circular(18),
+                onTap: () {
+                  logic.clickHeadImage();
+                },
+                child: ClipOval(
+                    // 圆形头像
+                    child: SizedBox(
+                        width: 50,
+                        height: 50,
+                        child: AssetsUtil.imageByPath(AssetsUtil.bgImage,
+                            fit: BoxFit.cover))),
+              ),
+              ThemeUtil.rowWidth(),
             ],
           ),
         ),
