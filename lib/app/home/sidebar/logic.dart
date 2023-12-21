@@ -1,4 +1,5 @@
 import 'package:app_template/app/home/pages/analysis/view.dart';
+import 'package:app_template/app/home/pages/flutter/view.dart';
 import 'package:app_template/app/home/pages/user/view.dart';
 import 'package:app_template/component/form/view.dart';
 import 'package:flutter/material.dart';
@@ -29,6 +30,10 @@ class SidebarLogic extends GetxController {
       children: childTreeList2,
     ),
     SidebarTree(name: "用户列表", icon: const Icon(Icons.home), page: UserPage()),
+    SidebarTree(
+        name: "Flutter",
+        icon: const Icon(Icons.flutter_dash),
+        page: FlutterPage()),
   ];
 
   static List<SidebarTree> childTreeList1 = [
