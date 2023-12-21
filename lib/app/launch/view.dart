@@ -1,3 +1,4 @@
+import 'package:app_template/common/assets_util.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -17,7 +18,7 @@ class LaunchPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              "assets/images/image.png",
+              AssetsUtil.bgImage,
               height: 200,
               width: 400,
             ),

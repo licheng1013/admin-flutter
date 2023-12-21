@@ -2,6 +2,7 @@ import 'package:app_template/app/home/pages/analysis/view.dart';
 import 'package:app_template/app/home/pages/flutter/view.dart';
 import 'package:app_template/app/home/pages/user/view.dart';
 import 'package:app_template/component/form/view.dart';
+import 'package:app_template/component/upload/view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -64,8 +65,13 @@ class SidebarLogic extends GetxController {
       page: AnalysisPage(),
     ),
     SidebarTree(
-      name: "首页2-2",
+      name: "上传组件",
       icon: const Icon(Icons.home),
+      page: Column(
+        children: [
+          SizedBox(width: 500, child: UploadPage()),
+        ],
+      ),
     ),
   ];
 }

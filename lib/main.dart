@@ -31,7 +31,6 @@ class MyApp extends StatelessWidget {
         Locale('zh'), // Chinese
       ],
       locale: const Locale('zh'),
-
       theme: ThemeData(
         fontFamily: 'MyFont',
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
