@@ -1,5 +1,4 @@
 import 'package:app_template/common/url_util.dart';
-import 'package:app_template/component/form/form_data.dart';
 import 'package:app_template/component/pagination/view.dart';
 import 'package:app_template/component/table/table_data.dart';
 import 'package:app_template/component/table/view.dart';
@@ -17,18 +16,6 @@ class AdminPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var columns = [
-      // TableData.multipleSelect(
-      //     selectList: (e) => {MessageUtil.show("选择了: ${e.length} 个")}),
-      // TableData.index(),
-      ColumnData(title: "Id", key: "id"),
-      ColumnData(title: "账号", key: "userName"),
-      ColumnData(title: "密码", key: "password"),
-      ColumnData(title: "盐", key: "salt"),
-      ColumnData(title: "创建时间", key: "createTime"),
-      ColumnData(title: "昵称", key: "nickName"),
-    ];
-
     return Column(
       children: [
         SizedBox(
@@ -51,7 +38,7 @@ class AdminPage extends StatelessWidget {
               const Spacer(),
               FilledButton(
                   onPressed: () {
-                    submit();
+                    logic.add();
                   },
                   child: const Text("新增")),
               ThemeUtil.rowWidth(),
@@ -63,7 +50,9 @@ class AdminPage extends StatelessWidget {
             return TablePage(
               loading: logic.loading.value,
               tableData: TableData(
-                  isIndex: true, columns: columns, rows: logic.list.value),
+                  isIndex: true,
+                  columns: logic.columns,
+                  rows: logic.list.value),
             );
           }),
         ),

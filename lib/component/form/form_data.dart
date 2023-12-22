@@ -1,4 +1,3 @@
-import 'package:app_template/common/message_util.dart';
 import 'package:app_template/component/form/view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,7 +13,7 @@ class FormDto {
   final Alignment labelAlignment;
 
   /// 字段数据
-  final Map<String, dynamic> data = {};
+  Map<String, dynamic> data = {};
 
   FormDto(
       {required this.columns,
@@ -44,14 +43,13 @@ class FormColumnDto {
   /// 占位文字
   final String? placeholder;
 
-  FormColumnDto(
-      {required this.label,
-      required this.key,
-      this.render,
-      this.labelRender,
-      this.type = FormColumnEnum.text,
-      this.placeholder,
-      this.maxLength});
+  FormColumnDto({required this.label,
+    required this.key,
+    this.render,
+    this.labelRender,
+    this.type = FormColumnEnum.text,
+    this.placeholder,
+    this.maxLength});
 }
 
 /// 限制输入类型
@@ -72,7 +70,7 @@ enum FormColumnEnum {
   };
 }
 
-void submit() {
+void requestForm(FormDto form, {Function(Map<String, dynamic>)? submit}) {
   // 打开全屏窗口
   Get.dialog(Column(
     mainAxisAlignment: MainAxisAlignment.center,
@@ -81,12 +79,12 @@ void submit() {
         child: SizedBox(
             width: 600,
             child: FormPage(
+              form,
               back: () {
                 Get.back();
               },
               submit: (data) {
-                MessageUtil.show(data.toString());
-                //Get.back();
+                submit?.call(data);
               },
             )),
       ),

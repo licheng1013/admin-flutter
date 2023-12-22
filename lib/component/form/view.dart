@@ -11,33 +11,15 @@ import 'logic.dart';
 class FormPage extends StatelessWidget {
   final Function()? back;
   final Function(Map<String, dynamic>)? submit;
+  final FormDto form;
 
-  FormPage({Key? key, this.back, this.submit}) : super(key: key);
+  FormPage(this.form, {Key? key, this.back, this.submit}) : super(key: key);
 
   final logic = Get.put(FormLogic());
   final state = Get.find<FormLogic>().state;
 
   @override
   Widget build(BuildContext context) {
-    var form = FormDto(labelWidth: 80, columns: [
-      FormColumnDto(label: "账号", key: "username"),
-      FormColumnDto(
-          placeholder: "请输入密码",
-          label: "密码",
-          key: "password",
-          type: FormColumnEnum.password),
-      FormColumnDto(
-          placeholder: "请输入手机号",
-          label: "手机号",
-          key: "tel",
-          type: FormColumnEnum.number,
-          maxLength: 11),
-      FormColumnDto(label: "地址", key: "address", placeholder: "请输入地址"),
-      FormColumnDto(label: "金币", key: "number", type: FormColumnEnum.float),
-      FormColumnDto(
-          label: "创建时间", key: "createTime", type: FormColumnEnum.datetime),
-    ]);
-
     return Column(
       children: [
         ThemeUtil.rowHeight(),

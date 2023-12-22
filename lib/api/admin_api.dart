@@ -1,5 +1,4 @@
 import 'package:app_template/common/http_util.dart';
-import 'package:app_template/common/message_util.dart';
 
 class AdminApi {
 
@@ -11,6 +10,7 @@ class AdminApi {
     return await HttpUtil.post("/admin/login", params: params);
   }
 
-
-
+  static Future<dynamic> adminInsert({Map<String, dynamic>? params}) async {
+    return await HttpUtil.post("/admin/insert", params: params);
+  }
 }

@@ -36,7 +36,8 @@ class UserPage extends StatelessWidget {
             children: [
               FilledButton(
                   onPressed: () {
-                    submit();
+                    requestForm(logic.form,
+                        submit: (d) => {MessageUtil.show(d.toString())});
                   },
                   child: const Text("新增")),
               ThemeUtil.rowWidth(),

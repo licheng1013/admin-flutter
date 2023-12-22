@@ -1,3 +1,4 @@
+import 'package:app_template/component/form/form_data.dart';
 import 'package:get/get.dart';
 
 import 'state.dart';
@@ -28,4 +29,23 @@ class UserLogic extends GetxController {
     }
     list.refresh();
   }
+
+  var form = FormDto(labelWidth: 80, columns: [
+    FormColumnDto(label: "账号", key: "username"),
+    FormColumnDto(
+        placeholder: "请输入密码",
+        label: "密码",
+        key: "password",
+        type: FormColumnEnum.password),
+    FormColumnDto(
+        placeholder: "请输入手机号",
+        label: "手机号",
+        key: "tel",
+        type: FormColumnEnum.number,
+        maxLength: 11),
+    FormColumnDto(label: "地址", key: "address", placeholder: "请输入地址"),
+    FormColumnDto(label: "金币", key: "number", type: FormColumnEnum.float),
+    FormColumnDto(
+        label: "创建时间", key: "createTime", type: FormColumnEnum.datetime),
+  ]);
 }

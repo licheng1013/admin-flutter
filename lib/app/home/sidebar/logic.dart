@@ -2,7 +2,6 @@ import 'package:app_template/app/home/pages/admin/view.dart';
 import 'package:app_template/app/home/pages/analysis/view.dart';
 import 'package:app_template/app/home/pages/flutter/view.dart';
 import 'package:app_template/app/home/pages/user/view.dart';
-import 'package:app_template/component/form/view.dart';
 import 'package:app_template/component/upload/view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -51,9 +50,6 @@ class SidebarLogic extends GetxController {
           children: [
             const SizedBox(
               height: 100,
-            ),
-            Card(
-              child: SizedBox(width: 500, child: FormPage()),
             ),
           ],
         )),

@@ -57,20 +57,40 @@ class TablePage extends StatelessWidget {
             height: tableData.cellHeight,
             child: Row(
               children: [
-                for (var column in tableData.columns)
-                  Expanded(
-                      child: Align(
-                    alignment: column.alignment,
-                    child: column.render == null
-                        ? Text(tableData.rows[i][column.key].toString())
-                        : column.render!(tableData.rows[i][column.key],
-                            tableData.rows[i], i, tableData),
-                  ))
+                for (var column in tableData.columns) _buildData(column, i)
               ],
             ),
           )
       ],
     );
+  }
+
+  Widget _buildData(ColumnData column, int i) {
+    var body = Align(
+      alignment: column.alignment,
+      child: column.render == null
+          ? Text(tableData.rows[i][column.key].toString())
+          : column.render!(
+              tableData.rows[i][column.key], tableData.rows[i], i, tableData),
+    );
+    if (column.width != 0) {
+      return SizedBox(width: column.width, child: body);
+    }
+    return Expanded(child: body);
+  }
+
+  Widget _buildTitle(ColumnData column, int i) {
+    var body = Align(
+      alignment: column.alignment,
+      child: column.render == null
+          ? Text(tableData.rows[i][column.key].toString())
+          : column.render!(
+              tableData.rows[i][column.key], tableData.rows[i], i, tableData),
+    );
+    if (column.width != 0) {
+      return SizedBox(width: column.width, child: body);
+    }
+    return Expanded(child: body);
   }
 
   // 表头
