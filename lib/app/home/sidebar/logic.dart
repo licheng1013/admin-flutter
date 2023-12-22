@@ -1,3 +1,4 @@
+import 'package:app_template/app/home/pages/admin/view.dart';
 import 'package:app_template/app/home/pages/analysis/view.dart';
 import 'package:app_template/app/home/pages/flutter/view.dart';
 import 'package:app_template/app/home/pages/user/view.dart';
@@ -60,9 +61,9 @@ class SidebarLogic extends GetxController {
 
   static List<SidebarTree> childTreeList2 = [
     SidebarTree(
-      name: "首页1-2",
+      name: "管理列表",
       icon: const Icon(Icons.home),
-      page: AnalysisPage(),
+      page: AdminPage(),
     ),
     SidebarTree(
       name: "上传组件",

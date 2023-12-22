@@ -34,7 +34,7 @@ class LoginPage extends StatelessWidget {
                     hintText: '请输入账号', labelText: '账号'),
                 ThemeUtil.rowHeight(),
                 textInput(logic.passwordText,
-                    hintText: '请输入密码', labelText: '密码'),
+                    hintText: '请输入密码', labelText: '密码', password: true),
                 ThemeUtil.rowHeight(),
                 InkWell(
                   onTap: () {
@@ -62,9 +62,10 @@ class LoginPage extends StatelessWidget {
 
   /// 增加文字输入框
   Widget textInput(TextEditingController text,
-      {String? hintText, String? labelText}) {
+      {String? hintText, String? labelText, bool password = false}) {
     return TextField(
       controller: text,
+      obscureText: password,
       decoration: InputDecoration(
         border: const OutlineInputBorder(),
         labelText: labelText,
