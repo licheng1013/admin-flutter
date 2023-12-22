@@ -25,19 +25,20 @@ class TableData {
 
   TableData(
       {required this.columns,
-        required this.rows,
-        this.headerHeight = 50,
-        this.isZebra = true,
-        this.cellHeight = 50,
-        this.isIndex = false});
+      required this.rows,
+      this.headerHeight = 50,
+      this.isZebra = true,
+      this.cellHeight = 50,
+      this.isIndex = false});
 
-  static ColumnData multipleSelect({Function(List<Map<String,dynamic>>)? selectList}) {
+  static ColumnData multipleSelect(
+      {Function(List<Map<String, dynamic>>)? selectList}) {
     return ColumnData(
         title: "多选",
         key: "multiple-select-key",
         titleRender: (value, table) => Obx(() {
-          return Checkbox(
-            value: table.rows.length == table.list.length &&
+              return Checkbox(
+                value: table.rows.length == table.list.length &&
                     table.list.isNotEmpty,
                 onChanged: (value) {
                   table.list.clear();
@@ -48,21 +49,21 @@ class TableData {
                   selectList?.call(table.list);
                 },
               );
-        }),
+            }),
         render: (value, row, index, table) => Obx(() {
-          return Checkbox(
-            value: table.list.contains(row),
-            onChanged: (value) {
-              if (value == true) {
-                table.list.add(row);
-              } else {
-                table.list.remove(row);
-              }
-              table.list.refresh();
-              selectList?.call(table.list);
-            },
-          );
-        }),
+              return Checkbox(
+                value: table.list.contains(row),
+                onChanged: (value) {
+                  if (value == true) {
+                    table.list.add(row);
+                  } else {
+                    table.list.remove(row);
+                  }
+                  table.list.refresh();
+                  selectList?.call(table.list);
+                },
+              );
+            }),
         alignment: Alignment.center);
   }
 
@@ -72,6 +73,15 @@ class TableData {
         key: "id-key",
         render: (value, row, index, table) => Text("${index + 1}"),
         alignment: Alignment.center);
+  }
+
+  /// 将动态列表转换为Map列表
+  static List<Map<String, dynamic>> listDyToMap(List<dynamic> list) {
+    var result = <Map<String, dynamic>>[];
+    for (var element in list) {
+      result.add(element as Map<String, dynamic>);
+    }
+    return result;
   }
 }
 
@@ -96,9 +106,9 @@ class ColumnData {
 
   ColumnData(
       {required this.title,
-        required this.key,
-        this.width = 0,
-        this.render,
-        this.titleRender,
-        this.alignment = Alignment.center});
+      required this.key,
+      this.width = 0,
+      this.render,
+      this.titleRender,
+      this.alignment = Alignment.center});
 }

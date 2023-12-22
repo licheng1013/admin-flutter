@@ -1,3 +1,4 @@
+import 'package:app_template/common/message_util.dart';
 import 'package:app_template/theme/theme_util.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -9,9 +10,8 @@ class PaginationPage extends StatelessWidget {
   final Function(int size, int page)? changed;
   final int total;
 
-  PaginationPage(
-      {Key? key,
-      this.alignment = MainAxisAlignment.end,
+  PaginationPage({Key? key,
+    this.alignment = MainAxisAlignment.end,
       this.total = 0,
       this.changed})
       : super(key: key);
@@ -22,9 +22,12 @@ class PaginationPage extends StatelessWidget {
   final sizeList = [10, 15, 20, 50];
   var size = 10.obs;
   var current = 1.obs;
+  var totalPage = 0.obs;
 
   @override
   Widget build(BuildContext context) {
+    totalPage.value = total ~/ size.value + (total % size.value != 0 ? 1 : 0);
+
     Future.delayed(60.milliseconds, () {
       refresh();
     });
@@ -72,7 +75,7 @@ class PaginationPage extends StatelessWidget {
                 width: 75,
                 child: Center(
                   child: Text(
-                    "总 ${total ~/ size.value + (total % size.value != 0 ? 1 : 0)} 页",
+                    "总 ${totalPage.value} 页",
                     style: const TextStyle(color: Colors.black, fontSize: 18),
                   ),
                 ),
@@ -82,6 +85,10 @@ class PaginationPage extends StatelessWidget {
             FilledButton(
               // 禁用
                 onPressed: () {
+                  if (current.value == 1) {
+                    MessageUtil.show("已经是第一页了");
+                    return;
+                  }
                   current.value--;
                   refresh();
                 },
@@ -89,6 +96,10 @@ class PaginationPage extends StatelessWidget {
             ThemeUtil.rowWidth(),
             FilledButton(
                 onPressed: () {
+                  if (current.value == totalPage.value) {
+                    MessageUtil.show("已经是最后一页了");
+                    return;
+                  }
                   current.value++;
                   refresh();
                 },

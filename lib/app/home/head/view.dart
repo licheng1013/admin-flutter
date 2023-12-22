@@ -1,10 +1,10 @@
 import 'package:app_template/app/home/sidebar/logic.dart';
 import 'package:app_template/common/assets_util.dart';
 import 'package:app_template/common/message_util.dart';
+import 'package:app_template/common/url_util.dart';
 import 'package:app_template/theme/theme_util.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import 'logic.dart';
 
@@ -37,17 +37,14 @@ class HeadPage extends StatelessWidget {
               const Spacer(),
               FilledButton(
                   onPressed: () {
-                    launchUrl(Uri.parse("https://flutterweb-wasm.web.app/"),
-                        mode: LaunchMode.externalApplication);
+                    UrlUtil.openUrl("https://flutterweb-wasm.web.app/");
                   },
                   child: const Text("Flutter Wasm Demo")),
               ThemeUtil.rowWidth(),
               FilledButton(
                   onPressed: () {
-                    launchUrl(
-                        Uri.parse(
-                            "https://github.com/licheng1013/admin-flutter"),
-                        mode: LaunchMode.externalApplication);
+                    UrlUtil.openUrl(
+                        "https://github.com/licheng1013/admin-flutter");
                   },
                   child: const Text("Github Star")),
               ThemeUtil.rowWidth(),

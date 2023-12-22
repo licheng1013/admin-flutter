@@ -28,7 +28,8 @@ class ThemeUtil {
   }
 
   /// 水平线
-  static Widget lineH({double height = 1, Color color = Colors.grey}) {
+  static Widget lineH({double height = 1, Color? color}) {
+    color ??= Colors.grey.shade200;
     return Divider(
       height: height,
       color: color,
@@ -36,7 +37,8 @@ class ThemeUtil {
   }
 
   /// 垂直线
-  static Widget lineV({double width = 1, Color color = Colors.grey}) {
+  static Widget lineV({double width = 1, Color? color}) {
+    color ??= Colors.grey.shade200;
     return VerticalDivider(
       width: width,
       color: color,

@@ -1,3 +1,5 @@
+import 'package:app_template/api/admin_api.dart';
+import 'package:app_template/component/table/table_data.dart';
 import 'package:get/get.dart';
 
 import 'state.dart';
@@ -6,28 +8,23 @@ class AdminLogic extends GetxController {
   final AdminState state = AdminState();
 
   var list = <Map<String, dynamic>>[].obs;
-  var total = 200;
+  var total = 0.obs;
 
-  Map<String, dynamic> _data(int i) {
-    return {
-      "id": "张三$i",
-      "userName": "张三$i",
-      "password": "张三$i",
-      "salt": "张三$i",
-      "createTime": "张三$i",
-      "nickName": "张三$i",
-    };
-  }
+  var loading = false.obs;
 
   void find(size, page) {
     list.clear();
-    if (page * size > total) {
-      // TODO 这里暂时还有个问题， 当前页的数据不足一页时，会出现空白
-      return;
-    }
-    for (int i = (page - 1) * size; i < page * size; i++) {
-      list.add(_data(i));
-    }
-    list.refresh();
+    loading.value = true;
+    AdminApi.adminList(params: {
+      "size": size,
+      "page": page,
+    }).then((value) async {
+      total.value = value["total"];
+      list.addAll(TableData.listDyToMap(value["list"]));
+      list.refresh();
+      // 休眠 300 毫米
+      await Future.delayed(const Duration(milliseconds: 300));
+      loading.value = false;
+    });
   }
 }

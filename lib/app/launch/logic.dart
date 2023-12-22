@@ -1,4 +1,3 @@
-import 'package:app_template/api/admin_api.dart';
 import 'package:app_template/app/home/view.dart';
 import 'package:app_template/app/login/view.dart';
 import 'package:app_template/common/app_data.dart';
