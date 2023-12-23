@@ -2,6 +2,7 @@ import 'package:app_template/api/admin_api.dart';
 import 'package:app_template/common/message_util.dart';
 import 'package:app_template/component/form/form_data.dart';
 import 'package:app_template/component/table/table_data.dart';
+import 'package:app_template/component/ui_edit.dart';
 import 'package:get/get.dart';
 
 import 'state.dart';
@@ -37,13 +38,18 @@ class AdminLogic extends GetxController {
     // TableData.multipleSelect(
     //     selectList: (e) => {MessageUtil.show("选择了: ${e.length} 个")}),
     // TableData.index(),
-    ColumnData(title: "Id", key: "id", width: 50),
-    ColumnData(title: "账号", key: "userName"),
+    TableData.index(width: 80),
+    ColumnData(title: "Id", key: "id", width: 80),
+    ColumnData(title: "账号", key: "userName", width: 80),
     ColumnData(title: "密码", key: "password"),
     ColumnData(title: "盐", key: "salt"),
     ColumnData(title: "创建时间", key: "createTime"),
     ColumnData(title: "昵称", key: "nickName"),
-    TableData.edit(),
+    TableData.edit(edit: (d) {
+      MessageUtil.show("编辑$d");
+    }, delete: (d) {
+      MessageUtil.show("删除:$d");
+    }),
   ];
 
   var form = FormDto(labelWidth: 80, columns: [
@@ -71,7 +77,7 @@ class AdminLogic extends GetxController {
 
   void add() {
     form.data = {};
-    requestForm(form,
+    UiEdit.requestForm(form,
         submit: (data) => {
               AdminApi.adminInsert(params: data).then((value) {
                 MessageUtil.show("插入成功!");

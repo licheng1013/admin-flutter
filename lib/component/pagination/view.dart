@@ -26,7 +26,6 @@ class PaginationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    totalPage.value = total ~/ size.value + (total % size.value != 0 ? 1 : 0);
 
     Future.delayed(60.milliseconds, () {
       refresh();
@@ -58,6 +57,12 @@ class PaginationPage extends StatelessWidget {
                 ],
                 onChanged: (value) {
                   size.value = value as int;
+                  // if (current.value * size.value > total) {
+                  //   current.value = totalPage.value;
+                  // }
+                  // if (current.value <= 0) {
+                  current.value = 1;
+                  //}
                   refresh();
                 },
                 value: size.value,
@@ -112,12 +117,7 @@ class PaginationPage extends StatelessWidget {
   }
 
   void refresh() {
-    if (current.value * size.value > total) {
-      current.value = total ~/ size.value + (total % size.value != 0 ? 1 : 0);
-    }
-    if (current.value <= 0) {
-      current.value = 1;
-    }
+    totalPage.value = total ~/ size.value + (total % size.value != 0 ? 1 : 0);
     changed?.call(size.value, current.value);
   }
 }

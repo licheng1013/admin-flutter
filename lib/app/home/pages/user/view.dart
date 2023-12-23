@@ -1,8 +1,8 @@
 import 'package:app_template/common/message_util.dart';
-import 'package:app_template/component/form/form_data.dart';
 import 'package:app_template/component/pagination/view.dart';
 import 'package:app_template/component/table/table_data.dart';
 import 'package:app_template/component/table/view.dart';
+import 'package:app_template/component/ui_edit.dart';
 import 'package:app_template/theme/theme_util.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -36,7 +36,7 @@ class UserPage extends StatelessWidget {
             children: [
               FilledButton(
                   onPressed: () {
-                    requestForm(logic.form,
+                    UiEdit.requestForm(logic.form,
                         submit: (d) => {MessageUtil.show(d.toString())});
                   },
                   child: const Text("新增")),

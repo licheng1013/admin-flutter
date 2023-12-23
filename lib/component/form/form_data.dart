@@ -1,6 +1,4 @@
-import 'package:app_template/component/form/view.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class FormDto {
   /// 字段列表
@@ -70,27 +68,3 @@ enum FormColumnEnum {
   };
 }
 
-void requestForm(FormDto form, {Function(Map<String, dynamic>)? submit}) {
-  // 打开全屏窗口
-  Get.dialog(Column(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-      Card(
-        child: SizedBox(
-            width: 600,
-            child: FormPage(
-              form,
-              back: () {
-                Get.back();
-              },
-              submit: (data) {
-                submit?.call(data);
-              },
-            )),
-      ),
-      const SizedBox(
-        height: 100,
-      ),
-    ],
-  ));
-}

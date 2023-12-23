@@ -79,16 +79,18 @@ class TablePage extends StatelessWidget {
     return Expanded(child: body);
   }
 
-  Widget _buildTitle(ColumnData column, int i) {
+  Widget _buildTitle(ColumnData item, TableData table) {
     var body = Align(
-      alignment: column.alignment,
-      child: column.render == null
-          ? Text(tableData.rows[i][column.key].toString())
-          : column.render!(
-              tableData.rows[i][column.key], tableData.rows[i], i, tableData),
+      alignment: item.alignment,
+      child: item.titleRender == null
+          ? Text(
+              item.title,
+              style: const TextStyle(fontSize: 18),
+            )
+          : item.titleRender!(item.title, table),
     );
-    if (column.width != 0) {
-      return SizedBox(width: column.width, child: body);
+    if (item.width != 0) {
+      return SizedBox(width: item.width, child: body);
     }
     return Expanded(child: body);
   }
@@ -101,17 +103,7 @@ class TablePage extends StatelessWidget {
           height: table.headerHeight,
           child: Row(
             children: [
-              for (var item in table.columns)
-                Expanded(
-                    child: Align(
-                      alignment: item.alignment,
-                  child: item.titleRender == null
-                      ? Text(
-                          item.title,
-                          style: const TextStyle(fontSize: 18),
-                        )
-                      : item.titleRender!(item.title, table),
-                ))
+              for (var item in table.columns) _buildTitle(item, table)
             ],
           ),
         ),
