@@ -11,15 +11,14 @@ class FormDto {
   final Alignment labelAlignment;
 
   /// 字段数据
-  Map<String, dynamic> data;
+  Map<String, dynamic> data = {};
 
   String title = "表单";
 
   FormDto(
       {required this.columns,
       this.labelWidth = 55,
-      this.labelAlignment = Alignment.centerLeft,
-      this.data = const {}});
+      this.labelAlignment = Alignment.centerLeft});
 }
 
 class FormColumnDto {

@@ -36,6 +36,7 @@ class UserPage extends StatelessWidget {
             children: [
               FilledButton(
                   onPressed: () {
+                    logic.form.title = "新增";
                     UiEdit.requestForm(logic.form,
                         submit: (d) => {MessageUtil.show(d.toString())});
                   },

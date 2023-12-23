@@ -35,6 +35,20 @@ class HttpUtil {
     return {authorization: data.token};
   }
 
+  /// 上传文件处理
+  static Future<dynamic> upload(String url, MultipartFile file,
+      {bool showMsg = true}) async {
+    var map = await header();
+    var formData = FormData.fromMap({
+      "file": file,
+    });
+    Response response = await dio.post(url,
+        data: formData,
+        options: Options(
+            contentType: Headers.formUrlEncodedContentType, headers: map));
+    return verify(response.data, showMsg);
+  }
+
   /// 验证结果
   static dynamic verify(dynamic data, bool showMsg) {
     if (data["code"] == 0) {

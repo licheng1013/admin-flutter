@@ -29,7 +29,6 @@ class HomePage extends StatelessWidget {
                 // 宽度扩大动画
                 Obx(() {
                   return AnimateUtil.widthScaleAnimation(
-                      // 这里暂时展开时会出错 TODO 但不影响使用
                       Visibility(
                         visible: SidebarLogic.isExpandedAnim.value,
                         child: sidebarPage,

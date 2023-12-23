@@ -1,4 +1,5 @@
 import 'package:app_template/common/assets_util.dart';
+import 'package:app_template/common/http_util.dart';
 import 'package:app_template/common/message_util.dart';
 import 'package:get/get.dart';
 
@@ -28,5 +29,9 @@ class UploadLogic extends GetxController {
       }
     }
     MessageUtil.show("总大小：${bySum / 1024 ~/ 1024}M");
+  }
+
+  static Future<dynamic> fileUpload({Map<String, dynamic>? params}) async {
+    return await HttpUtil.post("/file/upload", params: params);
   }
 }
