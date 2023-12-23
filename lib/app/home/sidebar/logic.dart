@@ -20,14 +20,14 @@ class SidebarLogic extends GetxController {
 
   static List<SidebarTree> treeList = [
     SidebarTree(
-      name: "首页1",
+      name: "数据总览",
       icon: const Icon(Icons.home),
       page: AnalysisPage(),
       children: childTreeList1,
     ),
     SidebarTree(
-      name: "首页2",
-      icon: const Icon(Icons.home),
+      name: "测试页面",
+      icon: const Icon(Icons.expand),
       children: childTreeList2,
     ),
     SidebarTree(name: "用户列表", icon: const Icon(Icons.home), page: UserPage()),
@@ -46,9 +46,9 @@ class SidebarLogic extends GetxController {
     SidebarTree(
         name: "表单页面",
         icon: const Icon(Icons.home),
-        page: Column(
+        page: const Column(
           children: [
-            const SizedBox(
+            SizedBox(
               height: 100,
             ),
           ],

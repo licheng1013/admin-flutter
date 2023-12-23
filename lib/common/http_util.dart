@@ -12,18 +12,21 @@ class HttpUtil {
     receiveTimeout: const Duration(seconds: 3),
   ));
 
-  static Future<dynamic> get(String url, {Map<String, dynamic>? params}) async {
+  static Future<dynamic> get(String url,
+      {Map<String, dynamic>? params, bool showMsg = true}) async {
     var map = await header();
-    Response response = await dio.get(url, queryParameters: params, options: Options(headers: map));
-    return verify(response.data);
+    Response response = await dio.get(url,
+        queryParameters: params, options: Options(headers: map));
+    return verify(response.data, showMsg);
   }
 
   static Future<dynamic> post(String url,
-      {Map<String, dynamic>? params}) async {
+      {Map<String, dynamic>? params, bool showMsg = true}) async {
     var map = await header();
     Response response = await dio.post(url,
-        data: params, options: Options(contentType: Headers.jsonContentType, headers: map));
-    return verify(response.data);
+        data: params,
+        options: Options(contentType: Headers.jsonContentType, headers: map));
+    return verify(response.data, showMsg);
   }
 
   /// 全局请求头
@@ -33,11 +36,13 @@ class HttpUtil {
   }
 
   /// 验证结果
-  static dynamic verify(dynamic data) {
+  static dynamic verify(dynamic data, bool showMsg) {
     if (data["code"] == 0) {
       return data["data"];
     } else {
-      MessageUtil.show(data["msg"]);
+      if (showMsg) {
+        MessageUtil.show(data["msg"]);
+      }
       throw Exception(data["msg"]);
     }
   }

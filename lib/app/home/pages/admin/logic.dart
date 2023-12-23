@@ -34,23 +34,31 @@ class AdminLogic extends GetxController {
     });
   }
 
-  var columns = [
-    // TableData.multipleSelect(
-    //     selectList: (e) => {MessageUtil.show("选择了: ${e.length} 个")}),
-    // TableData.index(),
-    TableData.index(width: 80),
-    ColumnData(title: "Id", key: "id", width: 80),
-    ColumnData(title: "账号", key: "userName", width: 80),
-    ColumnData(title: "密码", key: "password"),
-    ColumnData(title: "盐", key: "salt"),
-    ColumnData(title: "创建时间", key: "createTime"),
-    ColumnData(title: "昵称", key: "nickName"),
-    TableData.edit(edit: (d) {
-      MessageUtil.show("编辑$d");
-    }, delete: (d) {
-      MessageUtil.show("删除:$d");
-    }),
-  ];
+  var columns = <ColumnData>[];
+
+  @override
+  void onInit() {
+    super.onInit();
+    columns = [
+      // TableData.multipleSelect(
+      //     selectList: (e) => {MessageUtil.show("选择了: ${e.length} 个")}),
+      // TableData.index(),
+      TableData.index(width: 80),
+      ColumnData(title: "Id", key: "id", width: 80),
+      ColumnData(title: "账号", key: "userName", width: 80),
+      ColumnData(title: "密码", key: "password"),
+      ColumnData(title: "盐", key: "salt"),
+      ColumnData(title: "创建时间", key: "createTime"),
+      ColumnData(title: "昵称", key: "nickName"),
+      TableData.edit(edit: (d) {
+        MessageUtil.show("编辑$d");
+      }, delete: (d) {
+        AdminApi.adminDelete(params: {"id": d["id"]}).then((value) {
+          find(size, page);
+        });
+      }),
+    ];
+  }
 
   var form = FormDto(labelWidth: 80, columns: [
     FormColumnDto(
