@@ -23,13 +23,13 @@ class FormPage extends StatelessWidget {
     return Column(
       children: [
         ThemeUtil.rowHeight(),
-        const Align(
+         Align(
             alignment: Alignment.centerLeft,
             child: Padding(
-              padding: EdgeInsets.only(left: 6),
+              padding: const EdgeInsets.only(left: 6),
               child: Text(
-                "添加表单",
-                style: TextStyle(fontSize: 24),
+                form.title,
+                style: const TextStyle(fontSize: 24),
               ),
             )),
         ThemeUtil.rowHeight(),

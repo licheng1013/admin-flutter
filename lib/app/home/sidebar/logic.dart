@@ -1,3 +1,4 @@
+import 'package:app_template/app/home/pages/about/view.dart';
 import 'package:app_template/app/home/pages/admin/view.dart';
 import 'package:app_template/app/home/pages/analysis/view.dart';
 import 'package:app_template/app/home/pages/flutter/view.dart';
@@ -28,7 +29,7 @@ class SidebarLogic extends GetxController {
     SidebarTree(
       name: "测试页面",
       icon: const Icon(Icons.expand),
-      children: childTreeList2,
+      children: testTree,
     ),
     SidebarTree(name: "用户列表", icon: const Icon(Icons.home), page: UserPage()),
     SidebarTree(
@@ -39,23 +40,14 @@ class SidebarLogic extends GetxController {
 
   static List<SidebarTree> childTreeList1 = [
     SidebarTree(
-      name: "首页1-1",
+      name: "分析页",
       icon: const Icon(Icons.home),
       page: AnalysisPage(),
     ),
-    SidebarTree(
-        name: "表单页面",
-        icon: const Icon(Icons.home),
-        page: const Column(
-          children: [
-            SizedBox(
-              height: 100,
-            ),
-          ],
-        )),
+    SidebarTree(name: "关于项目", icon: const Icon(Icons.home), page: AboutPage()),
   ];
 
-  static List<SidebarTree> childTreeList2 = [
+  static List<SidebarTree> testTree = [
     SidebarTree(
       name: "管理列表",
       icon: const Icon(Icons.home),

@@ -51,7 +51,16 @@ class AdminLogic extends GetxController {
       ColumnData(title: "创建时间", key: "createTime"),
       ColumnData(title: "昵称", key: "nickName"),
       TableData.edit(edit: (d) {
-        MessageUtil.show("编辑$d");
+        form.data = d;
+        form.title = "编辑";
+        UiEdit.requestForm(form,
+            submit: (data) => {
+                  AdminApi.adminUpdate(params: data).then((value) {
+                    MessageUtil.show("更新成功!");
+                    find(size, page);
+                    Get.back();
+                  })
+                });
       }, delete: (d) {
         AdminApi.adminDelete(params: {"id": d["id"]}).then((value) {
           find(size, page);
@@ -85,6 +94,7 @@ class AdminLogic extends GetxController {
 
   void add() {
     form.data = {};
+    form.title = "添加";
     UiEdit.requestForm(form,
         submit: (data) => {
               AdminApi.adminInsert(params: data).then((value) {

@@ -17,4 +17,8 @@ class AdminApi {
   static Future<dynamic> adminDelete({Map<String, dynamic>? params}) async {
     return await HttpUtil.post("/admin/delete", params: params);
   }
+
+  static Future<dynamic> adminUpdate({Map<String, dynamic>? params}) async {
+    return await HttpUtil.post("/admin/update", params: params);
+  }
 }

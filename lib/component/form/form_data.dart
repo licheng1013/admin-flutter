@@ -13,6 +13,8 @@ class FormDto {
   /// 字段数据
   Map<String, dynamic> data;
 
+  String title = "表单";
+
   FormDto(
       {required this.columns,
       this.labelWidth = 55,
