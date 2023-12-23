@@ -5,7 +5,10 @@ import 'package:get/get.dart';
 import 'logic.dart';
 
 class UploadPage extends StatelessWidget {
-  UploadPage({Key? key}) : super(key: key);
+  UploadPage({super.key, int limit = 1, bool multiple = true}) {
+    logic.limit = limit;
+    logic.multiple = multiple;
+  }
 
   final logic = Get.put(UploadLogic());
   final state = Get.find<UploadLogic>().state;
@@ -61,20 +64,23 @@ class UploadPage extends StatelessWidget {
   }
 
   Widget _addItem() {
-    return Container(
-      // 黑色边框
-      decoration: BoxDecoration(
-          border: Border.all(color: Colors.grey, width: 1),
-          borderRadius: BorderRadius.circular(6)),
-      child: Center(
-          child: IconButton(
-              onPressed: () {
-                logic.selectFile();
-              },
-              icon: const Icon(
-                Icons.add_outlined,
-                color: Colors.grey,
-              ))),
+    return Visibility(
+      visible: logic.imageList.length < logic.limit || logic.limit == 0,
+      child: Container(
+        // 黑色边框
+        decoration: BoxDecoration(
+            border: Border.all(color: Colors.grey, width: 1),
+            borderRadius: BorderRadius.circular(6)),
+        child: Center(
+            child: IconButton(
+                onPressed: () {
+                  logic.selectFile();
+                },
+                icon: const Icon(
+                  Icons.add_outlined,
+                  color: Colors.grey,
+                ))),
+      ),
     );
   }
 }

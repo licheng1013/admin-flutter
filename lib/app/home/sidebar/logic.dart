@@ -58,7 +58,16 @@ class SidebarLogic extends GetxController {
       icon: const Icon(Icons.home),
       page: Column(
         children: [
-          SizedBox(width: 500, child: UploadPage()),
+          const Text(
+            "当前限制只能上传10张图片",
+            style: TextStyle(fontSize: 28),
+          ),
+          SizedBox(
+              width: 500,
+              child: UploadPage(
+                limit: 10,
+                multiple: true,
+              )),
         ],
       ),
     ),

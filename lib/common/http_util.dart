@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:app_template/common/app_data.dart';
 import 'package:app_template/common/message_util.dart';
 import 'package:dio/dio.dart';
@@ -36,16 +38,14 @@ class HttpUtil {
   }
 
   /// 上传文件处理
-  static Future<dynamic> upload(String url, MultipartFile file,
+  static Future<dynamic> upload(String url, Uint8List file, String name,
       {bool showMsg = true}) async {
     var map = await header();
     var formData = FormData.fromMap({
-      "file": file,
+      "file": MultipartFile.fromBytes(file, filename: name),
     });
-    Response response = await dio.post(url,
-        data: formData,
-        options: Options(
-            contentType: Headers.formUrlEncodedContentType, headers: map));
+    Response response =
+        await dio.post(url, data: formData, options: Options(headers: map));
     return verify(response.data, showMsg);
   }
 

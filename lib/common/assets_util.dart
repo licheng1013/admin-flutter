@@ -8,20 +8,18 @@ import 'package:get/get.dart';
 class AssetsUtil {
   static String bgImage = "assets/images/image.png";
 
-  static Future<List<XFile>> selectFile() async {
-    const XTypeGroup jpgsTypeGroup = XTypeGroup(
-      label: 'JPEGs',
-      extensions: <String>['jpg', 'jpeg'],
+  static XTypeGroup image() {
+    return const XTypeGroup(
+      label: 'Images',
+      extensions: <String>['jpg', 'jpeg', 'png', 'gif', 'webp', 'bmp', 'heif'],
     );
-    const XTypeGroup pngTypeGroup = XTypeGroup(
-      label: 'PNGs',
-      extensions: <String>['png'],
-    );
-    final List<XFile> files = await openFiles(acceptedTypeGroups: <XTypeGroup>[
-      jpgsTypeGroup,
-      pngTypeGroup,
-    ]);
-    return files;
+  }
+
+  static Future<List<XFile>> selectFile({XTypeGroup? type}) async {
+    if (type == null) {
+      return await openFiles(acceptedTypeGroups: <XTypeGroup>[]);
+    }
+    return await openFiles(acceptedTypeGroups: <XTypeGroup>[type]);
   }
 
   static Image imageByPath(String path, {final BoxFit? fit}) {
