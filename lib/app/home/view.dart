@@ -20,32 +20,32 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+      body: Row(
         children: [
-          HeadPage(),
+          // 宽度扩大动画
+          Obx(() {
+            return AnimateUtil.widthScaleAnimation(
+                Visibility(
+                  visible: SidebarLogic.isExpandedAnim.value,
+                  child: sidebarPage,
+                ),
+                250,
+                SidebarLogic.isExpanded.value, onEnd: () {
+                  if (SidebarLogic.isExpanded.value) {
+                    SidebarLogic.isExpandedAnim.value = true;
+                  }
+            });
+          }),
+          ThemeUtil.lineV(),
           Expanded(
-            child: Row(
+            child: Column(
               children: [
-                // 宽度扩大动画
-                Obx(() {
-                  return AnimateUtil.widthScaleAnimation(
-                      Visibility(
-                        visible: SidebarLogic.isExpandedAnim.value,
-                        child: sidebarPage,
-                      ),
-                      250,
-                      SidebarLogic.isExpanded.value, onEnd: () {
-                        if (SidebarLogic.isExpanded.value) {
-                          SidebarLogic.isExpandedAnim.value = true;
-                        }
-                  });
-                }),
-                ThemeUtil.lineV(),
+                HeadPage(),
                 Expanded(child: Obx(() {
                   return Visibility(
                       visible: SidebarLogic.selectName.value != "",
                       child: SidebarLogic.selectPage);
-                }))
+                })),
               ],
             ),
           )

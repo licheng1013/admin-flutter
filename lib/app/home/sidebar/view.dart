@@ -12,10 +12,25 @@ class SidebarPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
+    return Column(
       children: [
-        for (var item in SidebarLogic.treeList)
-          item.children.isNotEmpty ? _tree(item) : _text(item)
+        _text(SidebarTree(
+            name: "Logo 部分",
+            icon: const Icon(Icons.home),
+            page: const Center(
+              child: Text(
+                "这是Logo页面，可自行从代码内自定义",
+                style: TextStyle(fontSize: 28),
+              ),
+            ))),
+        Expanded(
+          child: ListView(
+            children: [
+              for (var item in SidebarLogic.treeList)
+                item.children.isNotEmpty ? _tree(item) : _text(item)
+            ],
+          ),
+        ),
       ],
     );
   }
@@ -42,6 +57,7 @@ class SidebarPage extends StatelessWidget {
                   child: Text(
                 item.name,
                 style: TextStyle(
+                  fontSize: 16,
                     color: SidebarLogic.selectName.value == item.name
                         ? Colors.white
                         : Colors.black),
@@ -53,7 +69,7 @@ class SidebarPage extends StatelessWidget {
 
   Widget _tree(SidebarTree item) {
     return ExpansionTile(
-      title: Text(item.name),
+      title: Text(item.name, style: const TextStyle(fontSize: 16)),
       shape: const LinearBorder(),
       initiallyExpanded: logic.expansionTile.contains(item.name),
       onExpansionChanged: (value) {

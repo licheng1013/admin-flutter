@@ -12,7 +12,9 @@ class HeadPage extends StatelessWidget {
   HeadPage({Key? key}) : super(key: key);
 
   final logic = Get.put(HeadLogic());
-  final state = Get.find<HeadLogic>().state;
+  final state = Get
+      .find<HeadLogic>()
+      .state;
 
   @override
   Widget build(BuildContext context) {
@@ -27,13 +29,17 @@ class HeadPage extends StatelessWidget {
           child: Row(
             children: [
               ThemeUtil.rowWidth(),
-              IconButton(
-                  onPressed: () {
-                    SidebarLogic.isExpanded.value =
-                        !SidebarLogic.isExpanded.value;
-                    SidebarLogic.isExpandedAnim.value = false;
-                  },
-                  icon: const Icon(Icons.list)),
+              Obx(() {
+                return IconButton(
+                    onPressed: () {
+                      SidebarLogic.isExpanded.value =
+                      !SidebarLogic.isExpanded.value;
+                      SidebarLogic.isExpandedAnim.value = false;
+                    },
+                    icon: SidebarLogic.isExpanded.value
+                        ? const Icon(Icons.menu_open)
+                        : const Icon(Icons.menu));
+              }),
               const Spacer(),
               FilledButton(
                   onPressed: () {
@@ -60,7 +66,7 @@ class HeadPage extends StatelessWidget {
                   logic.clickHeadImage();
                 },
                 child: ClipOval(
-                    // 圆形头像
+                  // 圆形头像
                     child: SizedBox(
                         width: 50,
                         height: 50,

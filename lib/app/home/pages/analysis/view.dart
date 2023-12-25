@@ -43,14 +43,16 @@ class AnalysisPage extends StatelessWidget {
       color: Colors.white,
       width: double.infinity,
       height: 415,
-      child: const Column(
+      child:  const Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text("分析页"),
+          Text("分析页",style: textStyle,),
         ],
       ),
     );
   }
 
+  static const textStyle = TextStyle(color: Colors.black, fontSize: 18);
 
   Widget _card(){
     return Expanded(
@@ -59,8 +61,9 @@ class AnalysisPage extends StatelessWidget {
         color: Colors.white,
         height: 180,
         child: const Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("分析页"),
+            Text("分析页",style: textStyle),
           ],
         ),
       ),

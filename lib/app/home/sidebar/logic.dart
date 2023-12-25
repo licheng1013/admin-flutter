@@ -24,7 +24,6 @@ class SidebarLogic extends GetxController {
     SidebarTree(
       name: "数据总览",
       icon: const Icon(Icons.home),
-      page: AnalysisPage(),
       children: childTreeList1,
     ),
     SidebarTree(
@@ -73,6 +72,12 @@ class SidebarLogic extends GetxController {
         ],
       ),
     ),
+    for(int i=0;i<15;i++)
+      SidebarTree(
+        name: "test$i",
+        icon: const Icon(Icons.home),
+        page: Center(child: Text("测试$i",style: const TextStyle(fontSize: 26),),)
+      ),
   ];
 }
 
@@ -89,7 +94,7 @@ class SidebarTree {
     this.children = const [],
     this.isExpanded = false,
     this.page = const SizedBox(
-      child: Text("空"),
+      child: Center(child: Text("空",style: TextStyle(fontSize: 26),)),
     ),
   });
 }
