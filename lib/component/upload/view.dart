@@ -1,13 +1,16 @@
 import 'package:app_template/common/assets_util.dart';
+import 'package:app_template/theme/theme_util.dart';
+import 'package:file_selector/file_selector.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'logic.dart';
 
 class UploadPage extends StatelessWidget {
-  UploadPage({super.key, int limit = 1, bool multiple = true}) {
+  UploadPage({super.key, int limit = 1, bool multiple = true, XTypeGroup? type}) {
     logic.limit = limit;
     logic.multiple = multiple;
+    logic.type = type;
   }
 
   final logic = Get.put(UploadLogic());
@@ -40,6 +43,7 @@ class UploadPage extends StatelessWidget {
           },
           child: Container(
               height: double.infinity,
+              width: double.infinity,
               // 黑色边框
               decoration: BoxDecoration(
                   color: Colors.blue,
@@ -51,14 +55,21 @@ class UploadPage extends StatelessWidget {
               )),
         ),
         Center(
-            child: IconButton(
-                onPressed: () {
-                  logic.imageList.removeAt(index);
-                },
-                icon: const Icon(
-                  Icons.delete_outline,
-                  color: Colors.white,
-                )))
+            child: Container(
+              // 圆形背景
+              decoration: ThemeUtil.boxDecoration(border: Colors.grey,radius: 36),
+              child: Tooltip(
+                message: "删除",
+                child: IconButton(
+                    onPressed: () {
+                      logic.imageList.removeAt(index);
+                    },
+                    icon: const Icon(
+                      Icons.delete_outline,
+                      color: Colors.white,
+                    )),
+              ),
+            ))
       ],
     );
   }
