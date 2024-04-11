@@ -38,3 +38,8 @@
 | 路由导航 | 快速导航到页面 | ❌  |
 
 
+## 打包
+
+- flutter build web --web-renderer html --base-href /admin-flutter/
+- flutter build web --web-renderer skwasm --base-href /admin-flutter/
+- flutter build web --web-renderer canvaskit --base-href /admin-flutter/
