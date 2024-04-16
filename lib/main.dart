@@ -1,5 +1,6 @@
 import 'package:app_template/app/launch/view.dart';
 import 'package:bot_toast/bot_toast.dart';
+import 'package:chinese_font_library/chinese_font_library.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
       ],
       locale: const Locale('zh'),
       theme: ThemeData(
-        fontFamily: 'MyFont',
+        textTheme: context.textTheme.useSystemChineseFont(Brightness.light),
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
