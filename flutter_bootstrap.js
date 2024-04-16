@@ -6,11 +6,11 @@ Read more: https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts
 if (!window._flutter) {
   window._flutter = {};
 }
-_flutter.buildConfig = {"engineRevision":"069e73eaef34e42f1d291e1a8cab658fb99340b4","builds":[{"compileTarget":"dart2js","renderer":"skwasm","mainJsPath":"main.dart.js"}]};
+_flutter.buildConfig = {"engineRevision":"07ae93c9b7552db01df53aa1cd6ef7f9d9005894","builds":[{"compileTarget":"dart2js","renderer":"skwasm","mainJsPath":"main.dart.js"}]};
 
 
 _flutter.loader.load({
   serviceWorkerSettings: {
-    serviceWorkerVersion: "2904988458"
+    serviceWorkerVersion: "2131539032"
   }
 });
