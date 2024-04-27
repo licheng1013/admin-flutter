@@ -1,4 +1,5 @@
 import 'package:app_template/theme/theme_util.dart';
+import 'package:app_template/theme/ui_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -49,18 +50,14 @@ class SidebarPage extends StatelessWidget {
               width: double.infinity,
               decoration: ThemeUtil.boxDecoration(
                   color: SidebarLogic.selectName.value == item.name
-                      ? Colors.blue
+                      ? UiTheme.primary()
                       : null,
                   radius: 12),
               height: 50,
               child: Center(
                   child: Text(
                 item.name,
-                style: TextStyle(
-                  fontSize: 16,
-                    color: SidebarLogic.selectName.value == item.name
-                        ? Colors.white
-                        : Colors.black),
+                style: TextStyle(color: UiTheme.getTextColor(SidebarLogic.selectName.value == item.name)),
               )));
         }),
       ),

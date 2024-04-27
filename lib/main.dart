@@ -1,4 +1,5 @@
 import 'package:app_template/app/launch/view.dart';
+import 'package:app_template/theme/dark_theme.dart';
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -31,11 +32,7 @@ class MyApp extends StatelessWidget {
         Locale('zh'), // Chinese
       ],
       locale: const Locale('zh'),
-      theme: ThemeData(
-        fontFamily: 'MyFont',
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-        useMaterial3: true,
-      ),
+      theme: DarkTheme.blue(),
       home: LaunchPage(),
     );
   }

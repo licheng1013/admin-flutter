@@ -1,4 +1,5 @@
 import 'package:app_template/theme/theme_util.dart';
+import 'package:app_template/theme/ui_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,7 +15,6 @@ class AnalysisPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8),
-        color: const Color.fromARGB(255, 245, 245, 245),
         child: ListView(
           children: [
             ThemeUtil.rowHeight(),
@@ -40,8 +40,8 @@ class AnalysisPage extends StatelessWidget {
   }
   Widget _sale(){
     return Container(
-      color: Colors.white,
       width: double.infinity,
+      decoration: UiTheme.decoration(),
       height: 415,
       child:  const Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -52,13 +52,13 @@ class AnalysisPage extends StatelessWidget {
     );
   }
 
-  static const textStyle = TextStyle(color: Colors.black, fontSize: 18);
+  static const textStyle = TextStyle( fontSize: 18);
 
   Widget _card(){
     return Expanded(
       child: Container(
         padding: const EdgeInsets.all(0),
-        color: Colors.white,
+        decoration: UiTheme.decoration(),
         height: 180,
         child: const Column(
           mainAxisAlignment: MainAxisAlignment.center,
