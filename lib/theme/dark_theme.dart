@@ -24,4 +24,10 @@ class Blue extends MyTheme {
   Brightness brightness() {
     return Brightness.dark;
   }
+
+  @override
+  String name() {
+    return "深色";
+  }
+
 }

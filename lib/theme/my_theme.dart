@@ -5,6 +5,9 @@ abstract class MyTheme {
     return ThemeData(
       fontFamily: 'MyFont',
       scaffoldBackgroundColor: background(), // 背景颜色
+      tabBarTheme: TabBarTheme(
+        labelColor: onBackground(),
+      ),
       colorScheme: ColorScheme.fromSeed(
         brightness: brightness(),
         seedColor: primary(),
@@ -20,13 +23,16 @@ abstract class MyTheme {
     );
   }
 
+  /// 主色
   Color primary();
-
+  /// 背景颜色
   Color background();
-
+  /// 背景上的颜色
   Color onBackground();
-
+  /// 模式
   Brightness brightness() {
     return Brightness.light;
   }
+  /// 主题名称
+  String name();
 }

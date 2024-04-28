@@ -1,3 +1,4 @@
+import 'package:app_template/theme/ui_theme.dart';
 import 'package:flutter/material.dart';
 
 class ThemeUtil {
@@ -28,20 +29,18 @@ class ThemeUtil {
   }
 
   /// 水平线
-  static Widget lineH({double height = 1, Color? color}) {
-    color ??= Colors.grey.shade200;
+  static Widget lineH({double height = 1}) {
     return Divider(
       height: height,
-      color: color,
+      color: UiTheme.border(),
     );
   }
 
   /// 垂直线
-  static Widget lineV({double width = 1, Color? color}) {
-    color ??= Colors.grey.shade200;
+  static Widget lineV({double width = 1}) {
     return VerticalDivider(
       width: width,
-      color: color,
+      color: UiTheme.border(),
     );
   }
 }

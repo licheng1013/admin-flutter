@@ -2,6 +2,7 @@
 import 'package:app_template/app/home/head/view.dart';
 import 'package:app_template/app/home/sidebar/logic.dart';
 import 'package:app_template/app/home/sidebar/view.dart';
+import 'package:app_template/app/home/tab_bar/view.dart';
 import 'package:app_template/common/animate_util.dart';
 import 'package:app_template/theme/theme_util.dart';
 import 'package:flutter/material.dart';
@@ -41,11 +42,7 @@ class HomePage extends StatelessWidget {
             child: Column(
               children: [
                 HeadPage(),
-                Expanded(child: Obx(() {
-                  return Visibility(
-                      visible: SidebarLogic.selectName.value != "",
-                      child: SidebarLogic.selectPage);
-                })),
+                Expanded(child: TabBarPage()),
               ],
             ),
           )

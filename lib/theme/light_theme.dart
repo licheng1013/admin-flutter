@@ -7,19 +7,24 @@ class LightTheme {
   }
 }
 
-class Pink extends MyTheme{
+class Pink extends MyTheme {
   @override
   Color background() {
     return const Color.fromARGB(255, 246, 246, 246);
   }
+
   @override
   Color onBackground() {
     return Colors.black;
   }
+
   @override
   Color primary() {
     return const Color.fromARGB(255, 246, 184, 184);
   }
 
-
+  @override
+  String name() {
+    return "亮色";
+  }
 }

@@ -1,7 +1,7 @@
 import 'package:app_template/app/home/pages/about/view.dart';
 import 'package:app_template/app/home/pages/admin/view.dart';
 import 'package:app_template/app/home/pages/analysis/view.dart';
-import 'package:app_template/app/home/pages/flutter/view.dart';
+import 'package:app_template/app/home/pages/settings/view.dart';
 import 'package:app_template/app/home/pages/user/view.dart';
 import 'package:app_template/common/assets_util.dart';
 import 'package:app_template/component/upload/view.dart';
@@ -21,38 +21,20 @@ class SidebarLogic extends GetxController {
   var expansionTile = <String>[].obs;
 
   static List<SidebarTree> treeList = [
-    SidebarTree(
-      name: "数据总览",
-      icon: const Icon(Icons.home),
-      children: childTreeList1,
-    ),
+    AnalysisPage.newThis(),
     SidebarTree(
       name: "测试页面",
       icon: const Icon(Icons.expand),
       children: testTree,
     ),
-    SidebarTree(name: "用户列表", icon: const Icon(Icons.home), page: UserPage()),
-    SidebarTree(
-        name: "Flutter",
-        icon: const Icon(Icons.flutter_dash),
-        page: FlutterPage()),
+    UserPage.newThis(),
+    SettingsPage.newThis(),
   ];
 
-  static List<SidebarTree> childTreeList1 = [
-    SidebarTree(
-      name: "分析页",
-      icon: const Icon(Icons.home),
-      page: AnalysisPage(),
-    ),
-    SidebarTree(name: "关于项目", icon: const Icon(Icons.home), page: AboutPage()),
-  ];
 
   static List<SidebarTree> testTree = [
-    SidebarTree(
-      name: "管理列表",
-      icon: const Icon(Icons.home),
-      page: AdminPage(),
-    ),
+    AdminPage.newThis(),
+    AboutPage.newThis(),
     SidebarTree(
       name: "上传组件",
       icon: const Icon(Icons.home),
@@ -72,12 +54,6 @@ class SidebarLogic extends GetxController {
         ],
       ),
     ),
-    for(int i=0;i<15;i++)
-      SidebarTree(
-        name: "test$i",
-        icon: const Icon(Icons.home),
-        page: Center(child: Text("测试$i",style: const TextStyle(fontSize: 26),),)
-      ),
   ];
 }
 
@@ -94,7 +70,11 @@ class SidebarTree {
     this.children = const [],
     this.isExpanded = false,
     this.page = const SizedBox(
-      child: Center(child: Text("空",style: TextStyle(fontSize: 26),)),
+      child: Center(
+          child: Text(
+        "空",
+        style: TextStyle(fontSize: 26),
+      )),
     ),
   });
 }

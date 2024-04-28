@@ -28,7 +28,7 @@ class UiTheme {
   }
 
   static Color border(){
-    return onBackgroundCopy(d: 0.3);
+    return onBackgroundCopy(d: 0.2);
   }
 
   static Color onBackgroundCopy({double d = 0.8}) {

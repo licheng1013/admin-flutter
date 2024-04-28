@@ -1,3 +1,4 @@
+import 'package:app_template/app/home/sidebar/logic.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -24,6 +25,14 @@ class AboutPage extends StatelessWidget {
           style: TextStyle(fontSize: 20),
         ),
       ],
+    );
+  }
+
+  static SidebarTree newThis(){
+    return SidebarTree(
+        name: "关于信息",
+        icon: const Icon(Icons.home),
+        page: AboutPage()
     );
   }
 }

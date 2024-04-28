@@ -1,3 +1,4 @@
+import 'package:app_template/app/home/tab_bar/logic.dart';
 import 'package:app_template/theme/theme_util.dart';
 import 'package:app_template/theme/ui_theme.dart';
 import 'package:flutter/material.dart';
@@ -15,15 +16,6 @@ class SidebarPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        _text(SidebarTree(
-            name: "Logo 部分",
-            icon: const Icon(Icons.home),
-            page: const Center(
-              child: Text(
-                "这是Logo页面，可自行从代码内自定义",
-                style: TextStyle(fontSize: 28),
-              ),
-            ))),
         Expanded(
           child: ListView(
             children: [
@@ -44,6 +36,7 @@ class SidebarPage extends StatelessWidget {
         onTap: () {
           SidebarLogic.selectName.value = item.name;
           SidebarLogic.selectPage = item.page;
+          TabBarLogic.addPage(item);
         },
         child: Obx(() {
           return Container(
