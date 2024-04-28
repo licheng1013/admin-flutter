@@ -13,47 +13,40 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        // 渐变背景
-        decoration:  BoxDecoration(
-          gradient:
-              LinearGradient(colors: [Colors.white, Colors.lightBlueAccent.shade100]),
-        ),
-        child: Center(
-          child: SizedBox(
-            width: 300,
-            child: Column(
-              children: [
-                ThemeUtil.rowHeight(height: 200),
-                const Text(
-                  'Admin Flutter',
-                  style: TextStyle(fontSize: 32),
+      body: Center(
+        child: SizedBox(
+          width: 300,
+          child: Column(
+            children: [
+              ThemeUtil.rowHeight(height: 200),
+              const Text(
+                'Admin Flutter',
+                style: TextStyle(fontSize: 32),
+              ),
+              ThemeUtil.rowHeight(height: 18),
+              textInput(logic.accountText,
+                  hintText: '请输入账号', labelText: '账号'),
+              ThemeUtil.rowHeight(),
+              textInput(logic.passwordText,
+                  hintText: '请输入密码', labelText: '密码', password: true),
+              ThemeUtil.rowHeight(),
+              InkWell(
+                onTap: () {
+                  logic.login();
+                },
+                child: Container(
+                  width: double.infinity,
+                  height: 50,
+                  decoration: ThemeUtil.boxDecoration(
+                      color: const Color.fromARGB(255, 33, 121, 252)),
+                  child: const Center(
+                      child: Text(
+                    '登入',
+                    style: TextStyle(color: Colors.white, fontSize: 16),
+                  )),
                 ),
-                ThemeUtil.rowHeight(height: 18),
-                textInput(logic.accountText,
-                    hintText: '请输入账号', labelText: '账号'),
-                ThemeUtil.rowHeight(),
-                textInput(logic.passwordText,
-                    hintText: '请输入密码', labelText: '密码', password: true),
-                ThemeUtil.rowHeight(),
-                InkWell(
-                  onTap: () {
-                    logic.login();
-                  },
-                  child: Container(
-                    width: double.infinity,
-                    height: 50,
-                    decoration: ThemeUtil.boxDecoration(
-                        color: const Color.fromARGB(255, 33, 121, 252)),
-                    child: const Center(
-                        child: Text(
-                      '登入',
-                      style: TextStyle(color: Colors.white, fontSize: 16),
-                    )),
-                  ),
-                )
-              ],
-            ),
+              )
+            ],
           ),
         ),
       ),

@@ -2,6 +2,7 @@ import 'package:app_template/app/login/view.dart';
 import 'package:app_template/common/app_data.dart';
 import 'package:app_template/common/message_util.dart';
 import 'package:app_template/theme/theme_util.dart';
+import 'package:app_template/theme/ui_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -26,8 +27,7 @@ class HeadLogic extends GetxController {
                 offset: const Offset(-36, 30),
                 child: Container(
                   width: 200,
-                  decoration: ThemeUtil.boxDecoration(
-                      color: Colors.white, border: Colors.grey),
+                  decoration: UiTheme.decoration(),
                   child: Column(
                     children: [
                       const SizedBox(
