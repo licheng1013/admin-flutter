@@ -1,5 +1,6 @@
 import 'package:app_template/component/table/table_data.dart';
 import 'package:app_template/theme/theme_util.dart';
+import 'package:app_template/theme/ui_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -52,8 +53,8 @@ class TablePage extends StatelessWidget {
         for (var i = 0; i < tableData.rows.length; i++)
           Container(
             color: tableData.isZebra && i % 2 == 0
-                ? Colors.grey.shade100
-                : Colors.white,
+                ? UiTheme.primary().withAlpha(100)
+                : UiTheme.background(),
             height: tableData.cellHeight,
             child: Row(
               children: [

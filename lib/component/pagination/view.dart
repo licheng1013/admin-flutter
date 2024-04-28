@@ -10,8 +10,9 @@ class PaginationPage extends StatelessWidget {
   final Function(int size, int page)? changed;
   final int total;
 
-  PaginationPage({Key? key,
-    this.alignment = MainAxisAlignment.end,
+  PaginationPage(
+      {Key? key,
+      this.alignment = MainAxisAlignment.end,
       this.total = 0,
       this.changed})
       : super(key: key);
@@ -26,7 +27,6 @@ class PaginationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     Future.delayed(60.milliseconds, () {
       refresh();
     });
@@ -40,12 +40,10 @@ class PaginationPage extends StatelessWidget {
             //下拉选择器
             ThemeUtil.rowWidth(),
             Obx(() {
-              return Text("当前页 $current",
-                  style: const TextStyle(color: Colors.black, fontSize: 18));
+              return Text("当前页 $current", style: const TextStyle(fontSize: 18));
             }),
             ThemeUtil.rowWidth(),
-            const Text("选择数量 ",
-                style: TextStyle(color: Colors.black, fontSize: 18)),
+            const Text("选择数量 ", style: TextStyle(fontSize: 18)),
             ThemeUtil.rowWidth(),
             Obx(() {
               return DropdownButton(
@@ -67,7 +65,7 @@ class PaginationPage extends StatelessWidget {
                 },
                 value: size.value,
                 // 设置颜色
-                style: const TextStyle(color: Colors.black, fontSize: 18),
+                style: const TextStyle(fontSize: 18),
                 focusColor: Colors.transparent,
                 underline: Container(),
                 // 设置宽度
@@ -81,14 +79,14 @@ class PaginationPage extends StatelessWidget {
                 child: Center(
                   child: Text(
                     "总 ${totalPage.value} 页",
-                    style: const TextStyle(color: Colors.black, fontSize: 18),
+                    style: const TextStyle(fontSize: 18),
                   ),
                 ),
               );
             }),
             ThemeUtil.rowWidth(),
             FilledButton(
-              // 禁用
+                // 禁用
                 onPressed: () {
                   if (current.value == 1) {
                     MessageUtil.show("已经是第一页了");

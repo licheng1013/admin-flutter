@@ -46,7 +46,6 @@ class FormPage extends StatelessWidget {
                   },
                   child: const Text(
                     "返回",
-                    style: TextStyle(color: Colors.black),
                   )),
               ThemeUtil.rowWidth(),
               FilledButton(
