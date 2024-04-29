@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AssetsUtil {
-  static String bgImage = "assets/images/image.png";
+
 
   static XTypeGroup image() {
     return const XTypeGroup(

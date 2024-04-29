@@ -12,9 +12,7 @@ class HeadPage extends StatelessWidget {
   HeadPage({Key? key}) : super(key: key);
 
   final logic = Get.put(HeadLogic());
-  final state = Get
-      .find<HeadLogic>()
-      .state;
+  final state = Get.find<HeadLogic>().state;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +31,7 @@ class HeadPage extends StatelessWidget {
                 return IconButton(
                     onPressed: () {
                       SidebarLogic.isExpanded.value =
-                      !SidebarLogic.isExpanded.value;
+                          !SidebarLogic.isExpanded.value;
                       SidebarLogic.isExpandedAnim.value = false;
                     },
                     icon: SidebarLogic.isExpanded.value
@@ -65,13 +63,11 @@ class HeadPage extends StatelessWidget {
                 onTap: () {
                   logic.clickHeadImage();
                 },
-                child: ClipOval(
-                  // 圆形头像
-                    child: SizedBox(
-                        width: 50,
-                        height: 50,
-                        child: AssetsUtil.imageByPath(AssetsUtil.bgImage,
-                            fit: BoxFit.cover))),
+                child: const ClipOval(
+                    // 圆形头像
+                    child: FlutterLogo(
+                  size: 50,
+                )),
               ),
               ThemeUtil.rowWidth(),
             ],

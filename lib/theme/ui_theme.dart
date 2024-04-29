@@ -47,4 +47,9 @@ class UiTheme {
       border: Border.all(color: border()),
     );
   }
+
+  /// 默认背景色的填充颜色
+  static Color onBackground2() {
+    return UiTheme.onBackgroundCopy(d: 0.08);
+  }
 }

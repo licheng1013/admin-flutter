@@ -12,17 +12,13 @@ class LaunchPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(
-              AssetsUtil.bgImage,
-              height: 200,
-              width: 400,
-            ),
-            const Text("启动闪屏")
+            FlutterLogo(size: 100,),
+            Text("启动闪屏")
           ],
         ),
       ),
