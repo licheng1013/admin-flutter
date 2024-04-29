@@ -7,18 +7,20 @@ class TabBarPage extends StatelessWidget {
   TabBarPage({Key? key}) : super(key: key);
 
   final logic = Get.put(TabBarLogic());
-  final state = Get
-      .find<TabBarLogic>()
-      .state;
+  final state = Get.find<TabBarLogic>().state;
 
   @override
   Widget build(BuildContext context) {
-    if (logic.tabController == null) {
-      return const Center(
-        child: Text("加载中..."),
-      );
-    }
     return Obx(() {
+      if (logic.tabList.isEmpty) {
+        return SizedBox(
+          height: logic.height,
+          child: const Center(
+            child: Text("导航栏..."),
+          ),
+        );
+      }
+
       return Column(
         children: [
           TabBar(
@@ -27,13 +29,19 @@ class TabBarPage extends StatelessWidget {
             padding: EdgeInsets.zero,
             isScrollable: true,
             tabAlignment: TabAlignment.start,
-            // 移除之前空格
-            indicatorPadding: const EdgeInsets.all(0),
+            //移除间距
+            labelPadding: EdgeInsets.zero,
             tabs: [
               for (int i = 0; i < logic.tabList.length; i++)
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(logic.tabList[i].name),
+                GestureDetector(
+                  onSecondaryTapDown: (TapDownDetails details) {
+                    logic.contextMenu(i, details);
+                  },
+                  child: Container(
+                    height: logic.height,
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    child: Center(child: Text(logic.tabList[i].name)),
+                  ),
                 )
             ],
           ),
