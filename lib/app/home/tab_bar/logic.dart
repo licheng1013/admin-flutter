@@ -49,7 +49,7 @@ class TabBarLogic extends GetxController with GetTickerProviderStateMixin {
     var dy = details.globalPosition.dy;
     // -去相对组件的位置这样得到了组件的垂直中心点
     dy = dy - details.localPosition.dy + height / 2;
-    MessageUtil.show("右键: $i: $dx $dy");
+    //MessageUtil.show("右键: $i: $dx $dy");
     var closeMenuMap = contextMenuItem();
     if (i == tabList.length - 1) {
       closeMenuMap.remove(CloseMenu.closeRight);
