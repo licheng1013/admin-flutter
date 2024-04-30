@@ -26,6 +26,7 @@ class UserPage extends StatelessWidget {
       ColumnData(title: "年龄", key: "age"),
       ColumnData(title: "性别", key: "sex"),
       ColumnData(title: "手机", key: "tel"),
+      TableData.edit()
     ];
 
     return Column(

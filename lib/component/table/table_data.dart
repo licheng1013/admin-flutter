@@ -103,9 +103,6 @@ class TableData {
                 Visibility(
                   visible: enableRemove,
                   child: FilledButton(
-                      style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all(Colors.red)),
                       onPressed: () {
                         UiEdit.confirm(submit: () {
                           delete?.call(row);
