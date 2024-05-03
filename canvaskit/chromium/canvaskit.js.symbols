@@ -225,9 +225,9 @@
 224:SkString::SkString\28\29
 225:SkData::~SkData\28\29
 226:SkContainerAllocator::allocate\28int\2c\20double\29
-227:SkString::insert\28unsigned\20long\2c\20char\20const*\29
-228:memcmp
-229:memmove
+227:memcmp
+228:memmove
+229:SkString::insert\28unsigned\20long\2c\20char\20const*\29
 230:hb_blob_destroy
 231:SkPath::~SkPath\28\29
 232:sk_report_container_overflow_and_die\28\29
@@ -315,8 +315,8 @@
 314:SkMatrix::reset\28\29
 315:SkImageInfo::MakeUnknown\28int\2c\20int\29
 316:GrSurfaceProxyView::asRenderTargetProxy\28\29\20const
-317:SkBitmap::SkBitmap\28\29
-318:skia_private::TArray<unsigned\20char\2c\20true>::push_back\28unsigned\20char&&\29
+317:skia_private::TArray<unsigned\20char\2c\20true>::push_back\28unsigned\20char&&\29
+318:SkBitmap::SkBitmap\28\29
 319:SkPath::SkPath\28SkPath\20const&\29
 320:SkPaint::SkPaint\28\29
 321:ft_validator_error

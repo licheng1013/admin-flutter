@@ -328,9 +328,9 @@
 327:SkMatrix::reset\28\29
 328:SkImageInfo::MakeUnknown\28int\2c\20int\29
 329:GrSurfaceProxyView::asRenderTargetProxy\28\29\20const
-330:SkBitmap::SkBitmap\28\29
-331:skia_private::TArray<unsigned\20long\2c\20true>::push_back\28unsigned\20long\20const&\29
-332:skia_private::TArray<unsigned\20char\2c\20true>::push_back\28unsigned\20char&&\29
+330:skia_private::TArray<unsigned\20char\2c\20true>::push_back\28unsigned\20char&&\29
+331:SkBitmap::SkBitmap\28\29
+332:skia_private::TArray<unsigned\20long\2c\20true>::push_back\28unsigned\20long\20const&\29
 333:SkPath::SkPath\28SkPath\20const&\29
 334:SkPaint::SkPaint\28\29
 335:ft_validator_error
