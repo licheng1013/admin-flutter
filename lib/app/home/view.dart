@@ -30,7 +30,7 @@ class HomePage extends StatelessWidget {
                   visible: SidebarLogic.isExpandedAnim.value,
                   child: sidebarPage,
                 ),
-                250,
+                230,
                 SidebarLogic.isExpanded.value, onEnd: () {
                   if (SidebarLogic.isExpanded.value) {
                     SidebarLogic.isExpandedAnim.value = true;

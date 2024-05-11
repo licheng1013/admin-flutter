@@ -12,9 +12,7 @@ class SidebarPage extends StatelessWidget {
   SidebarPage({Key? key}) : super(key: key);
 
   final logic = Get.put(SidebarLogic());
-  final state = Get
-      .find<SidebarLogic>()
-      .state;
+  final state = Get.find<SidebarLogic>().state;
   static var changeStyle = true.obs;
 
   @override
@@ -47,8 +45,7 @@ class SidebarPage extends StatelessWidget {
       itemBuilder: (context, index) {
         var item = list[index];
         if (item.children.isNotEmpty) {
-          return Center(
-              child: Text(item.name, style: const TextStyle(fontSize: 12)));
+          return Center(child: Text(item.name, style: TextStyle(color: UiTheme.onBackground())));
         }
         return _text(item);
       },
@@ -67,21 +64,21 @@ class SidebarPage extends StatelessWidget {
           TabBarLogic.addPage(item);
         },
         child: Obx(() {
+          var selectd = SidebarLogic.selectName.value == item.name;
           return Container(
               width: double.infinity,
               decoration: ThemeUtil.boxDecoration(
-                  color: SidebarLogic.selectName.value == item.name
-                      ? UiTheme.primary()
-                      : null,
+                  color: selectd ? UiTheme.primary() : null,
                   radius: 12),
               height: 50,
-              child: Center(
-                  child: Text(
-                    item.name,
-                    style: TextStyle(
-                        color: UiTheme.getTextColor(
-                            SidebarLogic.selectName.value == item.name)),
-                  )));
+              child: Row(
+                children: [
+                  const SizedBox(width: 28),
+                  Icon(item.icon,color: UiTheme.getTextColor(selectd),),
+                  ThemeUtil.rowWidth(),
+                  Text(item.name,),
+                ],
+              ));
         }),
       ),
     );
@@ -100,7 +97,7 @@ class SidebarPage extends StatelessWidget {
           logic.expansionTile.remove(item.name);
         }
       },
-      leading: item.icon,
+      leading: Icon(item.icon),
       children: [
         for (var child in item.children) _text(child),
       ],

@@ -23,7 +23,7 @@ class AnalysisPage extends StatelessWidget {
   static SidebarTree newThis(){
     return SidebarTree(
         name: "Logo 部分",
-        icon: const Icon(Icons.home),
+        icon: Icons.logo_dev,
         page: AnalysisPage()
     );
   }
