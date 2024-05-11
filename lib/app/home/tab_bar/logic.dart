@@ -79,8 +79,9 @@ class TabBarLogic extends GetxController with GetTickerProviderStateMixin {
                 child: Container(
                   width: 150,
                   height: closeMenuMap.length * 34.0,
-                  decoration: UiTheme.decoration(),
+                  decoration: UiTheme.decoration(radius: 0),
                   child: Scaffold(
+                    backgroundColor: Colors.transparent,
                     body: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

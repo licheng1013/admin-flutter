@@ -39,10 +39,10 @@ class UiTheme {
     return b ? onBackground() : onBackgroundCopy();
   }
 
-  static BoxDecoration decoration() {
+  static BoxDecoration decoration({double radius = 8.0}) {
     return BoxDecoration(
       color: background(),
-      borderRadius: const BorderRadius.all(Radius.circular(8)),
+      borderRadius:  BorderRadius.all(Radius.circular(radius)),
       // 设置边框颜色
       border: Border.all(color: border()),
     );

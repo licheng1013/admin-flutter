@@ -43,20 +43,14 @@ class HeadPage extends StatelessWidget {
                   onPressed: () {
                     UrlUtil.openUrl("https://flutterweb-wasm.web.app/");
                   },
-                  child: const Text("Flutter Wasm Demo")),
+                  child: const Text("Wasm")),
               ThemeUtil.rowWidth(),
               FilledButton(
                   onPressed: () {
                     UrlUtil.openUrl(
                         "https://github.com/licheng1013/admin-flutter");
                   },
-                  child: const Text("Github Star")),
-              ThemeUtil.rowWidth(),
-              FilledButton(
-                  onPressed: () {
-                    MessageUtil.show("还在制作中...");
-                  },
-                  child: const Text("设置")),
+                  child: const Text("Star")),
               ThemeUtil.rowWidth(),
               InkWell(
                 borderRadius: BorderRadius.circular(18),
@@ -66,7 +60,7 @@ class HeadPage extends StatelessWidget {
                 child: const ClipOval(
                     // 圆形头像
                     child: FlutterLogo(
-                  size: 50,
+                  size: 36,
                 )),
               ),
               ThemeUtil.rowWidth(),
