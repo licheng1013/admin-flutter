@@ -97,6 +97,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "3.0.3"
+  csslib:
+    dependency: transitive
+    description:
+      name: csslib
+      sha256: "706b5707578e0c1b4b7550f64078f0a0f19dec3f50a178ffae7006b0a9ca58fb"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.0.0"
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -105,6 +113,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.6"
+  diff_match_patch:
+    dependency: transitive
+    description:
+      name: diff_match_patch
+      sha256: "2efc9e6e8f449d0abe15be240e2c2a3bcd977c8d126cfd70598aee60af35c0a4"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.4.1"
   dio:
     dependency: "direct main"
     description:
@@ -209,6 +225,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.9.3+1"
+  fleather:
+    dependency: "direct main"
+    description:
+      name: fleather
+      sha256: f4555f9d103597646a33eb42e5507bd4c10c4036ea5132988d7e6f258144f032
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.14.5+1"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -253,6 +277,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "7.6.8"
+  html:
+    dependency: transitive
+    description:
+      name: html
+      sha256: "3a7812d5bcd2894edf53dfaf8cd640876cf6cef50a8f238745c8b8120ea74d3a"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.15.4"
   http:
     dependency: transitive
     description:
@@ -357,6 +389,22 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.1.0"
+  parchment:
+    dependency: transitive
+    description:
+      name: parchment
+      sha256: "67c8ea89d62abecf75a802e1cae227dfdeead6a458e53c44ee0c39c38a6327e2"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.14.0"
+  parchment_delta:
+    dependency: transitive
+    description:
+      name: parchment_delta
+      sha256: "8b360d0138eb591c7fe193670e2d05466e482792af9c5b4d3f568c5c61530f08"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.0.0"
   path:
     dependency: transitive
     description:
@@ -421,6 +469,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.1.4"
+  quiver:
+    dependency: transitive
+    description:
+      name: quiver
+      sha256: b1c1ac5ce6688d77f65f3375a9abb9319b3cb32486bdc7a1e0fdf004d7ba4e47
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "3.2.1"
   shared_preferences:
     dependency: "direct main"
     description:
@@ -433,10 +489,10 @@ packages:
     dependency: transitive
     description:
       name: shared_preferences_android
-      sha256: "8568a389334b6e83415b6aae55378e158fbc2314e074983362d20c562780fb06"
+      sha256: "1ee8bf911094a1b592de7ab29add6f826a7331fb854273d55918693d5364a1f2"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.2.1"
+    version: "2.2.2"
   shared_preferences_foundation:
     dependency: transitive
     description:
@@ -558,10 +614,10 @@ packages:
     dependency: transitive
     description:
       name: url_launcher_ios
-      sha256: "9149d493b075ed740901f3ee844a38a00b33116c7c5c10d7fb27df8987fb51d5"
+      sha256: "7068716403343f6ba4969b4173cbf3b84fc768042124bc2c011e5d782b24fe89"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "6.2.5"
+    version: "6.3.0"
   url_launcher_linux:
     dependency: transitive
     description:
@@ -574,10 +630,10 @@ packages:
     dependency: transitive
     description:
       name: url_launcher_macos
-      sha256: b7244901ea3cf489c5335bdacda07264a6e960b1c1b1a9f91e4bc371d9e68234
+      sha256: "9a1a42d5d2d95400c795b2914c36fdcb525870c752569438e4ebb09a2b5d90de"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "3.1.0"
+    version: "3.2.0"
   url_launcher_platform_interface:
     dependency: transitive
     description:

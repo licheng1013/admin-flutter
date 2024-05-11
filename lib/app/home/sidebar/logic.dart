@@ -1,6 +1,7 @@
 import 'package:app_template/app/home/pages/about/view.dart';
 import 'package:app_template/app/home/pages/admin/view.dart';
 import 'package:app_template/app/home/pages/analysis/view.dart';
+import 'package:app_template/app/home/pages/rich_text/view.dart';
 import 'package:app_template/app/home/pages/settings/view.dart';
 import 'package:app_template/app/home/pages/user/view.dart';
 import 'package:app_template/common/assets_util.dart';
@@ -24,11 +25,12 @@ class SidebarLogic extends GetxController {
     AnalysisPage.newThis(),
     SidebarTree(
       name: "测试页面",
-      icon: const Icon(Icons.expand),
+      icon: Icons.expand,
       children: testTree,
     ),
     UserPage.newThis(),
     SettingsPage.newThis(),
+    RichTextPage.newThis(),
   ];
 
 
@@ -37,7 +39,7 @@ class SidebarLogic extends GetxController {
     AboutPage.newThis(),
     SidebarTree(
       name: "上传组件",
-      icon: const Icon(Icons.home),
+      icon: Icons.home,
       page: Column(
         children: [
           const Text(
@@ -59,14 +61,14 @@ class SidebarLogic extends GetxController {
 
 class SidebarTree {
   final String name;
-  final Icon icon;
+  final IconData icon;
   final List<SidebarTree> children;
   final bool isExpanded;
   final Widget page;
 
   SidebarTree({
     required this.name,
-    this.icon = const Icon(Icons.ac_unit),
+    this.icon = Icons.ac_unit,
     this.children = const [],
     this.isExpanded = false,
     this.page = const SizedBox(

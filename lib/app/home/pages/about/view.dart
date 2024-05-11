@@ -31,7 +31,7 @@ class AboutPage extends StatelessWidget {
   static SidebarTree newThis(){
     return SidebarTree(
         name: "关于信息",
-        icon: const Icon(Icons.home),
+        icon: Icons.info,
         page: AboutPage()
     );
   }

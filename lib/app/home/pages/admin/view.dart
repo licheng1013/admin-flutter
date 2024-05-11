@@ -73,7 +73,7 @@ class AdminPage extends StatelessWidget {
   static SidebarTree newThis(){
     return SidebarTree(
       name: "管理列表",
-      icon: const Icon(Icons.home),
+      icon: Icons.deblur,
       page: AdminPage(),
     );
   }

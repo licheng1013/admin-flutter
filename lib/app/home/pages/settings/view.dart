@@ -44,7 +44,7 @@ class SettingsPage extends StatelessWidget {
   static SidebarTree newThis(){
     return SidebarTree(
         name: "系统设置",
-        icon: const Icon(Icons.settings),
+        icon: Icons.settings,
         page: SettingsPage()
     );
   }

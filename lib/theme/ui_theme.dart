@@ -31,7 +31,7 @@ class UiTheme {
     return onBackgroundCopy(d: 0.2);
   }
 
-  static Color onBackgroundCopy({double d = 0.8}) {
+  static Color onBackgroundCopy({double d = 0.6}) {
     return onBackground().withAlpha((255 * d).toInt());
   }
 
