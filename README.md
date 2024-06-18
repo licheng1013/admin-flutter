@@ -5,6 +5,7 @@
 ## 介绍
 
 - 本项目是一个Flutter Admin项目
+- 示例: [licheng1013.github.io/admin-flutter/](https://licheng1013.github.io/admin-flutter/)
 
 ## 功能图
 
