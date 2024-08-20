@@ -17,6 +17,7 @@ class SidebarLogic extends GetxController {
   );
   static var isExpanded = true.obs;
   static var isExpandedAnim = true.obs;
+  var animName = "".obs;
   var expansionTile = <String>[].obs;
 
   static List<SidebarTree> treeList = [
