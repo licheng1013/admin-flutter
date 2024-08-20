@@ -3,6 +3,7 @@ import 'package:app_template/app/home/sidebar/logic.dart';
 import 'package:app_template/common/app_data.dart';
 import 'package:app_template/component/form/view.dart';
 import 'package:app_template/ex/ex_btn.dart';
+import 'package:app_template/ex/ex_int.dart';
 import 'package:app_template/ex/ex_list.dart';
 import 'package:app_template/ex/ex_map.dart';
 import 'package:app_template/main.dart';
@@ -33,6 +34,12 @@ class SettingsPage extends StatelessWidget {
                     Get.changeThemeMode(ThemeMode.light);
                     Get.changeTheme(item.theme());
                     AppData.easySave((dg){
+                      if(dg.themeName != item.name()){
+                        appReload.value = true;
+                        300.toDelay(() {
+                          appReload.value = false;
+                        });
+                      }
                       dg.themeName = item.name();
                     });
                   },

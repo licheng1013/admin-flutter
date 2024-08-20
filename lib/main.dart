@@ -12,9 +12,13 @@ import 'package:get/get.dart';
 
 import 'theme/light_theme.dart';
 
-// 默认
+/// 默认主题
 var theme = Light().theme();
+/// 多语言
 var message = Messages();
+/// 全局刷新解决主题色没有同时更新问题
+var appReload = false.obs;
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
