@@ -1,5 +1,6 @@
 import 'package:app_template/component/form/form_data.dart';
 import 'package:app_template/component/form/view.dart';
+import 'package:app_template/theme/ui_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -11,6 +12,7 @@ class UiEdit {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Card(
+          color: UiTheme.background(),
           child: SizedBox(
               width: 600,
               child: FormPage(
