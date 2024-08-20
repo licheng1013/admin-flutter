@@ -5,7 +5,12 @@ extension ExBtn on String {
 
   /// 按钮
   Widget toBtn({required Function() onTap,Color? color,Color? textColor}) {
-    return FilledButton(onPressed: onTap, child: Text(this,style: TextStyle(color: textColor,backgroundColor: color)),);
+    return FilledButton(
+      onPressed: onTap,
+      style: ButtonStyle(
+        backgroundColor: WidgetStateProperty.all(color),
+      ), child: Text(this,style: TextStyle(color: textColor)),
+    );
   }
 
   /// 无边框按钮

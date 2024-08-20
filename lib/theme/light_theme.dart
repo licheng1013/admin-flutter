@@ -25,3 +25,29 @@ class Light extends MyTheme {
     return const Color.fromARGB(255, 229, 233, 255);
   }
 }
+
+
+class Red extends MyTheme {
+  @override
+  Color background() {
+    return Colors.white;
+  }
+  @override
+  Color onBackground() {
+    return Colors.black;
+  }
+  @override
+  String name() {
+    return "红色";
+  }
+  @override
+  Color primary() {
+    return "#fd5b5f".toColor();
+  }
+
+  @override
+  Color onPrimary() {
+    return const Color.fromARGB(255, 229, 233, 255);
+  }
+
+}
