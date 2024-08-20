@@ -32,7 +32,9 @@ class PaginationPage extends StatelessWidget {
     });
 
     return Card(
-      color: UiTheme.onBackground2(),
+      borderOnForeground: true,
+      color: UiTheme.background(),
+      shadowColor: UiTheme.primary(),
       child: SizedBox(
         height: 50,
         child: Row(
