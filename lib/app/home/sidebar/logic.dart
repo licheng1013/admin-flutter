@@ -9,10 +9,8 @@ import 'package:app_template/component/upload/view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'state.dart';
 
 class SidebarLogic extends GetxController {
-  final SidebarState state = SidebarState();
   static var selectName = "".obs;
   static Widget selectPage = const SizedBox(
     child: Text("空"),

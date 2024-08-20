@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 abstract class MyTheme {
   ThemeData theme() {
+    // 判断是不是Windows，如果是则使用微软雅黑
+    String? fontFamily;
+    if (GetPlatform.isWindows) {
+      fontFamily = "Microsoft YaHei UI";
+    }
+
     return ThemeData(
-      fontFamily: 'MyFont',
+      fontFamily: fontFamily,
       scaffoldBackgroundColor: background(), // 背景颜色
       tabBarTheme: TabBarTheme(
         labelColor: onBackground(),
@@ -11,13 +18,13 @@ abstract class MyTheme {
       colorScheme: ColorScheme.fromSeed(
         brightness: brightness(),
         seedColor: primary(),
-        background: background(),
+        surface: background(),
         // 背景颜色
         primary: primary(),
         // 按钮背景色
         onPrimary: onBackground(),
         // 影响按钮内的文字颜色
-        onBackground: onBackground(), // 背景上的颜色
+        onSurface: onBackground(), // 背景上的颜色
       ),
       useMaterial3: true,
     );

@@ -1,0 +1,91 @@
+
+import 'package:app_template/common/image_util.dart';
+import 'package:app_template/ex/ex_int.dart';
+import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+extension ExString on String {
+  /// 字符串转换为整数
+  int toInt() {
+    return int.tryParse(this) ?? 0;
+  }
+
+  /// 字符串转换为浮点数
+  double toDouble() {
+    return double.tryParse(this) ?? 0.0;
+  }
+
+  /// 字符串转换为日期
+  DateTime toDate() {
+    return DateTime.tryParse(this) ?? DateTime.now();
+  }
+
+  /// 字符串转换为布尔值
+  bool toBool() {
+    return toLowerCase() == 'true';
+  }
+
+  /// 转换为列表默认分割符号为,
+  List<String> toList() {
+    // 如果没有逗号则返回自身
+    if (!contains(',')) return [this];
+    return split(',');
+  }
+
+  /// 从16进制字符串转换为颜色
+  Color toColor() {
+    // 移除开头的#
+    if (startsWith('#')) {
+      return Color(int.parse(substring(1), radix: 16) + 0xFF000000);
+    }
+    return Color(int.parse(this, radix: 16) + 0xFF000000);
+  }
+
+  /// eq
+  bool eq(String other) {
+    return this == other;
+  }
+
+  /// 转换为按钮,全局按钮建议
+  Widget toBtn({Function()? onTap, double? width}) {
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        width: width ?? double.infinity,
+        height: 42,
+        // 圆角
+        decoration: const BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(8)),
+          color: Color(0xff4a90e2),
+        ),
+        child: Center(
+            child: Text(this,
+                style: const TextStyle(color: Colors.white, fontSize: 16))),
+      ),
+    );
+  }
+
+  /// 打开连接，以下方法需要第三方库支持 ---------------------------------------------
+  void toOpenUrl() {
+    launchUrl(Uri.parse(this), mode: LaunchMode.externalApplication);
+  }
+
+  /// 转换为image ，第三方库
+  Widget toImage() {
+    return ImageUtil.image(this);
+  }
+}
+
+// const Color white60 = Color(0x1elf22);
+var c = "#52271f".toColor();
+
+void exTest() {
+  print('123'.toInt());
+  print('123.45'.toDouble());
+  print('2021-09-01'.toDate());
+  print('true'.toBool());
+  print('1,2,3'.toList());
+  print('assets/images/pet_a.png'.toImage());
+  print(1630454400000.toYMD());
+  print(1630454400000.toYmdHms());
+}

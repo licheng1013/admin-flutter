@@ -10,7 +10,7 @@ class LightTheme {
 class Pink extends MyTheme {
   @override
   Color background() {
-    return const Color.fromARGB(255, 246, 246, 246);
+    return Colors.white;
   }
 
   @override
@@ -20,7 +20,7 @@ class Pink extends MyTheme {
 
   @override
   Color primary() {
-    return const Color.fromARGB(255, 246, 184, 184);
+    return const Color.fromARGB(255, 229, 233, 255);
   }
 
   @override

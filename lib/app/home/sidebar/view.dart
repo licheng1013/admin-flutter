@@ -1,4 +1,5 @@
 import 'package:app_template/app/home/tab_bar/logic.dart';
+import 'package:app_template/ex/ex_string.dart';
 import 'package:app_template/theme/theme_util.dart';
 import 'package:app_template/theme/ui_theme.dart';
 import 'package:flutter/cupertino.dart';
@@ -12,7 +13,6 @@ class SidebarPage extends StatelessWidget {
   SidebarPage({Key? key}) : super(key: key);
 
   final logic = Get.put(SidebarLogic());
-  final state = Get.find<SidebarLogic>().state;
   static var changeStyle = true.obs;
 
   @override
@@ -45,7 +45,9 @@ class SidebarPage extends StatelessWidget {
       itemBuilder: (context, index) {
         var item = list[index];
         if (item.children.isNotEmpty) {
-          return Center(child: Text(item.name, style: TextStyle(color: UiTheme.onBackground())));
+          return Center(
+              child: Text(item.name,
+                  style: TextStyle(color: UiTheme.onBackground())));
         }
         return _text(item);
       },
@@ -53,30 +55,55 @@ class SidebarPage extends StatelessWidget {
     );
   }
 
-  Widget _text(SidebarTree item) {
+  Widget _text(SidebarTree item,{double left = 12}) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       child: InkWell(
         borderRadius: BorderRadius.circular(12),
         onTap: () {
+          if (item.children.isNotEmpty) {
+            if (logic.expansionTile.contains(item.name)) {
+              logic.expansionTile.remove(item.name);
+            } else {
+              logic.expansionTile.add(item.name);
+            }
+            return;
+          }
           SidebarLogic.selectName.value = item.name;
           SidebarLogic.selectPage = item.page;
           TabBarLogic.addPage(item);
         },
         child: Obx(() {
-          var selectd = SidebarLogic.selectName.value == item.name;
+          var selected = SidebarLogic.selectName.value == item.name;
           return Container(
               width: double.infinity,
               decoration: ThemeUtil.boxDecoration(
-                  color: selectd ? UiTheme.primary() : null,
-                  radius: 12),
+                  color: selected ? UiTheme.primary() : null, radius: 12),
               height: 50,
               child: Row(
                 children: [
-                  const SizedBox(width: 28),
-                  Icon(item.icon,color: UiTheme.getTextColor(selectd),),
+                  SizedBox(width: left),
+                  Icon(
+                    item.icon,
+                    color: UiTheme.getTextColor(selected),
+                  ),
                   ThemeUtil.rowWidth(),
-                  Text(item.name,),
+                  Text(
+                    item.name,
+                  ),
+                  const Spacer(),
+                  // 下拉箭头
+                  Visibility(
+                    visible: item.children.isNotEmpty,
+                    child: Icon(
+                      logic.expansionTile.contains(item.name)
+                          ? Icons.arrow_drop_up
+                          : Icons.arrow_drop_down,
+                      color: UiTheme.getTextColor(selected),
+                      size: 28,
+                    ),
+                  ),
+                  ThemeUtil.rowWidth(),
                 ],
               ));
         }),
@@ -85,21 +112,16 @@ class SidebarPage extends StatelessWidget {
   }
 
   Widget _tree(SidebarTree item) {
-    return ExpansionTile(
-      title: Text(item.name, style: const TextStyle(fontSize: 16)),
-      shape: const LinearBorder(),
-      initiallyExpanded: logic.expansionTile.contains(item.name),
-      backgroundColor: UiTheme.onBackground2(),
-      onExpansionChanged: (value) {
-        if (value) {
-          logic.expansionTile.add(item.name);
-        } else {
-          logic.expansionTile.remove(item.name);
-        }
-      },
-      leading: Icon(item.icon),
+    return Column(
       children: [
-        for (var child in item.children) _text(child),
+        _text(item),
+        Obx(() {
+          return Visibility(
+              visible: logic.expansionTile.contains(item.name),
+              child: Column(
+                children: item.children.map((e) => _text(e,left: 24)).toList(),
+              ));
+        })
       ],
     );
   }

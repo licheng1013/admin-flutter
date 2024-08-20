@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 
+import 'theme/light_theme.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -32,7 +34,7 @@ class MyApp extends StatelessWidget {
         Locale('zh'), // Chinese
       ],
       locale: const Locale('zh'),
-      theme: DarkTheme.blue(),
+      theme: LightTheme.pink(),
       home: LaunchPage(),
     );
   }
