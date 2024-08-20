@@ -16,11 +16,11 @@ class UiTheme {
   }
 
   static Color onBackground() {
-    return Get.theme.colorScheme.onBackground;
+    return Get.theme.colorScheme.onSurface;
   }
 
   static Color background() {
-    return Get.theme.colorScheme.background;
+    return Get.theme.colorScheme.surface;
   }
 
   static Color primary() {
@@ -58,6 +58,10 @@ class UiTheme {
   }
 
   static getPrimary(bool selected) {
-    return selected ? onPrimary() : onBackgroundCopy();
+    return selected ? primary() : onBackgroundCopy();
+  }
+
+  static getOnPrimary(bool selected) {
+    return selected ? onPrimary() : onBackground();
   }
 }

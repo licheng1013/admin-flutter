@@ -1,4 +1,6 @@
+import 'package:app_template/app/home/head/view.dart';
 import 'package:app_template/component/table/table_data.dart';
+import 'package:app_template/ex/ex_list.dart';
 import 'package:app_template/theme/theme_util.dart';
 import 'package:app_template/theme/ui_theme.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +16,6 @@ class TablePage extends StatelessWidget {
       : super(key: key);
 
   final logic = Get.put(TableLogic());
-  final state = Get.find<TableLogic>().state;
 
   @override
   Widget build(BuildContext context) {
@@ -48,22 +49,16 @@ class TablePage extends StatelessWidget {
   }
 
   Widget _data() {
-    return ListView(
-      children: [
-        for (var i = 0; i < tableData.rows.length; i++)
-          Container(
-            color: tableData.isZebra && i % 2 == 0
-                ? UiTheme.primary().withAlpha(100)
-                : UiTheme.background(),
-            height: tableData.cellHeight,
-            child: Row(
-              children: [
-                for (var column in tableData.columns) _buildData(column, i)
-              ],
-            ),
-          )
-      ],
-    );
+    return ListView(children: tableData.rows.toWidgetsWithIndex((e, index) {
+      var zebra = tableData.isZebra && index % 2 == 0;
+      var color = zebra ? UiTheme.background() : UiTheme.primary().withAlpha(75);
+      return Container(
+        color: color,
+        height: tableData.cellHeight,
+        child: Row(
+            children: tableData.columns.toWidgets((e) => _buildData(e, index))),
+      );
+    }));
   }
 
   Widget _buildData(ColumnData column, int i) {

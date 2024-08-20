@@ -9,7 +9,6 @@ import 'logic.dart';
 class RichTextPage extends StatelessWidget {
   RichTextPage({Key? key}) : super(key: key);
   final logic = Get.put(RichTextLogic());
-  final state = Get.find<RichTextLogic>().state;
 
   @override
   Widget build(BuildContext context) {

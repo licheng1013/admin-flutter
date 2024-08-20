@@ -2,12 +2,24 @@ import 'package:app_template/theme/ui_theme.dart';
 import 'package:flutter/cupertino.dart';
 
 extension ExList<T> on List<T> {
+
+  /// 遍历元素，返回一个新的List
   List<Widget> toWidgetsWithIndex(Widget Function(T, int) item) {
     return map((e) => item(e, indexOf(e))).toList();
   }
 
+  /// 遍历元素，返回一个新的List
   List<Widget> toWidgets(Widget Function(T) item) {
     return map((e) => item(e)).toList();
+  }
+
+  /// 添加一个元素，如果已经存在则删除，否则添加
+  void addOrRemove(T item) {
+    if (contains(item)) {
+      remove(item);
+    } else {
+      add(item);
+    }
   }
 }
 

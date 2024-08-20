@@ -2,13 +2,14 @@ import 'package:app_template/ex/ex_string.dart';
 import 'package:app_template/theme/my_theme.dart';
 import 'package:flutter/material.dart';
 
-class DarkTheme {
-  static ThemeData blue() {
-    return Blue().theme();
+abstract class MyDark extends MyTheme{
+  @override
+  Brightness brightness() {
+    return Brightness.dark;
   }
 }
 
-class Blue extends MyTheme {
+class Dark extends MyDark {
   @override
   Color background() {
     return const Color.fromARGB(255, 27, 38, 44);
@@ -18,23 +19,15 @@ class Blue extends MyTheme {
     return Colors.white;
   }
   @override
-  Color primary() {
-    return const Color.fromARGB(255, 54, 131, 182);
-  }
-  @override
-  Brightness brightness() {
-    return Brightness.dark;
-  }
-
-
-  @override
   String name() {
     return "深色";
   }
-
   @override
-  Color onPrimary() {
+  Color primary() {
     return "#516bfa".toColor();
   }
-
+  @override
+  Color onPrimary() {
+    return const Color.fromARGB(255, 229, 233, 255);
+  }
 }

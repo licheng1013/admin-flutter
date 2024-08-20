@@ -4,18 +4,21 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class AppData {
   String token = "";
+  String themeName = "";
 
   // toJson
   String toJson() {
     return jsonEncode({
       "token": token,
+      "themeName": themeName,
     });
   }
 
   // fromJson
   static AppData fromJson(Map<String, dynamic> map) {
     var data = AppData();
-    data.token = map["token"];
+    data.token = map["token"] ?? "";
+    data.themeName = map["themeName"] ?? "";
     return data;
   }
 

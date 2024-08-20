@@ -1,5 +1,6 @@
 import 'package:app_template/app/home/tab_bar/logic.dart';
 import 'package:app_template/ex/ex_anim.dart';
+import 'package:app_template/ex/ex_list.dart';
 import 'package:app_template/ex/ex_string.dart';
 import 'package:app_template/theme/theme_util.dart';
 import 'package:app_template/theme/ui_theme.dart';
@@ -17,7 +18,8 @@ class SidebarPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return _default() ;
+    return Container(
+        child: _default()) ;
   }
 
   Widget _default() {
@@ -31,27 +33,6 @@ class SidebarPage extends StatelessWidget {
     );
   }
 
-  Widget _styleWithTab() {
-    // 构建一个新的标签树
-    var list = <SidebarTree>[];
-    for (var item in SidebarLogic.treeList) {
-      list.add(item);
-      list.addAll(item.children);
-    }
-    return ListView.builder(
-      padding: EdgeInsets.zero,
-      itemBuilder: (context, index) {
-        var item = list[index];
-        if (item.children.isNotEmpty) {
-          return Center(
-              child: Text(item.name,
-                  style: TextStyle(color: UiTheme.onBackground())));
-        }
-        return _text(item);
-      },
-      itemCount: list.length,
-    );
-  }
 
   Widget _text(SidebarTree item,{double left = 12}) {
     return MouseRegion(
@@ -68,15 +49,13 @@ class SidebarPage extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
           onTap: () {
             if (item.children.isNotEmpty) {
-              if (logic.expansionTile.contains(item.name)) {
-                logic.expansionTile.remove(item.name);
-              } else {
-                logic.expansionTile.add(item.name);
-              }
+              logic.expansionTile.addOrRemove(item.name);
+              SidebarLogic.selSidebarTree(item);
               return;
             }
             SidebarLogic.selectName.value = item.name;
             SidebarLogic.selectPage = item.page;
+            SidebarLogic.selSidebarTree(item);
             TabBarLogic.addPage(item);
           },
           child: Obx(() {
@@ -91,11 +70,12 @@ class SidebarPage extends StatelessWidget {
                     SizedBox(width: left),
                     Icon(
                       item.icon,
-                      color: UiTheme.getPrimary(selected),
+                      color: UiTheme.getOnPrimary(selected),
                     ).toJump(logic.animName.value == item.name),
                     ThemeUtil.rowWidth(),
                     Text(
                       item.name,
+                      style: TextStyle(color: UiTheme.getOnPrimary(selected)),
                     ),
                     const Spacer(),
                     // 下拉箭头

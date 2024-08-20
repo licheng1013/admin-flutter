@@ -8,7 +8,6 @@ class AboutPage extends StatelessWidget {
   AboutPage({Key? key}) : super(key: key);
 
   final logic = Get.put(AboutLogic());
-  final state = Get.find<AboutLogic>().state;
 
   @override
   Widget build(BuildContext context) {

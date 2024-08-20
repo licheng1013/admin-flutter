@@ -5,8 +5,5 @@ import 'package:get/get.dart';
 
 
 class SettingsLogic extends GetxController {
-  var themeList = <MyTheme>[
-    Light(),
-    Blue(),
-  ];
+
 }

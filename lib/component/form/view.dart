@@ -1,7 +1,9 @@
 import 'package:app_template/common/message_util.dart';
 import 'package:app_template/common/time_util.dart';
 import 'package:app_template/component/form/form_data.dart';
+import 'package:app_template/ex/ex_btn.dart';
 import 'package:app_template/theme/theme_util.dart';
+import 'package:app_template/theme/ui_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -16,7 +18,6 @@ class FormPage extends StatelessWidget {
   FormPage(this.form, {Key? key, this.back, this.submit}) : super(key: key);
 
   final logic = Get.put(FormLogic());
-  final state = Get.find<FormLogic>().state;
 
   @override
   Widget build(BuildContext context) {
@@ -40,19 +41,13 @@ class FormPage extends StatelessWidget {
           child: Row(
             children: [
               const Spacer(),
-              OutlinedButton(
-                  onPressed: () {
-                    back?.call();
-                  },
-                  child: const Text(
-                    "返回",
-                  )),
+              "返回".toBtn(onTap: (){
+                back?.call();
+              }),
               ThemeUtil.rowWidth(),
-              FilledButton(
-                  onPressed: () {
+              "提交".toBtn(onTap: (){
                     submit?.call(form.data);
-                  },
-                  child: const Text("提交")),
+              })
             ],
           ),
         ),

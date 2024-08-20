@@ -1,3 +1,5 @@
+import 'package:app_template/theme/dark_theme.dart';
+import 'package:app_template/theme/light_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,7 +16,7 @@ abstract class MyTheme {
       scaffoldBackgroundColor: background(), // 背景颜色
       tabBarTheme: TabBarTheme(
           labelColor: onBackground(),
-          indicatorColor: onPrimary(),
+          indicatorColor: primary(),
       ),
       colorScheme: ColorScheme.fromSeed(
         brightness: brightness(),
@@ -47,3 +49,8 @@ abstract class MyTheme {
   String name();
 
 }
+
+var themeList = <MyTheme>[
+  Light(),
+  Dark(),
+];

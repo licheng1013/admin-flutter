@@ -6,10 +6,8 @@ import 'package:app_template/theme/ui_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'state.dart';
 
 class HeadLogic extends GetxController {
-  final HeadState state = HeadState();
 
   void logout() {
     AppData.easySave((p0) => {p0.token = "", Get.offAll(() => LoginPage())});

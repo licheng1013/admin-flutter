@@ -13,7 +13,6 @@ class AdminPage extends StatelessWidget {
   AdminPage({Key? key}) : super(key: key);
 
   final logic = Get.put(AdminLogic());
-  final state = Get.find<AdminLogic>().state;
 
   @override
   Widget build(BuildContext context) {

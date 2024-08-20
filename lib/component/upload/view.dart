@@ -14,7 +14,6 @@ class UploadPage extends StatelessWidget {
   }
 
   final logic = Get.put(UploadLogic());
-  final state = Get.find<UploadLogic>().state;
 
   @override
   Widget build(BuildContext context) {

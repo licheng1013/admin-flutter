@@ -14,7 +14,6 @@ class UserPage extends StatelessWidget {
   UserPage({Key? key}) : super(key: key);
 
   final logic = Get.put(UserLogic());
-  final state = Get.find<UserLogic>().state;
 
   @override
   Widget build(BuildContext context) {

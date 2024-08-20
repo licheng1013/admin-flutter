@@ -1,10 +1,8 @@
 import 'package:app_template/component/form/form_data.dart';
 import 'package:get/get.dart';
 
-import 'state.dart';
 
 class UserLogic extends GetxController {
-  final UserState state = UserState();
 
   var list = <Map<String, dynamic>>[].obs;
   var total = 200;

@@ -7,10 +7,8 @@ import 'package:file_selector/file_selector.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-import 'state.dart';
 
 class UploadLogic extends GetxController {
-  final UploadState state = UploadState();
 
   var imageList = <String>[].obs;
   var testMode = true;

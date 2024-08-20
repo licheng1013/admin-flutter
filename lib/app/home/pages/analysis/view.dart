@@ -8,7 +8,6 @@ class AnalysisPage extends StatelessWidget {
   AnalysisPage({Key? key}) : super(key: key);
 
   final logic = Get.put(AnalysisLogic());
-  final state = Get.find<AnalysisLogic>().state;
 
   @override
   Widget build(BuildContext context) {

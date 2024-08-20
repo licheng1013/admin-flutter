@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:app_template/app/home/pages/about/view.dart';
 import 'package:app_template/app/home/pages/admin/view.dart';
 import 'package:app_template/app/home/pages/analysis/view.dart';
@@ -20,6 +22,9 @@ class SidebarLogic extends GetxController {
   var animName = "".obs;
   var expansionTile = <String>[].obs;
 
+  /// 面包屑列表
+  static var breadcrumbList = <SidebarTree>[].obs;
+
   static List<SidebarTree> treeList = [
     AnalysisPage.newThis(),
     SidebarTree(
@@ -32,6 +37,24 @@ class SidebarLogic extends GetxController {
     RichTextPage.newThis(),
   ];
 
+  static void selSidebarTree(SidebarTree sel){
+    breadcrumbList.clear();
+    for(var item in treeList){
+      if (item.name == sel.name) {
+        breadcrumbList.add(item);
+        break;
+      }
+      for(var child in item.children){
+        if(child.name == sel.name){
+          breadcrumbList.add(item);
+          breadcrumbList.add(child);
+          break;
+        }
+      }
+    }
+    //debugPrint("数量:${breadcrumbList.length}");
+  }
+
 
   static List<SidebarTree> testTree = [
     AdminPage.newThis(),
@@ -39,20 +62,22 @@ class SidebarLogic extends GetxController {
     SidebarTree(
       name: "上传组件",
       icon: Icons.home,
-      page: Column(
-        children: [
-          const Text(
-            "当前限制只能上传10张图片",
-            style: TextStyle(fontSize: 28),
-          ),
-          SizedBox(
-              width: 500,
-              child: UploadPage(
-                limit: 10,
-                multiple: true,
-                type: AssetsUtil.image(),
-              )),
-        ],
+      page: Center(
+        child: Column(
+          children: [
+            const Text(
+              "当前限制只能上传10张图片",
+              style: TextStyle(fontSize: 28),
+            ),
+            SizedBox(
+                width: 500,
+                child: UploadPage(
+                  limit: 10,
+                  multiple: true,
+                  type: AssetsUtil.image(),
+                )),
+          ],
+        ),
       ),
     ),
   ];
@@ -73,9 +98,9 @@ class SidebarTree {
     this.page = const SizedBox(
       child: Center(
           child: Text(
-        "空",
-        style: TextStyle(fontSize: 26),
-      )),
+            "空",
+            style: TextStyle(fontSize: 26),
+          )),
     ),
   });
 }

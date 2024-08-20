@@ -1,4 +1,4 @@
-import 'package:app_template/app/home/sidebar/view.dart';
+import 'package:app_template/app/home/sidebar/logic.dart';
 import 'package:app_template/ex/ex_anim.dart';
 import 'package:app_template/ex/ex_list.dart';
 import 'package:app_template/theme/ui_theme.dart';
@@ -28,7 +28,10 @@ class TabBarPage extends StatelessWidget {
         children: [
           TabBar(
             controller: logic.tabController,
-            onTap: (e) => logic.currentIndex.value = e,
+            onTap: (e){
+              logic.currentIndex.value = e;
+              SidebarLogic.selSidebarTree(logic.tabList[e]);
+            },
             // 允许滚动
             padding: EdgeInsets.zero,
             isScrollable: true,

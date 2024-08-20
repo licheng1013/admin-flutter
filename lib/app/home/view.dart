@@ -14,7 +14,6 @@ class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
 
   final logic = Get.put(HomeLogic());
-  final state = Get.find<HomeLogic>().state;
 
   static Widget sidebarPage = SidebarPage();
 

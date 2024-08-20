@@ -5,10 +5,8 @@ import 'package:app_template/component/table/table_data.dart';
 import 'package:app_template/component/ui_edit.dart';
 import 'package:get/get.dart';
 
-import 'state.dart';
 
 class AdminLogic extends GetxController {
-  final AdminState state = AdminState();
 
   var list = <Map<String, dynamic>>[].obs;
   var total = 0.obs;

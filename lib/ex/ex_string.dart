@@ -46,24 +46,6 @@ extension ExString on String {
     return this == other;
   }
 
-  /// 转换为按钮,全局按钮建议
-  Widget toBtn({Function()? onTap, double? width}) {
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-        width: width ?? double.infinity,
-        height: 42,
-        // 圆角
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(8)),
-          color: Color(0xff4a90e2),
-        ),
-        child: Center(
-            child: Text(this,
-                style: const TextStyle(color: Colors.white, fontSize: 16))),
-      ),
-    );
-  }
 
   /// 打开连接，以下方法需要第三方库支持 ---------------------------------------------
   void toOpenUrl() {
