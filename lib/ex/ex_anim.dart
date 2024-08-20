@@ -36,4 +36,12 @@ extension ExAnim on Widget {
     return this;
   }
 
+  /// 淡出动画
+  Widget toFadeInWithMoveX(bool enable) {
+    if(enable){
+      return animate().fadeIn().moveX();
+    }
+    return this;
+  }
+
 }

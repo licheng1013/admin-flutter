@@ -4,6 +4,7 @@ import 'package:app_template/common/app_data.dart';
 import 'package:app_template/component/form/view.dart';
 import 'package:app_template/ex/ex_btn.dart';
 import 'package:app_template/ex/ex_list.dart';
+import 'package:app_template/ex/ex_map.dart';
 import 'package:app_template/main.dart';
 import 'package:app_template/theme/my_theme.dart';
 import 'package:app_template/theme/theme_util.dart';
@@ -40,6 +41,25 @@ class SettingsPage extends StatelessWidget {
                 ),
               );
             }),
+          )),
+          panel("语言设置", Row(
+            children: [
+              Row(
+                children: Get.translations.toWidgets((item) {
+                  var langKey = item.toString();
+                  return Padding(
+                    padding: const EdgeInsets.only(right: 8),
+                    child:  langKey.toBtn(
+                      onTap: () {
+                        var locale = Locale(langKey);
+                        Get.updateLocale(locale);
+                      },
+                    ),
+                  );
+                }),
+              ),
+              Text("settings".tr)
+            ],
           ))
         ],
       ),

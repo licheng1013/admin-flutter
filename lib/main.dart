@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:app_template/app/launch/view.dart';
 import 'package:app_template/common/app_data.dart';
+import 'package:app_template/component/messages.dart';
 import 'package:app_template/theme/dark_theme.dart';
 import 'package:app_template/theme/my_theme.dart';
 import 'package:bot_toast/bot_toast.dart';
@@ -13,11 +14,14 @@ import 'theme/light_theme.dart';
 
 // 默认
 var theme = Light().theme();
+var message = Messages();
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   var appData = await AppData.read();
   var findTheme = themeList.firstWhereOrNull((e)=>e.name() == appData.themeName);
   theme = findTheme?.theme() ?? Light().theme();
+  await message.init();
   runApp(const MyApp());
 }
 
@@ -29,6 +33,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
       return GetMaterialApp(
+        translations: message,
         defaultTransition: Transition.noTransition,
         builder: BotToastInit(),
         //1.调用BotToastInit

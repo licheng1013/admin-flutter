@@ -3,10 +3,8 @@ import 'package:app_template/app/login/view.dart';
 import 'package:app_template/common/app_data.dart';
 import 'package:get/get.dart';
 
-import 'state.dart';
 
 class LaunchLogic extends GetxController {
-  final LaunchState state = LaunchState();
 
   @override
   void onInit() async {

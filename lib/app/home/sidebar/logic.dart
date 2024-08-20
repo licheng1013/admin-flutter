@@ -8,6 +8,7 @@ import 'package:app_template/app/home/pages/settings/view.dart';
 import 'package:app_template/app/home/pages/user/view.dart';
 import 'package:app_template/common/assets_util.dart';
 import 'package:app_template/component/upload/view.dart';
+import 'package:app_template/ex/ex_int.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -39,20 +40,21 @@ class SidebarLogic extends GetxController {
 
   static void selSidebarTree(SidebarTree sel){
     breadcrumbList.clear();
-    for(var item in treeList){
-      if (item.name == sel.name) {
-        breadcrumbList.add(item);
-        break;
-      }
-      for(var child in item.children){
-        if(child.name == sel.name){
+    32.toDelay((){
+      for(var item in treeList){
+        if (item.name == sel.name) {
           breadcrumbList.add(item);
-          breadcrumbList.add(child);
           break;
         }
+        for(var child in item.children){
+          if(child.name == sel.name){
+            breadcrumbList.add(item);
+            breadcrumbList.add(child);
+            break;
+          }
+        }
       }
-    }
-    //debugPrint("数量:${breadcrumbList.length}");
+    });
   }
 
 

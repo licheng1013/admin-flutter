@@ -8,7 +8,6 @@ class LaunchPage extends StatelessWidget {
   LaunchPage({Key? key}) : super(key: key);
 
   final logic = Get.put(LaunchLogic());
-  final state = Get.find<LaunchLogic>().state;
 
   @override
   Widget build(BuildContext context) {

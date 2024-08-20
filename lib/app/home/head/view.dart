@@ -103,7 +103,7 @@ class HeadPage extends StatelessWidget {
             ],
           );
         }),
-      );
+      ).toFadeInWithMoveX(SidebarLogic.breadcrumbList.isNotEmpty);
     });
   }
 }

@@ -36,6 +36,7 @@ flutter:
   # 资源目录
   assets:
      - assets/images/
+     - assets/messages/
 #  fonts:
 #    - family: MyFont
 #      fonts:
