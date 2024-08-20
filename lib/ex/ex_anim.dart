@@ -11,9 +11,27 @@ extension ExAnim on Widget {
     return this;
   }
 
-  Widget toJump(bool enable) {
+  /// 晃动动画
+  Widget toJump(bool enable,{ double offset = 1}) {
     if(enable){
-      return animate().shake();
+      return animate().shake( offset: Offset(offset, 0));
+    }
+    return this;
+  }
+
+  /// 旋转动画
+  Widget toRotate(bool enable,{double angle = 0.5}) {
+    if(enable){
+      return animate().rotate(end: angle);
+    }
+    return this;
+  }
+
+
+  /// 水平加淡出动画
+  Widget toFadeIn(bool enable) {
+    if(enable){
+      return animate().fadeIn();
     }
     return this;
   }

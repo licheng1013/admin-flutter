@@ -27,6 +27,10 @@ class UiTheme {
     return Get.theme.colorScheme.primary;
   }
 
+  static Color onPrimary() {
+    return Get.theme.colorScheme.onPrimary;
+  }
+
   static Color border(){
     return onBackgroundCopy(d: 0.2);
   }
@@ -51,5 +55,9 @@ class UiTheme {
   /// 默认背景色的填充颜色
   static Color onBackground2() {
     return UiTheme.onBackgroundCopy(d: 0.08);
+  }
+
+  static getPrimary(bool selected) {
+    return selected ? onPrimary() : onBackgroundCopy();
   }
 }

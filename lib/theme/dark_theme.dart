@@ -1,3 +1,4 @@
+import 'package:app_template/ex/ex_string.dart';
 import 'package:app_template/theme/my_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -25,9 +26,15 @@ class Blue extends MyTheme {
     return Brightness.dark;
   }
 
+
   @override
   String name() {
     return "深色";
+  }
+
+  @override
+  Color onPrimary() {
+    return "#516bfa".toColor();
   }
 
 }

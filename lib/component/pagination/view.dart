@@ -1,5 +1,6 @@
 import 'package:app_template/common/message_util.dart';
 import 'package:app_template/theme/theme_util.dart';
+import 'package:app_template/theme/ui_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -18,7 +19,6 @@ class PaginationPage extends StatelessWidget {
       : super(key: key);
 
   final logic = Get.put(PaginationLogic());
-  final state = Get.find<PaginationLogic>().state;
 
   final sizeList = [10, 15, 20, 50];
   var size = 10.obs;
@@ -55,18 +55,12 @@ class PaginationPage extends StatelessWidget {
                 ],
                 onChanged: (value) {
                   size.value = value as int;
-                  // if (current.value * size.value > total) {
-                  //   current.value = totalPage.value;
-                  // }
-                  // if (current.value <= 0) {
                   current.value = 1;
-                  //}
                   refresh();
                 },
                 value: size.value,
                 // 设置颜色
-                style: const TextStyle(fontSize: 18),
-                focusColor: Colors.transparent,
+                style:  TextStyle(fontSize: 18, color: UiTheme.onBackground()),
                 underline: Container(),
                 // 设置宽度
               );

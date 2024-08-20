@@ -1,17 +1,17 @@
 
 import 'package:app_template/app/home/pages/analysis/view.dart';
 import 'package:app_template/app/home/sidebar/logic.dart';
-import 'package:app_template/common/message_util.dart';
 import 'package:app_template/theme/ui_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'state.dart';
 
 class TabBarLogic extends GetxController with GetTickerProviderStateMixin {
-  final TabBarState state = TabBarState();
   TabController? tabController;
   var tabList = <SidebarTree>[].obs;
+  var index = (-1).obs;
+  var height = 36.0;
+  var currentIndex = (-1).obs;
 
   @override
   void onInit() {
@@ -26,6 +26,7 @@ class TabBarLogic extends GetxController with GetTickerProviderStateMixin {
     for (var item in logic.tabList) {
       if (item.name == page.name) {
         logic.tabController?.animateTo(logic.tabList.indexOf(item));
+        logic.currentIndex.value = logic.tabList.indexOf(item);
         return;
       }
     }
@@ -39,9 +40,9 @@ class TabBarLogic extends GetxController with GetTickerProviderStateMixin {
     tabController = TabController(
         length: tabList.length, vsync: this, initialIndex: lastIndex ?? 0);
     tabController?.animateTo(tabList.length - 1);
+    currentIndex.value = tabList.length - 1;
   }
 
-  var height = 36.0;
 
   void contextMenu(int i, TapDownDetails details) {
     // 获取点击的位置

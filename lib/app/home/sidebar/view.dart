@@ -14,13 +14,10 @@ class SidebarPage extends StatelessWidget {
   SidebarPage({Key? key}) : super(key: key);
 
   final logic = Get.put(SidebarLogic());
-  static var changeStyle = true.obs;
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() {
-      return changeStyle.value ? _default() : _styleWithTab();
-    });
+    return _default() ;
   }
 
   Widget _default() {
@@ -94,7 +91,7 @@ class SidebarPage extends StatelessWidget {
                     SizedBox(width: left),
                     Icon(
                       item.icon,
-                      color: UiTheme.getTextColor(selected),
+                      color: UiTheme.getPrimary(selected),
                     ).toJump(logic.animName.value == item.name),
                     ThemeUtil.rowWidth(),
                     Text(
@@ -105,12 +102,10 @@ class SidebarPage extends StatelessWidget {
                     Visibility(
                       visible: item.children.isNotEmpty,
                       child: Icon(
-                        logic.expansionTile.contains(item.name)
-                            ? Icons.arrow_drop_up
-                            : Icons.arrow_drop_down,
+                         Icons.arrow_drop_up,
                         color: UiTheme.getTextColor(selected),
                         size: 28,
-                      ),
+                      ).toRotate(logic.expansionTile.contains(item.name)),
                     ),
                     ThemeUtil.rowWidth(),
                   ],

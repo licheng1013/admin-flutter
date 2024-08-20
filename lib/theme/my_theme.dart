@@ -13,7 +13,8 @@ abstract class MyTheme {
       fontFamily: fontFamily,
       scaffoldBackgroundColor: background(), // 背景颜色
       tabBarTheme: TabBarTheme(
-        labelColor: onBackground(),
+          labelColor: onBackground(),
+          indicatorColor: onPrimary(),
       ),
       colorScheme: ColorScheme.fromSeed(
         brightness: brightness(),
@@ -22,7 +23,7 @@ abstract class MyTheme {
         // 背景颜色
         primary: primary(),
         // 按钮背景色
-        onPrimary: onBackground(),
+        onPrimary: onPrimary(),
         // 影响按钮内的文字颜色
         onSurface: onBackground(), // 背景上的颜色
       ),
@@ -32,6 +33,8 @@ abstract class MyTheme {
 
   /// 主色
   Color primary();
+  /// 主题色之上的颜色
+  Color onPrimary();
   /// 背景颜色
   Color background();
   /// 背景上的颜色
@@ -42,4 +45,5 @@ abstract class MyTheme {
   }
   /// 主题名称
   String name();
+
 }

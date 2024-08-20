@@ -1,5 +1,4 @@
 import 'package:app_template/app/home/sidebar/logic.dart';
-import 'package:app_template/app/home/sidebar/view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,7 +8,6 @@ class SettingsPage extends StatelessWidget {
   SettingsPage({Key? key}) : super(key: key);
 
   final logic = Get.put(SettingsLogic());
-  final state = Get.find<SettingsLogic>().state;
 
   @override
   Widget build(BuildContext context) {
@@ -27,12 +25,6 @@ class SettingsPage extends StatelessWidget {
                },
             ),
           ),
-        FilledButton(
-          child: const Text("切换侧边栏风格"),
-          onPressed: () {
-            SidebarPage.changeStyle.value = !SidebarPage.changeStyle.value;
-          },
-        ),
         const Text(
           "系统设置",
           style: TextStyle(fontSize: 28),
