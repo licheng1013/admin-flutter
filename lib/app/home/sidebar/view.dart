@@ -54,6 +54,7 @@ class SidebarPage extends StatelessWidget {
               return;
             }
             SidebarLogic.selectPage = item.page;
+            SidebarLogic.selectName.value = item.name;
             SidebarLogic.selSidebarTree(item);
             TabBarLogic.addPage(item);
           },
