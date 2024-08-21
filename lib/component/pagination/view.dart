@@ -54,6 +54,7 @@ class PaginationPage extends StatelessWidget {
             ThemeUtil.width(),
             Obx(() {
               return DropdownButton(
+                focusColor: UiTheme.background(),
                 items: [
                   for (int i = 0; i < sizeList.length; i++)
                     DropdownMenuItem(
@@ -67,7 +68,7 @@ class PaginationPage extends StatelessWidget {
                 },
                 value: logic.size.value,
                 // 设置颜色
-                style: style,
+                style: style.copyWith(color: UiTheme.onBackground()),
                 underline: Container(),
                 // 设置宽度
               );
