@@ -1,4 +1,8 @@
+import 'package:app_template/app/home/head/logic.dart';
+import 'package:app_template/app/home/pages/settings/view.dart';
 import 'package:app_template/common/message_util.dart';
+import 'package:app_template/ex/ex_btn.dart';
+import 'package:app_template/ex/ex_int.dart';
 import 'package:app_template/theme/theme_util.dart';
 import 'package:app_template/theme/ui_theme.dart';
 import 'package:flutter/material.dart';
@@ -8,29 +12,27 @@ import 'logic.dart';
 
 class PaginationPage extends StatelessWidget {
   final MainAxisAlignment alignment;
-  final Function(int size, int page)? changed;
-  final int total;
 
   PaginationPage(
-      {Key? key,
+      {super.key,
       this.alignment = MainAxisAlignment.end,
-      this.total = 0,
-      this.changed})
-      : super(key: key);
+      int total = 0,
+      required Function(int size, int page) changed}) {
+    logic.total = total;
+    logic.changed = changed;
+    // 首次需要延迟加载
+    128.toDelay(() {
+      logic.reload();
+    });
+  }
 
   final logic = Get.put(PaginationLogic());
 
   final sizeList = [10, 15, 20, 50];
-  var size = 10.obs;
-  var current = 1.obs;
-  var totalPage = 0.obs;
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(60.milliseconds, () {
-      refresh();
-    });
-
+    var style = const TextStyle(fontSize: 18);
     return Card(
       borderOnForeground: true,
       color: UiTheme.background(),
@@ -42,11 +44,13 @@ class PaginationPage extends StatelessWidget {
           children: [
             //下拉选择器
             ThemeUtil.width(),
+            Text("共 ${logic.total} 条", style: style),
+            ThemeUtil.width(),
             Obx(() {
-              return Text("当前页 $current", style: const TextStyle(fontSize: 18));
+              return Text("当前页 ${logic.current}", style: style);
             }),
             ThemeUtil.width(),
-            const Text("选择数量 ", style: TextStyle(fontSize: 18)),
+            Text("选择数量 ", style: style),
             ThemeUtil.width(),
             Obx(() {
               return DropdownButton(
@@ -57,13 +61,13 @@ class PaginationPage extends StatelessWidget {
                         child: Center(child: Text("${sizeList[i]}"))),
                 ],
                 onChanged: (value) {
-                  size.value = value as int;
-                  current.value = 1;
-                  refresh();
+                  logic.size.value = value as int;
+                  logic.current.value = 1;
+                  logic.reload();
                 },
-                value: size.value,
+                value: logic.size.value,
                 // 设置颜色
-                style:  TextStyle(fontSize: 18, color: UiTheme.onBackground()),
+                style: style,
                 underline: Container(),
                 // 设置宽度
               );
@@ -74,36 +78,17 @@ class PaginationPage extends StatelessWidget {
               return SizedBox(
                 width: 75,
                 child: Center(
-                  child: Text(
-                    "总 ${totalPage.value} 页",
-                    style: const TextStyle(fontSize: 18),
-                  ),
+                  child: Text("总 ${logic.totalPage.value} 页", style: style),
                 ),
               );
             }),
             ThemeUtil.width(),
-            FilledButton(
-                // 禁用
-                onPressed: () {
-                  if (current.value == 1) {
-                    MessageUtil.show("已经是第一页了");
-                    return;
-                  }
-                  current.value--;
-                  refresh();
-                },
-                child: const Text("上一页")),
+            "上一页".toBtn(
+              // 禁用
+              onTap: logic.prev,
+            ),
             ThemeUtil.width(),
-            FilledButton(
-                onPressed: () {
-                  if (current.value == totalPage.value) {
-                    MessageUtil.show("已经是最后一页了");
-                    return;
-                  }
-                  current.value++;
-                  refresh();
-                },
-                child: const Text("下一页")),
+            "下一页".toBtn(onTap: logic.next),
             ThemeUtil.width(),
           ],
         ),
@@ -111,8 +96,5 @@ class PaginationPage extends StatelessWidget {
     );
   }
 
-  void refresh() {
-    totalPage.value = total ~/ size.value + (total % size.value != 0 ? 1 : 0);
-    changed?.call(size.value, current.value);
-  }
+
 }

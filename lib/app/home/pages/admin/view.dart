@@ -1,5 +1,4 @@
 import 'package:app_template/app/home/sidebar/logic.dart';
-import 'package:app_template/common/url_util.dart';
 import 'package:app_template/component/pagination/view.dart';
 import 'package:app_template/component/table/table_data.dart';
 import 'package:app_template/component/table/view.dart';
@@ -25,16 +24,9 @@ class AdminPage extends StatelessWidget {
             children: [
               ThemeUtil.width(),
               const Text(
-                "这个需要后端来预览",
+                "运行mock目录下的服务器体验",
                 style: TextStyle(fontSize: 18),
               ),
-              ThemeUtil.width(),
-              FilledButton(
-                  onPressed: () {
-                    UrlUtil.openUrl(
-                        "https://github.com/licheng1013/gorm-template");
-                  },
-                  child: const Text("后端地址")),
               const Spacer(),
               FilledButton(
                   onPressed: () {
@@ -52,7 +44,7 @@ class AdminPage extends StatelessWidget {
               tableData: TableData(
                   isIndex: true,
                   columns: logic.columns,
-                  rows: logic.list.value),
+                  rows: logic.list.toList()),
             );
           }),
         ),

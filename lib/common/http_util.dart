@@ -5,7 +5,7 @@ import 'package:app_template/common/message_util.dart';
 import 'package:dio/dio.dart';
 
 class HttpUtil {
-  static const String baseUrl = "http://192.168.101.100:9999";
+  static const String baseUrl = "http://localhost:8080";
   static const authorization = "Authorization";
 
   static final dio = Dio(BaseOptions(
@@ -57,7 +57,7 @@ class HttpUtil {
       if (showMsg) {
         MessageUtil.show(data["msg"]);
       }
-      throw Exception(data["msg"]);
+      return Future.error(data["msg"]);
     }
   }
 }

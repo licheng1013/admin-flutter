@@ -1,4 +1,4 @@
-import 'package:app_template/api/admin_api.dart';
+import 'package:app_template/api/user_api.dart';
 import 'package:app_template/common/message_util.dart';
 import 'package:app_template/component/form/enum.dart';
 import 'package:app_template/component/form/form_data.dart';
@@ -20,7 +20,7 @@ class AdminLogic extends GetxController {
     this.page = page;
     list.clear();
     loading.value = true;
-    AdminApi.adminList(params: {
+    UserApi.userList(params: {
       "size": size,
       "page": page,
     }).then((value) async {
@@ -42,27 +42,28 @@ class AdminLogic extends GetxController {
       // TableData.multipleSelect(
       //     selectList: (e) => {MessageUtil.show("选择了: ${e.length} 个")}),
       // TableData.index(),
-      TableData.index(width: 80),
       ColumnData(title: "Id", key: "id", width: 80),
-      ColumnData(title: "账号", key: "userName", width: 80),
+      ColumnData(title: "账号", key: "userName"),
       ColumnData(title: "密码", key: "password"),
       ColumnData(title: "盐", key: "salt"),
-      ColumnData(title: "创建时间", key: "createTime"),
       ColumnData(title: "昵称", key: "nickName"),
+      ColumnData(title: "创建时间", key: "createTime"),
       TableData.edit(edit: (d) {
         form.data = d;
         form.title = "编辑";
         UiEdit.requestForm(form,
             submit: (data) => {
-                  AdminApi.adminUpdate(params: data).then((value) {
+                  UserApi.userUpdate(params: data).then((value) {
                     MessageUtil.show("更新成功!");
                     find(size, page);
                     Get.back();
                   })
                 });
       }, delete: (d) {
-        AdminApi.adminDelete(params: {"id": d["id"]}).then((value) {
-          find(size, page);
+        UserApi.userDelete(params: {"id": d["id"]}).then((value) {
+          list.removeWhere((e){
+            return e["id"] == d["id"];
+          });
         });
       }),
     ];
@@ -96,7 +97,7 @@ class AdminLogic extends GetxController {
     form.title = "添加";
     UiEdit.requestForm(form,
         submit: (data) => {
-              AdminApi.adminInsert(params: data).then((value) {
+              UserApi.userInsert(params: data).then((value) {
                 MessageUtil.show("插入成功!");
                 find(size, page);
                 Get.back();
