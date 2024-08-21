@@ -30,10 +30,10 @@ class TablePage extends StatelessWidget {
         width: 100,
         height: 100,
         child: CircularProgressIndicator(
-          strokeWidth: 2.0,
+          strokeWidth: 3.0,
           // 调整大小
-          backgroundColor: Colors.grey.shade200,
-          valueColor: const AlwaysStoppedAnimation(Colors.blue),
+          backgroundColor: UiTheme.onPrimary(),
+          valueColor:  AlwaysStoppedAnimation(UiTheme.primary()),
         ),
       ),
     );

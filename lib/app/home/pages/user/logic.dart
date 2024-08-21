@@ -1,3 +1,4 @@
+import 'package:app_template/component/form/enum.dart';
 import 'package:app_template/component/form/form_data.dart';
 import 'package:get/get.dart';
 

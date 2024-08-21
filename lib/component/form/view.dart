@@ -1,13 +1,16 @@
+import 'package:app_template/app/home/head/view.dart';
 import 'package:app_template/common/message_util.dart';
 import 'package:app_template/common/time_util.dart';
 import 'package:app_template/component/form/form_data.dart';
 import 'package:app_template/ex/ex_btn.dart';
+import 'package:app_template/ex/ex_list.dart';
 import 'package:app_template/theme/theme_util.dart';
 import 'package:app_template/theme/ui_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
+import 'enum.dart';
 import 'logic.dart';
 
 class FormPage extends StatelessWidget {
@@ -34,14 +37,14 @@ class FormPage extends StatelessWidget {
               ),
             )),
         ThemeUtil.height(),
-        for (var column in form.columns) _column(form, column),
+        ...form.columns.toWidgets((e)=>_column(form, e)),
         ThemeUtil.height(),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Row(
             children: [
               const Spacer(),
-              "返回".toBtn(onTap: (){
+              "返回".toOutlineBtn(onTap: (){
                 back?.call();
               }),
               ThemeUtil.width(),

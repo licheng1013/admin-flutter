@@ -1,5 +1,6 @@
 import 'package:app_template/api/admin_api.dart';
 import 'package:app_template/common/message_util.dart';
+import 'package:app_template/component/form/enum.dart';
 import 'package:app_template/component/form/form_data.dart';
 import 'package:app_template/component/table/table_data.dart';
 import 'package:app_template/component/ui_edit.dart';
