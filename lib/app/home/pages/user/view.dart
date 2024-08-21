@@ -42,7 +42,7 @@ class UserPage extends StatelessWidget {
                         submit: (d) => {MessageUtil.show(d.toString())});
                   },
                   child: const Text("新增")),
-              ThemeUtil.rowWidth(),
+              ThemeUtil.width(),
             ],
           ),
         ),

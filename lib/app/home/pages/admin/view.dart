@@ -23,12 +23,12 @@ class AdminPage extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              ThemeUtil.rowWidth(),
+              ThemeUtil.width(),
               const Text(
                 "这个需要后端来预览",
                 style: TextStyle(fontSize: 18),
               ),
-              ThemeUtil.rowWidth(),
+              ThemeUtil.width(),
               FilledButton(
                   onPressed: () {
                     UrlUtil.openUrl(
@@ -41,7 +41,7 @@ class AdminPage extends StatelessWidget {
                     logic.add();
                   },
                   child: const Text("新增")),
-              ThemeUtil.rowWidth(),
+              ThemeUtil.width(),
             ],
           ),
         ),

@@ -99,7 +99,7 @@ class TableData {
                 ),
                 Visibility(
                     visible: enableEdit && enableRemove,
-                    child: ThemeUtil.rowWidth()),
+                    child: ThemeUtil.width()),
                 Visibility(
                   visible: enableRemove,
                   child: FilledButton(

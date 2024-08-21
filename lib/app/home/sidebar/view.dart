@@ -53,7 +53,6 @@ class SidebarPage extends StatelessWidget {
               SidebarLogic.selSidebarTree(item);
               return;
             }
-            SidebarLogic.selectName.value = item.name;
             SidebarLogic.selectPage = item.page;
             SidebarLogic.selSidebarTree(item);
             TabBarLogic.addPage(item);
@@ -72,7 +71,7 @@ class SidebarPage extends StatelessWidget {
                       item.icon,
                       color: UiTheme.getOnPrimary(selected),
                     ).toJump(logic.animName.value == item.name),
-                    ThemeUtil.rowWidth(),
+                    ThemeUtil.width(),
                     Text(
                       item.name,
                       style: TextStyle(color: UiTheme.getOnPrimary(selected)),
@@ -87,7 +86,7 @@ class SidebarPage extends StatelessWidget {
                         size: 28,
                       ).toRotate(logic.expansionTile.contains(item.name)),
                     ),
-                    ThemeUtil.rowWidth(),
+                    ThemeUtil.width(),
                   ],
                 ));
           }),

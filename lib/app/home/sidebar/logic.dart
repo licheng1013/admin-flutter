@@ -34,11 +34,15 @@ class SidebarLogic extends GetxController {
       children: testTree,
     ),
     UserPage.newThis(),
-    SettingsPage.newThis(),
     RichTextPage.newThis(),
+    SettingsPage.newThis(),
   ];
 
+
   static void selSidebarTree(SidebarTree sel){
+    if(breadcrumbList.isNotEmpty && breadcrumbList.last.name == sel.name){
+      return;
+    }
     breadcrumbList.clear();
     32.toDelay((){
       for(var item in treeList){

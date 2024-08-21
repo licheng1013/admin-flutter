@@ -41,13 +41,13 @@ class PaginationPage extends StatelessWidget {
           mainAxisAlignment: alignment,
           children: [
             //下拉选择器
-            ThemeUtil.rowWidth(),
+            ThemeUtil.width(),
             Obx(() {
               return Text("当前页 $current", style: const TextStyle(fontSize: 18));
             }),
-            ThemeUtil.rowWidth(),
+            ThemeUtil.width(),
             const Text("选择数量 ", style: TextStyle(fontSize: 18)),
-            ThemeUtil.rowWidth(),
+            ThemeUtil.width(),
             Obx(() {
               return DropdownButton(
                 items: [
@@ -69,7 +69,7 @@ class PaginationPage extends StatelessWidget {
               );
             }),
 
-            ThemeUtil.rowWidth(),
+            ThemeUtil.width(),
             Obx(() {
               return SizedBox(
                 width: 75,
@@ -81,7 +81,7 @@ class PaginationPage extends StatelessWidget {
                 ),
               );
             }),
-            ThemeUtil.rowWidth(),
+            ThemeUtil.width(),
             FilledButton(
                 // 禁用
                 onPressed: () {
@@ -93,7 +93,7 @@ class PaginationPage extends StatelessWidget {
                   refresh();
                 },
                 child: const Text("上一页")),
-            ThemeUtil.rowWidth(),
+            ThemeUtil.width(),
             FilledButton(
                 onPressed: () {
                   if (current.value == totalPage.value) {
@@ -104,7 +104,7 @@ class PaginationPage extends StatelessWidget {
                   refresh();
                 },
                 child: const Text("下一页")),
-            ThemeUtil.rowWidth(),
+            ThemeUtil.width(),
           ],
         ),
       ),

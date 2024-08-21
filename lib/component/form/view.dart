@@ -23,7 +23,7 @@ class FormPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        ThemeUtil.rowHeight(),
+        ThemeUtil.height(),
          Align(
             alignment: Alignment.centerLeft,
             child: Padding(
@@ -33,9 +33,9 @@ class FormPage extends StatelessWidget {
                 style: const TextStyle(fontSize: 24),
               ),
             )),
-        ThemeUtil.rowHeight(),
+        ThemeUtil.height(),
         for (var column in form.columns) _column(form, column),
-        ThemeUtil.rowHeight(),
+        ThemeUtil.height(),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Row(
@@ -44,14 +44,14 @@ class FormPage extends StatelessWidget {
               "返回".toBtn(onTap: (){
                 back?.call();
               }),
-              ThemeUtil.rowWidth(),
+              ThemeUtil.width(),
               "提交".toBtn(onTap: (){
                     submit?.call(form.data);
               })
             ],
           ),
         ),
-        ThemeUtil.rowHeight()
+        ThemeUtil.height()
       ],
     );
   }

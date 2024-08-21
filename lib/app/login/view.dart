@@ -1,4 +1,5 @@
 import 'package:app_template/theme/theme_util.dart';
+import 'package:app_template/theme/ui_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -16,19 +17,19 @@ class LoginPage extends StatelessWidget {
         child: SizedBox(
           width: 300,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ThemeUtil.rowHeight(height: 200),
               const Text(
                 'Admin Flutter',
                 style: TextStyle(fontSize: 32),
               ),
-              ThemeUtil.rowHeight(height: 18),
+              ThemeUtil.height(height: 18),
               textInput(logic.accountText,
                   hintText: '请输入账号', labelText: '账号'),
-              ThemeUtil.rowHeight(),
+              ThemeUtil.height(),
               textInput(logic.passwordText,
                   hintText: '请输入密码', labelText: '密码', password: true),
-              ThemeUtil.rowHeight(),
+              ThemeUtil.height(),
               InkWell(
                 onTap: () {
                   logic.login();
@@ -37,11 +38,11 @@ class LoginPage extends StatelessWidget {
                   width: double.infinity,
                   height: 50,
                   decoration: ThemeUtil.boxDecoration(
-                      color: const Color.fromARGB(255, 33, 121, 252)),
-                  child: const Center(
+                      color: UiTheme.primary()),
+                  child:  Center(
                       child: Text(
                     '登入',
-                    style: TextStyle(color: Colors.white, fontSize: 16),
+                    style: TextStyle(color: UiTheme.onPrimary(), fontSize: 16),
                   )),
                 ),
               )
@@ -64,10 +65,10 @@ class LoginPage extends StatelessWidget {
         // 占位符
         hintText: hintText,
         // 激活时的边框样式
-        focusedBorder: const OutlineInputBorder(
+        focusedBorder:  OutlineInputBorder(
           borderSide: BorderSide(
             width: 2,
-            color: Color.fromARGB(255, 33, 121, 252),
+            color: UiTheme.primary(),
           ),
         ),
       ),

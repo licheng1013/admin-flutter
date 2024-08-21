@@ -32,7 +32,7 @@ class HeadPage extends StatelessWidget {
           height: 60,
           child: Row(
             children: [
-              ThemeUtil.rowWidth(),
+              ThemeUtil.width(),
               InkWell(
                   onTap: () {
                     SidebarLogic.isExpanded.value =
@@ -40,34 +40,19 @@ class HeadPage extends StatelessWidget {
                     SidebarLogic.isExpandedAnim.value = false;
                   },
                   child: const Icon(Icons.menu)),
-              ThemeUtil.rowWidth(),
+              ThemeUtil.width(),
               _breadcrumb(),
               const Spacer(),
-              FilledButton(
-                  onPressed: () {
-                    UrlUtil.openUrl("https://flutterweb-wasm.web.app/");
-                  },
-                  child: const Text("Wasm")),
-              ThemeUtil.rowWidth(),
-              FilledButton(
-                  onPressed: () {
-                    UrlUtil.openUrl(
-                        "https://github.com/licheng1013/admin-flutter");
-                  },
-                  child: const Text("Star")),
-              ThemeUtil.rowWidth(),
               InkWell(
-                borderRadius: BorderRadius.circular(18),
+                borderRadius: BorderRadius.circular(32),
                 onTap: () {
                   logic.clickHeadImage();
                 },
-                child: const ClipOval(
+                child: ClipOval(
                   // 圆形头像
-                    child: FlutterLogo(
-                      size: 36,
-                    )),
+                    child: Image.asset("assets/images/cat.jpeg",height: 42,width: 42,)),
               ),
-              ThemeUtil.rowWidth(),
+              ThemeUtil.width(),
             ],
           ),
         ),

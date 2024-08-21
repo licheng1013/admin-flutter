@@ -75,7 +75,7 @@ class SettingsPage extends StatelessWidget {
                   "创建水印".toBtn(onTap: (){
                     waterMark.value = true;
                   }),
-                  ThemeUtil.rowWidth(),
+                  ThemeUtil.width(),
                   "移除水印".toOutlineBtn(onTap: (){
                     waterMark.value = false;
                   }),
