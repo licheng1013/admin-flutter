@@ -1,9 +1,7 @@
 import 'package:app_template/component/form/form_data.dart';
 import 'package:get/get.dart';
 
-
 class UserLogic extends GetxController {
-
   var list = <Map<String, dynamic>>[].obs;
   var total = 200;
 
@@ -29,7 +27,7 @@ class UserLogic extends GetxController {
   }
 
   var form = FormDto(labelWidth: 80, columns: [
-    FormColumnDto(label: "账号", key: "username"),
+    FormColumnDto(label: "账号", key: "username", placeholder: "请输入账号"),
     FormColumnDto(
         placeholder: "请输入密码",
         label: "密码",
@@ -42,8 +40,15 @@ class UserLogic extends GetxController {
         type: FormColumnEnum.number,
         maxLength: 11),
     FormColumnDto(label: "地址", key: "address", placeholder: "请输入地址"),
-    FormColumnDto(label: "金币", key: "number", type: FormColumnEnum.float),
     FormColumnDto(
-        label: "创建时间", key: "createTime", type: FormColumnEnum.datetime),
+        label: "金币",
+        key: "number",
+        type: FormColumnEnum.float,
+        placeholder: "请输入金币"),
+    FormColumnDto(
+        placeholder: "请选择时间",
+        label: "创建时间",
+        key: "createTime",
+        type: FormColumnEnum.datetime),
   ]);
 }
