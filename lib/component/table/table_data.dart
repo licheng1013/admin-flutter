@@ -19,6 +19,9 @@ class TableData {
   /// 单元格高度
   final double cellHeight;
 
+  /// 是否开启边框
+  final bool isBorder;
+
   /// 开启索引栏
   final bool isIndex;
 
@@ -30,6 +33,7 @@ class TableData {
       required this.rows,
       this.headerHeight = 50,
       this.isZebra = true,
+        this.isBorder = false,
       this.cellHeight = 50,
       this.isIndex = false});
 
@@ -140,16 +144,24 @@ class ColumnData {
 
   /// value 实际显示的值， data 当前行的数据， index 当前行的索引 table 当前表格的数据
   final Widget Function(
-      dynamic value, Map<String, dynamic> data, int index, TableData)? render;
+      dynamic value, Map<String, dynamic> data, int index, TableData) render;
 
   /// 标题渲染函数
-  final Widget Function(String, TableData)? titleRender;
+  final Widget Function(String, TableData) titleRender;
 
   ColumnData(
       {required this.title,
       required this.key,
       this.width = 0,
-      this.render,
-      this.titleRender,
+      this.render = defaultRender,
+      this.titleRender = defaultTitleRender,
       this.alignment = Alignment.center});
+
+  static Widget defaultRender(dynamic value, Map<String, dynamic> data, int index, TableData tableData){
+    return Text("$value");
+  }
+
+  static Widget defaultTitleRender(String title, TableData table){
+    return Text(title,    style: const TextStyle(fontSize: 18),);
+  }
 }

@@ -33,7 +33,7 @@ class TablePage extends StatelessWidget {
           strokeWidth: 3.0,
           // 调整大小
           backgroundColor: UiTheme.onPrimary(),
-          valueColor:  AlwaysStoppedAnimation(UiTheme.primary()),
+          valueColor: AlwaysStoppedAnimation(UiTheme.primary()),
         ),
       ),
     );
@@ -51,7 +51,8 @@ class TablePage extends StatelessWidget {
   Widget _data() {
     return ListView(children: tableData.rows.toWidgetsWithIndex((e, index) {
       var zebra = tableData.isZebra && index % 2 == 0;
-      var color = zebra ? UiTheme.background() : UiTheme.primary().withAlpha(75);
+      var color =
+          zebra ? UiTheme.background() : UiTheme.primary().withAlpha(50);
       return Container(
         color: color,
         height: tableData.cellHeight,
@@ -64,31 +65,35 @@ class TablePage extends StatelessWidget {
   Widget _buildData(ColumnData column, int i) {
     var body = Align(
       alignment: column.alignment,
-      child: column.render == null
-          ? Text(tableData.rows[i][column.key].toString())
-          : column.render!(
-              tableData.rows[i][column.key], tableData.rows[i], i, tableData),
+      child: column.render(
+          tableData.rows[i][column.key], tableData.rows[i], i, tableData),
     );
-    if (column.width != 0) {
-      return SizedBox(width: column.width, child: body);
-    }
-    return Expanded(child: body);
+    return column.width == 0
+        ? Expanded(child: _bodyView(double.infinity, body))
+        : _bodyView(column.width, body);
+  }
+
+  Widget _bodyView(double width, Widget child) {
+    return Container(
+      // 边框线
+      decoration: tableData.isBorder
+          ? BoxDecoration(
+              border: Border.all(color: UiTheme.primary(), width: 0.3),
+            )
+          : null,
+      width: width,
+      child: child,
+    );
   }
 
   Widget _buildTitle(ColumnData item, TableData table) {
     var body = Align(
       alignment: item.alignment,
-      child: item.titleRender == null
-          ? Text(
-              item.title,
-              style: const TextStyle(fontSize: 18),
-            )
-          : item.titleRender!(item.title, table),
+      child: item.titleRender(item.title, table),
     );
-    if (item.width != 0) {
-      return SizedBox(width: item.width, child: body);
-    }
-    return Expanded(child: body);
+    return item.width == 0
+        ? Expanded(child: _bodyView(double.infinity, body))
+        : _bodyView(item.width, body);
   }
 
   // 表头
