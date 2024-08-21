@@ -2,6 +2,7 @@ import 'dart:typed_data';
 
 import 'package:app_template/common/assets_util.dart';
 import 'package:app_template/common/http_util.dart';
+import 'package:app_template/common/image_util.dart';
 import 'package:app_template/common/message_util.dart';
 import 'package:file_selector/file_selector.dart';
 import 'package:flutter/cupertino.dart';
@@ -17,7 +18,7 @@ class UploadLogic extends GetxController {
   int limit = 1;
 
   void selectFile() async {
-    var list = await AssetsUtil.selectFile(type: type);
+    var list = await ImageUtil.selectFile(type: type);
     var bySum = 0;
     if (list.isNotEmpty) {
       for (var el in list) {

@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:file_selector/file_selector.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -12,6 +13,13 @@ class ImageUtil {
       return image.path;
     }
     return "";
+  }
+
+  static Future<List<XFile>> selectFile({XTypeGroup? type}) async {
+    if (type == null) {
+      return await openFiles(acceptedTypeGroups: <XTypeGroup>[]);
+    }
+    return await openFiles(acceptedTypeGroups: <XTypeGroup>[type]);
   }
 
   static Image imageByPath(String path, {final BoxFit? fit}) {

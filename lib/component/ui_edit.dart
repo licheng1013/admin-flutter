@@ -32,7 +32,7 @@ class UiEdit {
           height: 100,
         ),
       ],
-    ).animate().fadeIn());
+    )  .animate().fade());
   }
 
   static void confirm(

@@ -1,5 +1,7 @@
 import 'package:app_template/common/assets_util.dart';
+import 'package:app_template/common/image_util.dart';
 import 'package:app_template/theme/theme_util.dart';
+import 'package:app_template/theme/ui_theme.dart';
 import 'package:file_selector/file_selector.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -43,12 +45,11 @@ class UploadPage extends StatelessWidget {
           child: Container(
               height: double.infinity,
               width: double.infinity,
-              // 黑色边框
+              padding: const EdgeInsets.all(1),
               decoration: BoxDecoration(
-                  color: Colors.blue,
-                  border: Border.all(color: Colors.grey, width: 1),
+                  border: Border.all(color:UiTheme.onPrimary(), width: 1),
                   borderRadius: BorderRadius.circular(6)),
-              child: AssetsUtil.imageByPath(
+              child: ImageUtil.imageByPath(
                 logic.imageList[index],
                 fit: BoxFit.fill,
               )),
@@ -56,16 +57,16 @@ class UploadPage extends StatelessWidget {
         Center(
             child: Container(
               // 圆形背景
-              decoration: ThemeUtil.boxDecoration(border: Colors.grey,radius: 36),
+              decoration: ThemeUtil.boxDecoration(color: UiTheme.onPrimary(),radius: 36),
               child: Tooltip(
                 message: "删除",
                 child: IconButton(
                     onPressed: () {
                       logic.imageList.removeAt(index);
                     },
-                    icon: const Icon(
+                    icon:  Icon(
                       Icons.delete_outline,
-                      color: Colors.white,
+                      color: UiTheme.primary(),
                     )),
               ),
             ))
@@ -79,16 +80,16 @@ class UploadPage extends StatelessWidget {
       child: Container(
         // 黑色边框
         decoration: BoxDecoration(
-            border: Border.all(color: Colors.grey, width: 1),
+            border: Border.all(color: UiTheme.onPrimary(), width: 1),
             borderRadius: BorderRadius.circular(6)),
         child: Center(
             child: IconButton(
                 onPressed: () {
                   logic.selectFile();
                 },
-                icon: const Icon(
+                icon:  Icon(
                   Icons.add_outlined,
-                  color: Colors.grey,
+                  color: UiTheme.primary(),
                 ))),
       ),
     );
