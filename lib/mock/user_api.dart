@@ -44,13 +44,20 @@ class UserApi {
   void update(HttpRequest request) async {
   }
 
-  void insert(HttpRequest request) async {}
+  void insert(HttpRequest request) async {
+    var content = await utf8.decoder.bind(request).join();
+    var data = jsonDecode(content) as Map<String, dynamic>;
+    var user = User.fromJson(data);
+    user.id = db.last.id ++;
+    db.add(user);
+    warpResult(request,Result.ok());
+  }
 
   void delete(HttpRequest request) async {
     // 获取请求体的json
     var content = await utf8.decoder.bind(request).join();
     var data = jsonDecode(content) as Map<String, dynamic>;
-    var id = int.parse(data["id"].toString() ?? "0");
+    var id = int.tryParse(data["id"].toString()) ?? 0;
     if (id == 0) {
       warpResult(request,Result.fail("id为空"));
       return;

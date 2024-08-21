@@ -103,5 +103,6 @@ class AdminLogic extends GetxController {
                 Get.back();
               })
             });
+
   }
 }
