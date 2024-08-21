@@ -27,7 +27,7 @@ class UserApi {
           password: password,
           salt: salt,
           nickName: nickName,
-          createTime: DateTime.now().toString()));
+          createTime: DateTime.now().toIso8601String()));
     }
   }
 
@@ -42,6 +42,17 @@ class UserApi {
   }
 
   void update(HttpRequest request) async {
+    var content = await utf8.decoder.bind(request).join();
+    var data = jsonDecode(content) as Map<String, dynamic>;
+    var id = int.tryParse(data["id"].toString()) ?? 0;
+    var index = db.indexWhere((element) => element.id == id);
+    if (index == -1) {
+      warpResult(request,Result.fail("id不存在"));
+      return;
+    }
+    var user = User.fromJson(data);
+    db[index] = user;
+    warpResult(request,Result.ok());
   }
 
   void insert(HttpRequest request) async {

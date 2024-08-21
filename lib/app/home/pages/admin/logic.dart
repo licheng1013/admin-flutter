@@ -55,7 +55,13 @@ class AdminLogic extends GetxController {
             submit: (data) => {
                   UserApi.userUpdate(params: data).then((value) {
                     MessageUtil.show("更新成功!");
-                    find(size, page);
+                    var index = list.indexWhere((e) {
+                      return e["id"] == d["id"];
+                    });
+                    if (index != -1) {
+                      list.removeAt(index);
+                      list.insert(index, data);
+                    }
                     Get.back();
                   })
                 });
