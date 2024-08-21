@@ -7,6 +7,10 @@
 - 本项目是一个Flutter Admin项目
 - 示例: [licheng1013.github.io/admin-flutter/](https://licheng1013.github.io/admin-flutter/)
 
+## 增删改查
+
+- 示例已完成。 🆗
+
 ## 功能图
 
 - 完成: 🆗 , 未开始: ❌ , 进行中: 🚧
