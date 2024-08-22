@@ -64,4 +64,21 @@ class UiTheme {
   static getOnPrimary(bool selected) {
     return selected ? onPrimary() : onBackground();
   }
+
+  static Widget loading() {
+    return Center(
+      child:
+      // 进度条
+      SizedBox(
+        width: 100,
+        height: 100,
+        child: CircularProgressIndicator(
+          strokeWidth: 3.0,
+          // 调整大小
+          backgroundColor: UiTheme.onPrimary(),
+          valueColor: AlwaysStoppedAnimation(UiTheme.primary()),
+        ),
+      ),
+    );
+  }
 }

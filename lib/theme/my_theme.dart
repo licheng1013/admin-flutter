@@ -18,6 +18,9 @@ abstract class MyTheme {
           labelColor: onBackground(),
           indicatorColor: primary(),
       ),
+      scrollbarTheme: ScrollbarThemeData(
+        thumbColor: WidgetStateProperty.all(primary()),
+      ),
       colorScheme: ColorScheme.fromSeed(
         brightness: brightness(),
         seedColor: primary(),

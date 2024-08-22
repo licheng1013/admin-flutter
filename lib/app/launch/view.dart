@@ -1,3 +1,4 @@
+import 'package:admin_flutter/theme/ui_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,16 +11,8 @@ class LaunchPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            FlutterLogo(size: 100,),
-            Text("启动闪屏")
-          ],
-        ),
-      ),
+    return  Scaffold(
+      body: UiTheme.loading(),
     );
   }
 }

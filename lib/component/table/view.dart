@@ -22,28 +22,13 @@ class TablePage extends StatelessWidget {
     return _body();
   }
 
-  Widget _loading() {
-    return Center(
-      child:
-          // 进度条
-          SizedBox(
-        width: 100,
-        height: 100,
-        child: CircularProgressIndicator(
-          strokeWidth: 3.0,
-          // 调整大小
-          backgroundColor: UiTheme.onPrimary(),
-          valueColor: AlwaysStoppedAnimation(UiTheme.primary()),
-        ),
-      ),
-    );
-  }
+
 
   Widget _body() {
     return Column(
       children: [
         _table(tableData),
-        Expanded(child: loading ? _loading() : _data())
+        Expanded(child: loading ? UiTheme.loading() : _data())
       ],
     );
   }
