@@ -128,6 +128,7 @@ class TabBarLogic extends GetxController with GetTickerProviderStateMixin {
           var index = i == 0 ? 0 : tabController!.index - 1;
           tabController = TabController(
               length: tabList.length, vsync: this, initialIndex: index);
+          SidebarLogic.selectName.value = tabList[index].name;
         } else {
           tabController = null;
         }
@@ -136,6 +137,7 @@ class TabBarLogic extends GetxController with GetTickerProviderStateMixin {
         tabList.clear();
         tabController?.dispose();
         tabController = null;
+        SidebarLogic.selectName.value = "";
         break;
       case CloseMenu.closeOther:
         var temp = tabList[i];
