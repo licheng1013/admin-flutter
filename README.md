@@ -7,6 +7,12 @@
 - 本项目是一个Flutter Admin项目
 - 示例: [licheng1013.github.io/admin-flutter/](https://licheng1013.github.io/admin-flutter/)
 
+## 推荐
+
+- flutter开发插件推荐
+- 增强包裹器功能
+- https://plugins.jetbrains.com/plugin/24537-flutter-kit/
+
 ## 增删改查
 
 - 示例已完成。 🆗
