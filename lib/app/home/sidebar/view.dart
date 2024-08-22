@@ -105,7 +105,7 @@ class SidebarPage extends StatelessWidget {
               visible: logic.expansionTile.contains(item.name),
               child: Column(
                 children: item.children.map((e) => _text(e,left: 24)).toList(),
-              ).  toAccordion(true)
+              )
           );
         })
       ],
