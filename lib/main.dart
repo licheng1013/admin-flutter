@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
         //1.调用BotToastInit
         navigatorObservers: [BotToastNavigatorObserver()],
         //2.注册路由观察者
-        title: 'Flutter Demo',
+        title: 'Flutter Admin',
         debugShowCheckedModeBanner: false,
         localizationsDelegates: const [
           GlobalMaterialLocalizations.delegate,
