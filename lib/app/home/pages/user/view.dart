@@ -1,9 +1,9 @@
+
 import 'package:app_template/app/home/sidebar/logic.dart';
-import 'package:app_template/common/message_util.dart';
 import 'package:app_template/component/pagination/view.dart';
 import 'package:app_template/component/table/table_data.dart';
 import 'package:app_template/component/table/view.dart';
-import 'package:app_template/component/ui_edit.dart';
+import 'package:app_template/ex/ex_btn.dart';
 import 'package:app_template/theme/theme_util.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -19,13 +19,15 @@ class UserPage extends StatelessWidget {
   Widget build(BuildContext context) {
     var columns = [
       TableData.multipleSelect(
-          selectList: (e) => {MessageUtil.show("选择了: ${e.length} 个")}),
-      TableData.index(),
+          selectList: (e)  {
+            logic.selList.value = e;
+          }),
+      ColumnData(title: "Id", key: "id"),
       ColumnData(title: "姓名", key: "name"),
       ColumnData(title: "年龄", key: "age"),
       ColumnData(title: "性别", key: "sex"),
       ColumnData(title: "手机", key: "tel"),
-      TableData.edit()
+      TableData.edit(delete: logic.delete, edit: logic.updateData),
     ];
 
     return Column(
@@ -35,13 +37,9 @@ class UserPage extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              FilledButton(
-                  onPressed: () {
-                    logic.form.title = "新增";
-                    UiEdit.requestForm(logic.form,
-                        submit: (d) => {MessageUtil.show(d.toString())});
-                  },
-                  child: const Text("新增")),
+              "多选删除".toBtn(onTap: logic.deleteSel),
+              ThemeUtil.width(),
+              "新增".toBtn(onTap: logic.add),
               ThemeUtil.width(),
             ],
           ),
@@ -50,16 +48,20 @@ class UserPage extends StatelessWidget {
           child: Obx(() {
             return TablePage(
               tableData: TableData(
-                  isIndex: true, columns: columns, rows: logic.list.value),
+                  isIndex: true, columns: columns, rows: logic.list.toList()),
             );
           }),
         ),
-        PaginationPage(
-          total: logic.total,
-          changed: (size, page) {
-            logic.find(size, page);
-          },
-        )
+        Obx(() {
+          return PaginationPage(
+            total: logic.total.value,
+            changed: (size, page) {
+              logic.size = size;
+              logic.page = page;
+              logic.find();
+            },
+          );
+        })
       ],
     );
   }

@@ -33,66 +33,61 @@ class PaginationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var style = const TextStyle(fontSize: 18);
-    return Card(
-      borderOnForeground: true,
-      color: UiTheme.background(),
-      shadowColor: UiTheme.primary(),
-      child: SizedBox(
-        height: 50,
-        child: Row(
-          mainAxisAlignment: alignment,
-          children: [
-            //下拉选择器
-            ThemeUtil.width(),
-            Text("共 ${logic.total} 条", style: style),
-            ThemeUtil.width(),
-            Obx(() {
-              return Text("当前页 ${logic.current}", style: style);
-            }),
-            ThemeUtil.width(),
-            Text("选择数量 ", style: style),
-            ThemeUtil.width(),
-            Obx(() {
-              return DropdownButton(
-                focusColor: UiTheme.background(),
-                items: [
-                  for (int i = 0; i < sizeList.length; i++)
-                    DropdownMenuItem(
-                        value: sizeList[i],
-                        child: Center(child: Text("${sizeList[i]}"))),
-                ],
-                onChanged: (value) {
-                  logic.size.value = value as int;
-                  logic.current.value = 1;
-                  logic.reload();
-                },
-                value: logic.size.value,
-                // 设置颜色
-                style: style.copyWith(color: UiTheme.onBackground()),
-                underline: Container(),
-                // 设置宽度
-              );
-            }),
+    return SizedBox(
+      height: 48,
+      child: Row(
+        mainAxisAlignment: alignment,
+        children: [
+          //下拉选择器
+          ThemeUtil.width(),
+          Text("共 ${logic.total} 条", style: style),
+          ThemeUtil.width(),
+          Obx(() {
+            return Text("当前页 ${logic.current}", style: style);
+          }),
+          ThemeUtil.width(),
+          Text("选择数量 ", style: style),
+          ThemeUtil.width(),
+          Obx(() {
+            return DropdownButton(
+              focusColor: UiTheme.background(),
+              items: [
+                for (int i = 0; i < sizeList.length; i++)
+                  DropdownMenuItem(
+                      value: sizeList[i],
+                      child: Center(child: Text("${sizeList[i]}"))),
+              ],
+              onChanged: (value) {
+                logic.size.value = value as int;
+                logic.current.value = 1;
+                logic.reload();
+              },
+              value: logic.size.value,
+              // 设置颜色
+              style: style.copyWith(color: UiTheme.onBackground()),
+              underline: Container(),
+              // 设置宽度
+            );
+          }),
 
-            ThemeUtil.width(),
-            Obx(() {
-              return SizedBox(
-                width: 75,
-                child: Center(
-                  child: Text("总 ${logic.totalPage.value} 页", style: style),
-                ),
-              );
-            }),
-            ThemeUtil.width(),
-            "上一页".toBtn(
-              // 禁用
-              onTap: logic.prev,
-            ),
-            ThemeUtil.width(),
-            "下一页".toBtn(onTap: logic.next),
-            ThemeUtil.width(),
-          ],
-        ),
+          ThemeUtil.width(),
+          Obx(() {
+            return SizedBox(
+              width: 75,
+              child: Center(
+                child: Text("总 ${logic.totalPage.value} 页", style: style),
+              ),
+            );
+          }),
+          ThemeUtil.width(),
+          "上一页".toBtn(
+            // 禁用
+            onTap: logic.prev,
+          ),
+          ThemeUtil.width(),
+          "下一页".toBtn(onTap: logic.next),
+          ThemeUtil.width(),
+        ],
       ),
     );
   }
