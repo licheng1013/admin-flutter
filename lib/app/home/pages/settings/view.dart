@@ -1,15 +1,15 @@
-import 'package:app_template/app/home/head/view.dart';
-import 'package:app_template/app/home/sidebar/logic.dart';
-import 'package:app_template/common/app_data.dart';
-import 'package:app_template/component/form/view.dart';
-import 'package:app_template/ex/ex_btn.dart';
-import 'package:app_template/ex/ex_int.dart';
-import 'package:app_template/ex/ex_list.dart';
-import 'package:app_template/ex/ex_map.dart';
-import 'package:app_template/main.dart';
-import 'package:app_template/theme/my_theme.dart';
-import 'package:app_template/theme/theme_util.dart';
-import 'package:app_template/theme/ui_theme.dart';
+import 'package:admin_flutter/app/home/head/view.dart';
+import 'package:admin_flutter/app/home/sidebar/logic.dart';
+import 'package:admin_flutter/common/app_data.dart';
+import 'package:admin_flutter/component/form/view.dart';
+import 'package:admin_flutter/ex/ex_btn.dart';
+import 'package:admin_flutter/ex/ex_int.dart';
+import 'package:admin_flutter/ex/ex_list.dart';
+import 'package:admin_flutter/ex/ex_map.dart';
+import 'package:admin_flutter/main.dart';
+import 'package:admin_flutter/theme/my_theme.dart';
+import 'package:admin_flutter/theme/theme_util.dart';
+import 'package:admin_flutter/theme/ui_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

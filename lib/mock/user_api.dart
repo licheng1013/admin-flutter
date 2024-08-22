@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
 
-import 'package:app_template/mock/result.dart';
-import 'package:app_template/mock/user.dart';
+import 'package:admin_flutter/mock/result.dart';
+import 'package:admin_flutter/mock/user.dart';
 
 import 'main.dart';
 

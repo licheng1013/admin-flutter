@@ -1,5 +1,5 @@
-import 'package:app_template/ex/ex_string.dart';
-import 'package:app_template/theme/my_theme.dart';
+import 'package:admin_flutter/ex/ex_string.dart';
+import 'package:admin_flutter/theme/my_theme.dart';
 import 'package:flutter/material.dart';
 
 abstract class MyDark extends MyTheme{

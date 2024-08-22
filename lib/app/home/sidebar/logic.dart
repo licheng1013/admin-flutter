@@ -1,14 +1,14 @@
 import 'dart:math';
 
-import 'package:app_template/app/home/pages/about/view.dart';
-import 'package:app_template/app/home/pages/admin/view.dart';
-import 'package:app_template/app/home/pages/analysis/view.dart';
-import 'package:app_template/app/home/pages/rich_text/view.dart';
-import 'package:app_template/app/home/pages/settings/view.dart';
-import 'package:app_template/app/home/pages/user/view.dart';
-import 'package:app_template/common/assets_util.dart';
-import 'package:app_template/component/upload/view.dart';
-import 'package:app_template/ex/ex_int.dart';
+import 'package:admin_flutter/app/home/pages/about/view.dart';
+import 'package:admin_flutter/app/home/pages/admin/view.dart';
+import 'package:admin_flutter/app/home/pages/analysis/view.dart';
+import 'package:admin_flutter/app/home/pages/rich_text/view.dart';
+import 'package:admin_flutter/app/home/pages/settings/view.dart';
+import 'package:admin_flutter/app/home/pages/user/view.dart';
+import 'package:admin_flutter/common/assets_util.dart';
+import 'package:admin_flutter/component/upload/view.dart';
+import 'package:admin_flutter/ex/ex_int.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

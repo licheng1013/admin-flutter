@@ -1,7 +1,7 @@
-import 'package:app_template/common/assets_util.dart';
-import 'package:app_template/common/image_util.dart';
-import 'package:app_template/theme/theme_util.dart';
-import 'package:app_template/theme/ui_theme.dart';
+import 'package:admin_flutter/common/assets_util.dart';
+import 'package:admin_flutter/common/image_util.dart';
+import 'package:admin_flutter/theme/theme_util.dart';
+import 'package:admin_flutter/theme/ui_theme.dart';
 import 'package:file_selector/file_selector.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

@@ -1,5 +1,5 @@
-import 'package:app_template/app/home/sidebar/logic.dart';
-import 'package:app_template/theme/ui_theme.dart';
+import 'package:admin_flutter/app/home/sidebar/logic.dart';
+import 'package:admin_flutter/theme/ui_theme.dart';
 import 'package:fleather/fleather.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

@@ -1,9 +1,9 @@
 import 'dart:typed_data';
 
-import 'package:app_template/common/assets_util.dart';
-import 'package:app_template/common/http_util.dart';
-import 'package:app_template/common/image_util.dart';
-import 'package:app_template/common/message_util.dart';
+import 'package:admin_flutter/common/assets_util.dart';
+import 'package:admin_flutter/common/http_util.dart';
+import 'package:admin_flutter/common/image_util.dart';
+import 'package:admin_flutter/common/message_util.dart';
 import 'package:file_selector/file_selector.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';

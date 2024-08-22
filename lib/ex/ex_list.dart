@@ -1,4 +1,4 @@
-import 'package:app_template/theme/ui_theme.dart';
+import 'package:admin_flutter/theme/ui_theme.dart';
 import 'package:flutter/cupertino.dart';
 
 extension ExList<T> on List<T> {

@@ -1,10 +1,10 @@
-import 'package:app_template/app/home/head/logic.dart';
-import 'package:app_template/app/home/pages/settings/view.dart';
-import 'package:app_template/common/message_util.dart';
-import 'package:app_template/ex/ex_btn.dart';
-import 'package:app_template/ex/ex_int.dart';
-import 'package:app_template/theme/theme_util.dart';
-import 'package:app_template/theme/ui_theme.dart';
+import 'package:admin_flutter/app/home/head/logic.dart';
+import 'package:admin_flutter/app/home/pages/settings/view.dart';
+import 'package:admin_flutter/common/message_util.dart';
+import 'package:admin_flutter/ex/ex_btn.dart';
+import 'package:admin_flutter/ex/ex_int.dart';
+import 'package:admin_flutter/theme/theme_util.dart';
+import 'package:admin_flutter/theme/ui_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

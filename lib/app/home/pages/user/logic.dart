@@ -1,10 +1,10 @@
 import 'dart:convert';
 import 'dart:math';
 
-import 'package:app_template/common/message_util.dart';
-import 'package:app_template/component/form/enum.dart';
-import 'package:app_template/component/form/form_data.dart';
-import 'package:app_template/component/ui_edit.dart';
+import 'package:admin_flutter/common/message_util.dart';
+import 'package:admin_flutter/component/form/enum.dart';
+import 'package:admin_flutter/component/form/form_data.dart';
+import 'package:admin_flutter/component/ui_edit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 

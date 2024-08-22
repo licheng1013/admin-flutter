@@ -1,10 +1,10 @@
 
-import 'package:app_template/app/home/sidebar/logic.dart';
-import 'package:app_template/component/pagination/view.dart';
-import 'package:app_template/component/table/table_data.dart';
-import 'package:app_template/component/table/view.dart';
-import 'package:app_template/ex/ex_btn.dart';
-import 'package:app_template/theme/theme_util.dart';
+import 'package:admin_flutter/app/home/sidebar/logic.dart';
+import 'package:admin_flutter/component/pagination/view.dart';
+import 'package:admin_flutter/component/table/table_data.dart';
+import 'package:admin_flutter/component/table/view.dart';
+import 'package:admin_flutter/ex/ex_btn.dart';
+import 'package:admin_flutter/theme/theme_util.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

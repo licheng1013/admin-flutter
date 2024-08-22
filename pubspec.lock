@@ -494,7 +494,7 @@ packages:
     source: hosted
     version: "1.0.5"
   msix:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: msix
       sha256: c50d6bd1aafe0d071a3c1e5a5ccb056404502935cb0a549e3178c4aae16caf33

@@ -1,13 +1,12 @@
-import 'package:app_template/app/home/head/view.dart';
-import 'package:app_template/app/home/pages/settings/view.dart';
-import 'package:app_template/app/login/view.dart';
-import 'package:app_template/common/app_data.dart';
-import 'package:app_template/common/message_util.dart';
-import 'package:app_template/common/url_util.dart';
-import 'package:app_template/ex/ex_anim.dart';
-import 'package:app_template/ex/ex_btn.dart';
-import 'package:app_template/theme/theme_util.dart';
-import 'package:app_template/theme/ui_theme.dart';
+import 'package:admin_flutter/app/home/head/view.dart';
+import 'package:admin_flutter/app/login/view.dart';
+import 'package:admin_flutter/common/app_data.dart';
+import 'package:admin_flutter/common/message_util.dart';
+import 'package:admin_flutter/common/url_util.dart';
+import 'package:admin_flutter/ex/ex_anim.dart';
+import 'package:admin_flutter/ex/ex_btn.dart';
+import 'package:admin_flutter/theme/theme_util.dart';
+import 'package:admin_flutter/theme/ui_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
@@ -62,7 +61,7 @@ class HeadLogic extends GetxController {
           ThemeUtil.height(),
         ],
       ),
-    ).animate().scale(duration: 200.ms);
+    ).toFadeInWithMoveX(true);
   }
 
   Widget itemBtn(Icon icon, String text, Function() onTap) {

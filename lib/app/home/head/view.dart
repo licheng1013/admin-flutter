@@ -1,15 +1,8 @@
-import 'package:app_template/app/home/pages/user/view.dart';
-import 'package:app_template/app/home/sidebar/logic.dart';
-import 'package:app_template/app/home/sidebar/view.dart';
-import 'package:app_template/app/home/tab_bar/logic.dart';
-import 'package:app_template/app/home/tab_bar/view.dart';
-import 'package:app_template/common/assets_util.dart';
-import 'package:app_template/common/message_util.dart';
-import 'package:app_template/common/url_util.dart';
-import 'package:app_template/ex/ex_anim.dart';
-import 'package:app_template/ex/ex_list.dart';
-import 'package:app_template/theme/theme_util.dart';
-import 'package:app_template/theme/ui_theme.dart';
+import 'package:admin_flutter/app/home/sidebar/logic.dart';
+import 'package:admin_flutter/ex/ex_anim.dart';
+import 'package:admin_flutter/ex/ex_list.dart';
+import 'package:admin_flutter/theme/theme_util.dart';
+import 'package:admin_flutter/theme/ui_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

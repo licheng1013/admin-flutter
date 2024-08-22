@@ -1,5 +1,5 @@
-import 'package:app_template/app/home/view.dart';
-import 'package:app_template/common/app_data.dart';
+import 'package:admin_flutter/app/home/view.dart';
+import 'package:admin_flutter/common/app_data.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 

@@ -1,9 +1,9 @@
-import 'package:app_template/api/user_api.dart';
-import 'package:app_template/common/message_util.dart';
-import 'package:app_template/component/form/enum.dart';
-import 'package:app_template/component/form/form_data.dart';
-import 'package:app_template/component/table/table_data.dart';
-import 'package:app_template/component/ui_edit.dart';
+import 'package:admin_flutter/api/user_api.dart';
+import 'package:admin_flutter/common/message_util.dart';
+import 'package:admin_flutter/component/form/enum.dart';
+import 'package:admin_flutter/component/form/form_data.dart';
+import 'package:admin_flutter/component/table/table_data.dart';
+import 'package:admin_flutter/component/ui_edit.dart';
 import 'package:get/get.dart';
 
 

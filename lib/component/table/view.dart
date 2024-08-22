@@ -1,8 +1,8 @@
-import 'package:app_template/app/home/head/view.dart';
-import 'package:app_template/component/table/table_data.dart';
-import 'package:app_template/ex/ex_list.dart';
-import 'package:app_template/theme/theme_util.dart';
-import 'package:app_template/theme/ui_theme.dart';
+import 'package:admin_flutter/app/home/head/view.dart';
+import 'package:admin_flutter/component/table/table_data.dart';
+import 'package:admin_flutter/ex/ex_list.dart';
+import 'package:admin_flutter/theme/theme_util.dart';
+import 'package:admin_flutter/theme/ui_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

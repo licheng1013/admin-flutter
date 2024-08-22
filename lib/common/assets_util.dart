@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:app_template/common/image_util.dart';
+import 'package:admin_flutter/common/image_util.dart';
 import 'package:easy_image_viewer/easy_image_viewer.dart';
 import 'package:file_selector/file_selector.dart';
 import 'package:flutter/material.dart';

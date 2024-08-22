@@ -1,6 +1,6 @@
 
-import 'package:app_template/common/image_util.dart';
-import 'package:app_template/ex/ex_int.dart';
+import 'package:admin_flutter/common/image_util.dart';
+import 'package:admin_flutter/ex/ex_int.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 

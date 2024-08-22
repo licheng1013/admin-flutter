@@ -1,8 +1,8 @@
-import 'package:app_template/app/home/head/logic.dart';
-import 'package:app_template/component/form/form_data.dart';
-import 'package:app_template/component/form/view.dart';
-import 'package:app_template/ex/ex_anim.dart';
-import 'package:app_template/theme/ui_theme.dart';
+import 'package:admin_flutter/app/home/head/logic.dart';
+import 'package:admin_flutter/component/form/form_data.dart';
+import 'package:admin_flutter/component/form/view.dart';
+import 'package:admin_flutter/ex/ex_anim.dart';
+import 'package:admin_flutter/theme/ui_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';

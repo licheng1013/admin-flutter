@@ -1,4 +1,4 @@
-import 'package:app_template/common/message_util.dart';
+import 'package:admin_flutter/common/message_util.dart';
 import 'package:get/get.dart';
 
 

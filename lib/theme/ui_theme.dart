@@ -1,4 +1,4 @@
-import 'package:app_template/theme/theme_util.dart';
+import 'package:admin_flutter/theme/theme_util.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

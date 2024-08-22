@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:app_template/mock/user_api.dart';
+import 'package:admin_flutter/mock/user_api.dart';
 
 void main() async {
   var userApi = UserApi();

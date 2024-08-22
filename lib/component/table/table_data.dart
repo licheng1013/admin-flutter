@@ -1,5 +1,5 @@
-import 'package:app_template/component/ui_edit.dart';
-import 'package:app_template/theme/theme_util.dart';
+import 'package:admin_flutter/component/ui_edit.dart';
+import 'package:admin_flutter/theme/theme_util.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
