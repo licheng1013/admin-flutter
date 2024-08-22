@@ -60,7 +60,7 @@ class UserApi {
     var data = jsonDecode(content) as Map<String, dynamic>;
     var user = User.fromJson(data);
     user.id = db.last.id ++;
-    db.add(user);
+    db.insert(0,user);
     warpResult(request,Result.ok());
   }
 

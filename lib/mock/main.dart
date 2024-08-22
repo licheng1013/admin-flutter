@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:admin_flutter/mock/middleware/cors.dart';
 import 'package:admin_flutter/mock/user_api.dart';
 
 void main() async {
@@ -20,6 +21,9 @@ class WebServer {
     print('http://localhost:${server.port}');
     // 监听请求
     await for (var request in server) {
+      if(cors(request)) {
+        continue;
+      }
       // 根据请求的URI路径分发到不同的处理器
       final path = request.uri.path;
       //print("path:$path");
