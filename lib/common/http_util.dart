@@ -1,7 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:admin_flutter/common/app_data.dart';
-import 'package:admin_flutter/common/message_util.dart';
+import 'package:admin_flutter/ex/ex_hint.dart';
 import 'package:dio/dio.dart';
 
 class HttpUtil {
@@ -55,7 +55,7 @@ class HttpUtil {
       return data["data"];
     } else {
       if (showMsg) {
-        MessageUtil.show(data["msg"]);
+        data["msg"].toString().toHint();
       }
       return Future.error(data["msg"]);
     }

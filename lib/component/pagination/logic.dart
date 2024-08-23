@@ -1,4 +1,4 @@
-import 'package:admin_flutter/common/message_util.dart';
+import 'package:admin_flutter/ex/ex_hint.dart';
 import 'package:get/get.dart';
 
 
@@ -10,7 +10,7 @@ class PaginationLogic extends GetxController {
   Function(int size, int page) changed  = (size, page) {};
   void prev() {
     if (current.value == 1) {
-      MessageUtil.show("已经是第一页了");
+      "已经是第一页了".toHint();
       return;
     }
     current.value--;
@@ -19,7 +19,7 @@ class PaginationLogic extends GetxController {
 
   void next() {
     if (current.value == totalPage.value) {
-      MessageUtil.show("已经是最后一页了");
+      "已经是最后一页了".toHint();
       return;
     }
      current.value++;

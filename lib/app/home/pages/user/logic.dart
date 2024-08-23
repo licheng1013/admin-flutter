@@ -1,10 +1,11 @@
 import 'dart:convert';
 import 'dart:math';
 
-import 'package:admin_flutter/common/message_util.dart';
+import 'package:admin_flutter/common/http_util.dart';
 import 'package:admin_flutter/component/form/enum.dart';
 import 'package:admin_flutter/component/form/form_data.dart';
 import 'package:admin_flutter/component/ui_edit.dart';
+import 'package:admin_flutter/ex/ex_hint.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
@@ -69,7 +70,7 @@ class UserLogic extends GetxController {
           m["id"] = dbList.length * 2;
           dbList.insert(0, m);
           total.value = dbList.length;
-          MessageUtil.show("新增成功!");
+          "新增成功!".toHint();
           find();
           Get.back();
         });
@@ -87,7 +88,7 @@ class UserLogic extends GetxController {
             dbList[index] = data;
             find();
           }
-          MessageUtil.show("更新成功!");
+          "更新成功!".toHint();
           Get.back();
         });
   }
@@ -96,7 +97,7 @@ class UserLogic extends GetxController {
     dbList.remove(d);
     total.value = dbList.length;
     find();
-    MessageUtil.show("删除了: ${d["name"]}");
+    "删除了: ${d["name"]}".toHint();
   }
 
   void deleteSel() {
@@ -106,7 +107,7 @@ class UserLogic extends GetxController {
       }
       total.value = dbList.length;
       find();
-      MessageUtil.show("删除${selList.length}个数据成功!");
+      "删除${selList.length}个数据成功!".toHint();
       selList.clear();
     },content: const Text("正在进行删除操作！"));
   }

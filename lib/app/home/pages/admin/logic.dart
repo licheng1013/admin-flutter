@@ -1,9 +1,9 @@
 import 'package:admin_flutter/api/user_api.dart';
-import 'package:admin_flutter/common/message_util.dart';
 import 'package:admin_flutter/component/form/enum.dart';
 import 'package:admin_flutter/component/form/form_data.dart';
 import 'package:admin_flutter/component/table/table_data.dart';
 import 'package:admin_flutter/component/ui_edit.dart';
+import 'package:admin_flutter/ex/ex_hint.dart';
 import 'package:get/get.dart';
 
 
@@ -54,7 +54,7 @@ class AdminLogic extends GetxController {
         UiEdit.requestForm(form,
             submit: (data) => {
                   UserApi.userUpdate(params: data).then((value) {
-                    MessageUtil.show("更新成功!");
+                    "更新成功!".toHint();
                     var index = list.indexWhere((e) {
                       return e["id"] == d["id"];
                     });
@@ -104,7 +104,7 @@ class AdminLogic extends GetxController {
     UiEdit.requestForm(form,
         submit: (data) => {
               UserApi.userInsert(params: data).then((value) {
-                MessageUtil.show("插入成功!");
+                "插入成功!".toHint();
                 find(size, page);
                 Get.back();
               })

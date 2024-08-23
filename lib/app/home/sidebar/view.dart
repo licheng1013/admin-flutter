@@ -1,12 +1,9 @@
 import 'package:admin_flutter/app/home/tab_bar/logic.dart';
 import 'package:admin_flutter/ex/ex_anim.dart';
 import 'package:admin_flutter/ex/ex_list.dart';
-import 'package:admin_flutter/ex/ex_string.dart';
 import 'package:admin_flutter/theme/theme_util.dart';
 import 'package:admin_flutter/theme/ui_theme.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 import 'logic.dart';

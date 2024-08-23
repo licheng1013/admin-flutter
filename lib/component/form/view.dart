@@ -1,8 +1,8 @@
 import 'package:admin_flutter/app/home/head/view.dart';
-import 'package:admin_flutter/common/message_util.dart';
 import 'package:admin_flutter/common/time_util.dart';
 import 'package:admin_flutter/component/form/form_data.dart';
 import 'package:admin_flutter/ex/ex_btn.dart';
+import 'package:admin_flutter/ex/ex_hint.dart';
 import 'package:admin_flutter/ex/ex_list.dart';
 import 'package:admin_flutter/theme/theme_util.dart';
 import 'package:admin_flutter/theme/ui_theme.dart';
@@ -102,7 +102,7 @@ class FormPage extends StatelessWidget {
                                 // 打开时间选择器
                                 var time = await TimeUtil.showTime();
                                 if (time != null) {
-                                  MessageUtil.show(time.toString());
+                                  time.toString().toHint();
                                   form.data[column.key] = time.toString();
                                   text.text = time.toString();
                                 }

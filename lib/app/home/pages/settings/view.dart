@@ -1,7 +1,5 @@
-import 'package:admin_flutter/app/home/head/view.dart';
 import 'package:admin_flutter/app/home/sidebar/logic.dart';
 import 'package:admin_flutter/common/app_data.dart';
-import 'package:admin_flutter/component/form/view.dart';
 import 'package:admin_flutter/ex/ex_btn.dart';
 import 'package:admin_flutter/ex/ex_int.dart';
 import 'package:admin_flutter/ex/ex_list.dart';

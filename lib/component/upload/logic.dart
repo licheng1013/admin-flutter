@@ -1,9 +1,8 @@
 import 'dart:typed_data';
 
-import 'package:admin_flutter/common/assets_util.dart';
 import 'package:admin_flutter/common/http_util.dart';
 import 'package:admin_flutter/common/image_util.dart';
-import 'package:admin_flutter/common/message_util.dart';
+import 'package:admin_flutter/ex/ex_hint.dart';
 import 'package:file_selector/file_selector.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
@@ -23,7 +22,7 @@ class UploadLogic extends GetxController {
     if (list.isNotEmpty) {
       for (var el in list) {
         if (imageList.length >= limit) {
-          MessageUtil.show("超过最大上传数量");
+          "超过最大上传数量".toHint();
           break;
         }
         var byList = await el.readAsBytes();
