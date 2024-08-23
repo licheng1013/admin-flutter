@@ -18,8 +18,7 @@ class SidebarLogic extends GetxController {
   static Widget selectPage = const SizedBox(
     child: Text("空"),
   );
-  static var isExpanded = true.obs;
-  static var isExpandedAnim = true.obs;
+
   var animName = "".obs;
   var expansionTile = <String>[].obs;
 

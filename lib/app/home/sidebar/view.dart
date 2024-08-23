@@ -15,8 +15,9 @@ class SidebarPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: _default()) ;
+    return SizedBox(
+        //width: 230,
+        child: _default());
   }
 
   Widget _default() {
@@ -30,8 +31,7 @@ class SidebarPage extends StatelessWidget {
     );
   }
 
-
-  Widget _text(SidebarTree item,{double left = 12}) {
+  Widget _text(SidebarTree item, {double left = 12}) {
     return MouseRegion(
       // 鼠标悬停
       onEnter: (event) {
@@ -79,7 +79,7 @@ class SidebarPage extends StatelessWidget {
                     Visibility(
                       visible: item.children.isNotEmpty,
                       child: Icon(
-                         Icons.arrow_drop_up,
+                        Icons.arrow_drop_up,
                         color: UiTheme.getTextColor(selected),
                         size: 28,
                       ).toRotate(logic.expansionTile.contains(item.name)),
@@ -101,9 +101,8 @@ class SidebarPage extends StatelessWidget {
           return Visibility(
               visible: logic.expansionTile.contains(item.name),
               child: Column(
-                children: item.children.map((e) => _text(e,left: 24)).toList(),
-              )
-          );
+                children: item.children.map((e) => _text(e, left: 24)).toList(),
+              ));
         })
       ],
     );

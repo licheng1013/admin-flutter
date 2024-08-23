@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:admin_flutter/app/launch/view.dart';
 import 'package:admin_flutter/common/app_data.dart';
 import 'package:admin_flutter/component/messages.dart';
+import 'package:admin_flutter/state.dart';
 import 'package:admin_flutter/theme/dark_theme.dart';
 import 'package:admin_flutter/theme/my_theme.dart';
 import 'package:bot_toast/bot_toast.dart';
@@ -12,15 +13,6 @@ import 'package:get/get.dart';
 
 import 'theme/light_theme.dart';
 
-/// 全局状态
-/// 默认主题
-var theme = Light().theme();
-/// 多语言
-var message = Messages();
-/// 全局刷新解决主题色没有同时更新问题
-var appReload = false.obs;
-/// 启用水印
-var waterMark = false.obs;
 
 
 

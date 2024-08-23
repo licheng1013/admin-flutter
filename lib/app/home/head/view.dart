@@ -1,6 +1,7 @@
 import 'package:admin_flutter/app/home/sidebar/logic.dart';
 import 'package:admin_flutter/ex/ex_anim.dart';
 import 'package:admin_flutter/ex/ex_list.dart';
+import 'package:admin_flutter/state.dart';
 import 'package:admin_flutter/theme/theme_util.dart';
 import 'package:admin_flutter/theme/ui_theme.dart';
 import 'package:flutter/material.dart';
@@ -28,9 +29,8 @@ class HeadPage extends StatelessWidget {
               ThemeUtil.width(),
               InkWell(
                   onTap: () {
-                    SidebarLogic.isExpanded.value =
-                    !SidebarLogic.isExpanded.value;
-                    SidebarLogic.isExpandedAnim.value = false;
+                    sidebarExpanded.value = !sidebarExpanded.value;
+                    sidebarShow.value = false;
                   },
                   child: const Icon(Icons.menu)),
               ThemeUtil.width(),

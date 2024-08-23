@@ -60,4 +60,24 @@ extension ExAnim on Widget {
     }
     return this;
   }
+
+  /// 左右手风琴动画
+  Widget toAccordionLR(bool enable) {
+    if (enable) {
+      return animate().scaleX(begin: 0, end: 1);
+    }
+    return this;
+  }
+
+  /// 展开，收缩动画
+  Widget toAccordionLR2(bool enable, {double width = 230, Function()? onEnd}) {
+    // 获取当前组件的宽度
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 300),
+      width: enable ? width : 0,
+      onEnd: onEnd,
+      child: this,
+    );
+  }
+
 }
