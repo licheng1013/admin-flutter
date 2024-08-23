@@ -1,7 +1,7 @@
 import 'package:admin_flutter/api/user_api.dart';
-import 'package:admin_flutter/app/home/head/view.dart';
 import 'package:admin_flutter/component/form/enum.dart';
 import 'package:admin_flutter/component/form/form_data.dart';
+import 'package:admin_flutter/component/table/ex.dart';
 import 'package:admin_flutter/component/table/table_data.dart';
 import 'package:admin_flutter/component/ui_edit.dart';
 import 'package:admin_flutter/ex/ex_hint.dart';
@@ -41,16 +41,13 @@ class AdminLogic extends GetxController {
   void onInit() {
     super.onInit();
     columns = [
-      // TableData.multipleSelect(
-      //     selectList: (e) => {MessageUtil.show("选择了: ${e.length} 个")}),
-      // TableData.index(),
       ColumnData(title: "Id", key: "id", width: 80),
       ColumnData(title: "账号", key: "userName"),
       ColumnData(title: "密码", key: "password"),
       ColumnData(title: "盐", key: "salt"),
       ColumnData(title: "昵称", key: "nickName"),
       ColumnData(title: "创建时间", key: "createTime"),
-      TableData.edit(edit: (d) {
+      TableEx.edit(edit: (d) {
         form.data = d;
         form.title = "编辑";
         UiEdit.requestForm(form,

@@ -1,6 +1,6 @@
-
 import 'package:admin_flutter/app/home/sidebar/logic.dart';
 import 'package:admin_flutter/component/pagination/view.dart';
+import 'package:admin_flutter/component/table/ex.dart';
 import 'package:admin_flutter/component/table/table_data.dart';
 import 'package:admin_flutter/component/table/view.dart';
 import 'package:admin_flutter/ex/ex_btn.dart';
@@ -18,16 +18,18 @@ class UserPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var columns = [
-      TableData.multipleSelect(
-          selectList: (e)  {
+      TableEx.multipleSelect(
+          selectList: (e) {
             logic.selList.value = e;
-          }),
+          },
+      ),
       ColumnData(title: "Id", key: "id"),
+      TableEx.switchTo("enable",changed: logic.changed),
       ColumnData(title: "姓名", key: "name"),
       ColumnData(title: "年龄", key: "age"),
       ColumnData(title: "性别", key: "sex"),
       ColumnData(title: "手机", key: "tel"),
-      TableData.edit(delete: logic.delete, edit: logic.updateData),
+      TableEx.edit(delete: logic.delete, edit: logic.updateData),
     ];
 
     return Column(

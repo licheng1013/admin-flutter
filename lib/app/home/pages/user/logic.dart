@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:math';
 
-import 'package:admin_flutter/common/http_util.dart';
 import 'package:admin_flutter/component/form/enum.dart';
 import 'package:admin_flutter/component/form/form_data.dart';
 import 'package:admin_flutter/component/ui_edit.dart';
@@ -24,6 +23,7 @@ class UserLogic extends GetxController {
       "age": "张三$i",
       "sex": "张三$i",
       "tel": "张三$i",
+      "enable":0,
     };
   }
 
@@ -110,5 +110,15 @@ class UserLogic extends GetxController {
       "删除${selList.length}个数据成功!".toHint();
       selList.clear();
     },content: const Text("正在进行删除操作！"));
+  }
+
+  changed(Map<String, dynamic> row, newValue) {
+    var index = dbList.indexWhere((e) {
+      return e["id"] == row["id"];
+    });
+    if (index != -1) {
+      dbList[index]["enable"] = newValue;
+      find();
+    }
   }
 }

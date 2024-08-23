@@ -24,4 +24,12 @@ extension ExWidget on Widget {
     );
   }
 
+  /// 是否显示 Visibility 的包装
+  Widget toShow(bool show){
+    return Visibility(
+      visible: show,
+      child: this,
+    );
+  }
+
 }

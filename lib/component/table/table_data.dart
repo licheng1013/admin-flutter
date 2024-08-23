@@ -37,87 +37,9 @@ class TableData {
       this.cellHeight = 50,
       this.isIndex = false});
 
-  static ColumnData multipleSelect(
-      {Function(List<Map<String, dynamic>>)? selectList}) {
-    return ColumnData(
-        title: "多选",
-        key: "multiple-select-key",
-        titleRender: (value, table) => Obx(() {
-              return Checkbox(
-                value: table.rows.length == table.list.length &&
-                    table.list.isNotEmpty,
-                onChanged: (value) {
-                  table.list.clear();
-                  if (value == true) {
-                    table.list.addAll(table.rows);
-                  }
-                  table.list.refresh();
-                  selectList?.call(table.list);
-                },
-              );
-            }),
-        render: (value, row, index, table) => Obx(() {
-              return Checkbox(
-                value: table.list.contains(row),
-                onChanged: (value) {
-                  if (value == true) {
-                    table.list.add(row);
-                  } else {
-                    table.list.remove(row);
-                  }
-                  table.list.refresh();
-                  selectList?.call(table.list);
-                },
-              );
-            }),
-        alignment: Alignment.center);
-  }
 
-  static ColumnData index({double width = 0}) {
-    return ColumnData(
-        title: "序号",
-        key: "id-key",
-        width: width,
-        render: (value, row, index, table) => Text("${index + 1}"),
-        alignment: Alignment.center);
-  }
 
-  static ColumnData edit(
-      {bool enableRemove = true,
-      bool enableEdit = true,
-      Function(Map<String, dynamic>)? delete,
-      Function(Map<String, dynamic>)? edit}) {
-    return ColumnData(
-        title: "操作",
-        key: "id-edit",
-        render: (value, row, index, table) => Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Visibility(
-                  visible: enableEdit,
-                  child: FilledButton(
-                      onPressed: () {
-                        edit?.call(row);
-                      },
-                      child: const Text("编辑")),
-                ),
-                Visibility(
-                    visible: enableEdit && enableRemove,
-                    child: ThemeUtil.width()),
-                Visibility(
-                  visible: enableRemove,
-                  child: FilledButton(
-                      onPressed: () {
-                        UiEdit.confirm(submit: () {
-                          delete?.call(row);
-                        });
-                      },
-                      child: const Text("删除")),
-                ),
-              ],
-            ),
-        alignment: Alignment.center);
-  }
+
 
 
 }
