@@ -92,7 +92,7 @@ class SettingsPage extends StatelessWidget {
       margin: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         border: Border.all(
-          color: UiTheme.onPrimary(),
+          color: UiTheme.border(),
           width: 1,
         ),
         borderRadius: BorderRadius.circular(8),

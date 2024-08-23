@@ -27,7 +27,7 @@ class Light extends MyTheme {
 }
 
 
-class Red extends MyTheme {
+class Light1 extends MyTheme {
   @override
   Color background() {
     return Colors.white;
@@ -48,6 +48,33 @@ class Red extends MyTheme {
   @override
   Color onPrimary() {
     return const Color.fromARGB(255, 229, 233, 255);
+  }
+
+}
+
+class Light2 extends MyTheme {
+  @override
+  Color background() {
+    return "#feeac7".toColor();
+  }
+  @override
+  Color onBackground() {
+    return Colors.black;
+  }
+
+  @override
+  String name() {
+    return "咖啡色";
+  }
+
+  @override
+  Color primary() {
+    return "#5f3f28".toColor();
+  }
+
+  @override
+  Color onPrimary() {
+    return Colors.white;
   }
 
 }

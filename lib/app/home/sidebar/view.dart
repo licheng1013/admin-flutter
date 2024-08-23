@@ -46,11 +46,10 @@ class SidebarPage extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
           onTap: () {
             if (item.children.isNotEmpty) {
-              logic.expansionTile.addOrRemove(item.name);
+              item.isExpanded.value = !item.isExpanded.value;
               SidebarLogic.selSidebarTree(item);
               return;
             }
-            SidebarLogic.selectPage = item.page;
             SidebarLogic.selectName.value = item.name;
             SidebarLogic.selSidebarTree(item);
             TabBarLogic.addPage(item);
@@ -82,7 +81,7 @@ class SidebarPage extends StatelessWidget {
                         Icons.arrow_drop_up,
                         color: UiTheme.getTextColor(selected),
                         size: 28,
-                      ).toRotate(logic.expansionTile.contains(item.name)),
+                      ).toRotate(item.isExpanded.value),
                     ),
                     ThemeUtil.width(),
                   ],
@@ -99,7 +98,7 @@ class SidebarPage extends StatelessWidget {
         _text(item),
         Obx(() {
           return Visibility(
-              visible: logic.expansionTile.contains(item.name),
+              visible: item.isExpanded.value,
               child: Column(
                 children: item.children.map((e) => _text(e, left: 24)).toList(),
               ));

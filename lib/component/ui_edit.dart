@@ -1,7 +1,6 @@
-import 'package:admin_flutter/app/home/head/logic.dart';
 import 'package:admin_flutter/component/form/form_data.dart';
 import 'package:admin_flutter/component/form/view.dart';
-import 'package:admin_flutter/ex/ex_anim.dart';
+import 'package:admin_flutter/ex/ex_btn.dart';
 import 'package:admin_flutter/theme/ui_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -32,7 +31,7 @@ class UiEdit {
           height: 100,
         ),
       ],
-    )  .animate().fade());
+    ).animate().fade());
   }
 
   static void confirm(
@@ -45,21 +44,18 @@ class UiEdit {
         context: Get.context!,
         builder: (context) {
           return AlertDialog(
+            backgroundColor: UiTheme.background(),
             title: Text(title),
             content: content,
             actions: [
-              OutlinedButton(
-                  onPressed: () {
-                    Get.back();
-                    cancel?.call();
-                  },
-                  child: const Text("取消")),
-              FilledButton(
-                  onPressed: () {
-                    Get.back();
-                    submit?.call();
-                  },
-                  child: const Text("确认")),
+              "取消".toOutlineBtn(onTap: () {
+                Get.back();
+                cancel?.call();
+              }),
+              "确认".toBtn(onTap: () {
+                Get.back();
+                submit?.call();
+              }),
             ],
           );
         });

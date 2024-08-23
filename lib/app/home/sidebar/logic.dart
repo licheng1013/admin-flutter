@@ -15,10 +15,6 @@ import 'package:get/get.dart';
 
 class SidebarLogic extends GetxController {
   static var selectName = "".obs;
-  static Widget selectPage = const SizedBox(
-    child: Text("空"),
-  );
-
   var animName = "".obs;
   var expansionTile = <String>[].obs;
 
@@ -28,12 +24,12 @@ class SidebarLogic extends GetxController {
   static List<SidebarTree> treeList = [
     AnalysisPage.newThis(),
     SidebarTree(
-      name: "测试页面",
+      name: "示例页面",
       icon: Icons.expand,
       children: testTree,
     ),
     UserPage.newThis(),
-    RichTextPage.newThis(),
+    AboutPage.newThis(),
     SettingsPage.newThis(),
   ];
 
@@ -63,7 +59,7 @@ class SidebarLogic extends GetxController {
 
   static List<SidebarTree> testTree = [
     AdminPage.newThis(),
-    AboutPage.newThis(),
+    RichTextPage.newThis(),
     SidebarTree(
       name: "上传组件",
       icon: Icons.home,
@@ -92,14 +88,13 @@ class SidebarTree {
   final String name;
   final IconData icon;
   final List<SidebarTree> children;
-  final bool isExpanded;
+  var isExpanded = false.obs;
   final Widget page;
 
   SidebarTree({
     required this.name,
     this.icon = Icons.ac_unit,
     this.children = const [],
-    this.isExpanded = false,
     this.page = const SizedBox(
       child: Center(
           child: Text(

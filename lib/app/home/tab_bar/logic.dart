@@ -16,8 +16,12 @@ class TabBarLogic extends GetxController with GetTickerProviderStateMixin {
   @override
   void onInit() {
     super.onInit();
-    tabList.add(AnalysisPage.newThis());
-    tabController = TabController(length: tabList.length, vsync: this);
+
+    var info = AnalysisPage.newThis();
+    addTab(info);
+    SidebarLogic.selectName.value = info.name;
+    SidebarLogic.selSidebarTree(info);
+
   }
 
   static void addPage(SidebarTree page) {

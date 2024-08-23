@@ -67,6 +67,6 @@ class UserPage extends StatelessWidget {
   }
 
   static SidebarTree newThis() {
-    return SidebarTree(name: "用户列表", icon: Icons.place, page: UserPage());
+    return SidebarTree(name: "用户列表", icon: Icons.person, page: UserPage());
   }
 }

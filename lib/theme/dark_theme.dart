@@ -33,7 +33,7 @@ class Dark extends MyDark {
 }
 
 
-class Yellow extends MyDark {
+class Dark1 extends MyDark {
   @override
   Color background() {
     return const Color.fromARGB(255, 27, 38, 44);
@@ -54,5 +54,29 @@ class Yellow extends MyDark {
   @override
   Color onPrimary() {
     return Colors.black;
+  }
+}
+
+class Dark2 extends MyDark {
+  @override
+  Color background() {
+    return "#222831".toColor();
+  }
+  @override
+  Color onBackground() {
+    return Colors.white;
+  }
+  @override
+  String name() {
+    return "紫色";
+  }
+  @override
+  Color primary() {
+    return "#18adb4".toColor();
+  }
+
+  @override
+  Color onPrimary() {
+    return "#eeeeee".toColor();
   }
 }

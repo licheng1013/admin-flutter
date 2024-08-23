@@ -16,14 +16,10 @@ class TabBarPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       if (logic.tabList.isEmpty) {
-        return SizedBox(
-          height: logic.height,
-          child: const Center(
-            child: Text("导航栏..."),
-          ),
+        return const Center(
+          child: Text("未选中任何标签",style: TextStyle(fontSize: 24),),
         );
       }
-
       return Column(
         children: [
           TabBar(

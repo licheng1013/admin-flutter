@@ -55,7 +55,9 @@ abstract class MyTheme {
 
 var themeList = <MyTheme>[
   Light(),
+  Light1(),
+  Light2(),
   Dark(),
-  Red(),
-  Yellow()
+  Dark1(),
+  Dark2(),
 ];
