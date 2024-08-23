@@ -119,14 +119,7 @@ class TableData {
         alignment: Alignment.center);
   }
 
-  /// 将动态列表转换为Map列表
-  static List<Map<String, dynamic>> listDyToMap(List<dynamic> list) {
-    var result = <Map<String, dynamic>>[];
-    for (var element in list) {
-      result.add(element as Map<String, dynamic>);
-    }
-    return result;
-  }
+
 }
 
 class ColumnData {

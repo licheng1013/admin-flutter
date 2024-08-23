@@ -1,9 +1,11 @@
 import 'package:admin_flutter/api/user_api.dart';
+import 'package:admin_flutter/app/home/head/view.dart';
 import 'package:admin_flutter/component/form/enum.dart';
 import 'package:admin_flutter/component/form/form_data.dart';
 import 'package:admin_flutter/component/table/table_data.dart';
 import 'package:admin_flutter/component/ui_edit.dart';
 import 'package:admin_flutter/ex/ex_hint.dart';
+import 'package:admin_flutter/ex/ex_list.dart';
 import 'package:get/get.dart';
 
 
@@ -25,7 +27,7 @@ class AdminLogic extends GetxController {
       "page": page,
     }).then((value) async {
       total.value = value["total"];
-      list.addAll(TableData.listDyToMap(value["list"]));
+      list.addAll((value["list"] as List<dynamic>).toListMap());
       list.refresh();
       // 休眠 300 毫米
       await Future.delayed(const Duration(milliseconds: 300));
