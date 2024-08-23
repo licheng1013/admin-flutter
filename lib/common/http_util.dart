@@ -39,13 +39,13 @@ class HttpUtil {
 
   /// 上传文件处理
   static Future<dynamic> upload(String url, Uint8List file, String name,
-      {bool showMsg = true}) async {
+      {bool showMsg = true,Function(int count, int total)? onSendProgress}) async {
     var map = await header();
     var formData = FormData.fromMap({
       "file": MultipartFile.fromBytes(file, filename: name),
     });
     Response response =
-        await dio.post(url, data: formData, options: Options(headers: map));
+        await dio.post(url, data: formData, options: Options(headers: map),onSendProgress: onSendProgress);
     return verify(response.data, showMsg);
   }
 
