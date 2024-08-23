@@ -58,7 +58,7 @@ class HomePage extends StatelessWidget {
           Obx(() {
             var show = sidebarShow.value;
             return Visibility(visible: show, child: sidebarPage)
-                .toAccordionLR2(sidebarExpanded.value,onEnd: (){
+                .toAccordionX(sidebarExpanded.value,onEnd: (){
               sidebarShow.value = true;
             });
           }),
