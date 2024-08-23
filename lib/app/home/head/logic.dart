@@ -1,9 +1,9 @@
 import 'package:admin_flutter/app/login/view.dart';
 import 'package:admin_flutter/common/app_data.dart';
-import 'package:admin_flutter/common/url_util.dart';
 import 'package:admin_flutter/ex/ex_anim.dart';
 import 'package:admin_flutter/ex/ex_btn.dart';
 import 'package:admin_flutter/ex/ex_hint.dart';
+import 'package:admin_flutter/ex/ex_url.dart';
 import 'package:admin_flutter/theme/theme_util.dart';
 import 'package:admin_flutter/theme/ui_theme.dart';
 import 'package:flutter/material.dart';
@@ -41,12 +41,11 @@ class HeadLogic extends GetxController {
         children: [
           ThemeUtil.height(),
           "Github".toBtn(onTap: (){
-            UrlUtil.openUrl(
-                "https://github.com/licheng1013/admin-flutter");
+            "https://github.com/licheng1013/admin-flutter".toOpenUrl();
           }),
           ThemeUtil.height(),
           "M3示例".toBtn(onTap: (){
-            UrlUtil.openUrl("https://flutterweb-wasm.web.app/");
+            "https://flutterweb-wasm.web.app/".toOpenUrl();
           }),
           ThemeUtil.height(),
           "帮助按钮".toBtn(onTap: (){

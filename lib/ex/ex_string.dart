@@ -46,12 +46,6 @@ extension ExString on String {
     return this == other;
   }
 
-
-  /// 打开连接，以下方法需要第三方库支持 ---------------------------------------------
-  void toOpenUrl() {
-    launchUrl(Uri.parse(this), mode: LaunchMode.externalApplication);
-  }
-
   /// 转换为image ，第三方库
   Widget toImage() {
     return ImageUtil.image(this);

@@ -5,4 +5,6 @@ extension ExHint on String {
   void toHint() {
     BotToast.showText(text: this); //弹出一个文本框;
   }
+
+  /// 
 }
