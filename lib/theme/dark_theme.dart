@@ -68,7 +68,7 @@ class Dark2 extends MyDark {
   }
   @override
   String name() {
-    return "紫色";
+    return "青色";
   }
   @override
   Color primary() {
