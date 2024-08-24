@@ -18,7 +18,7 @@ class AdminPage extends StatelessWidget {
     return Column(
       children: [
         SizedBox(
-          height: 50,
+          height: 52,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
@@ -37,6 +37,7 @@ class AdminPage extends StatelessWidget {
             ],
           ),
         ),
+        ThemeUtil.lineH(),
         Expanded(
           child: Obx(() {
             return TablePage(

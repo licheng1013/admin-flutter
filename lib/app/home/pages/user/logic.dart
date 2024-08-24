@@ -21,9 +21,9 @@ class UserLogic extends GetxController {
       "id": i,
       "name": "张三$i",
       "age": "张三$i",
-      "sex": "张三$i",
+      "sex": i % 2,
       "tel": "张三$i",
-      "enable":0,
+      "enable": 0,
     };
   }
 
@@ -37,22 +37,29 @@ class UserLogic extends GetxController {
 
   void find() {
     list.clear();
+    var findList = dbList.where((e) {
+      if (sexSel.isEmpty) {
+        return true;
+      }
+      return sexSel.contains(e["sex"]);
+    }).toList();
+    total.value = findList.length;
     var start = (page - 1) * size;
-    var end = min(start + size, dbList.length);
-    list.addAll(dbList.sublist(start, end));
+    var end = min(start + size, findList.length);
+    list.addAll(findList.sublist(start, end));
   }
 
   var form = FormDto(labelWidth: 80, columns: [
     FormColumnDto(label: "名称", key: "name", placeholder: "请输入名称"),
     FormColumnDto(
-        placeholder: "请输入年龄",
-        label: "年龄",
-        key: "age",
-       ),
+      placeholder: "请输入年龄",
+      label: "年龄",
+      key: "age",
+    ),
     FormColumnDto(
-        placeholder: "请输入性别",
-        label: "性别",
-        key: "sex",
+      placeholder: "请输入性别",
+      label: "性别",
+      key: "sex",
     ),
     FormColumnDto(
         label: "手机",
@@ -62,35 +69,35 @@ class UserLogic extends GetxController {
         placeholder: "请输入手机"),
   ]);
 
+  var sexSel = <int>{}.obs;
+
   void add() {
     form.title = "新增";
-    UiEdit.requestForm(form,
-        submit: (d) {
-          var m = jsonDecode(jsonEncode(d));
-          m["id"] = dbList.length * 2;
-          dbList.insert(0, m);
-          total.value = dbList.length;
-          "新增成功!".toHint();
-          find();
-          Get.back();
-        });
+    UiEdit.requestForm(form, submit: (d) {
+      var m = jsonDecode(jsonEncode(d));
+      m["id"] = dbList.length * 2;
+      dbList.insert(0, m);
+      total.value = dbList.length;
+      "新增成功!".toHint();
+      find();
+      Get.back();
+    });
   }
 
   void updateData(Map<String, dynamic> d) {
     form.data = d;
     form.title = "编辑";
-    UiEdit.requestForm(form,
-        submit: (data) {
-          var index = dbList.indexWhere((e) {
-            return e["id"] == d["id"];
-          });
-          if (index != -1) {
-            dbList[index] = data;
-            find();
-          }
-          "更新成功!".toHint();
-          Get.back();
-        });
+    UiEdit.requestForm(form, submit: (data) {
+      var index = dbList.indexWhere((e) {
+        return e["id"] == d["id"];
+      });
+      if (index != -1) {
+        dbList[index] = data;
+        find();
+      }
+      "更新成功!".toHint();
+      Get.back();
+    });
   }
 
   void delete(Map<String, dynamic> d) {
@@ -101,15 +108,17 @@ class UserLogic extends GetxController {
   }
 
   void deleteSel() {
-    UiEdit.confirm(submit: () {
-      for (var e in selList) {
-        dbList.remove(e);
-      }
-      total.value = dbList.length;
-      find();
-      "删除${selList.length}个数据成功!".toHint();
-      selList.clear();
-    },content: const Text("正在进行删除操作！"));
+    UiEdit.confirm(
+        submit: () {
+          for (var e in selList) {
+            dbList.remove(e);
+          }
+          total.value = dbList.length;
+          find();
+          "删除${selList.length}个数据成功!".toHint();
+          selList.clear();
+        },
+        content: const Text("正在进行删除操作！"));
   }
 
   changed(Map<String, dynamic> row, newValue) {
