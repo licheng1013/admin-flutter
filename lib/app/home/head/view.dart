@@ -68,6 +68,7 @@ class HeadPage extends StatelessWidget {
                 size: 16,
                 color: color,
               ),
+              const SizedBox(width: 2,),
               Text(e.name,style: TextStyle(color:color),),
               const SizedBox(
                 width: 6,
