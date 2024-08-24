@@ -43,10 +43,9 @@ class UserLogic extends GetxController {
   void find() {
     list.clear();
     var findList = dbList.where((e) {
-      if (sexSel.isEmpty && nameSel.isEmpty) {
-        return true;
-      }
-      return sexSel.contains(e["sex"]) && e["name"].contains(nameSel);
+      var a = sexSel.contains(e["sex"]) || sexSel.isEmpty;
+      var b = e["name"].contains(nameSel) || nameSel.isEmpty;
+      return a && b;
     }).toList();
     total.value = findList.length;
     var start = (page - 1) * size;
