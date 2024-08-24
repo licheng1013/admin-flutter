@@ -31,7 +31,9 @@ class SidebarPage extends StatelessWidget {
     );
   }
 
-  Widget _text(SidebarTree item, {double left = 12}) {
+  static const double leftSpace = 12;
+
+  Widget _text(SidebarTree item, {double left = leftSpace}) {
     return MouseRegion(
       // 鼠标悬停
       onEnter: (event) {
@@ -92,15 +94,20 @@ class SidebarPage extends StatelessWidget {
     );
   }
 
-  Widget _tree(SidebarTree item) {
+  Widget _tree(SidebarTree item, {double left = leftSpace}) {
     return Column(
       children: [
-        _text(item),
+        _text(item,left: left),
         Obx(() {
           return Visibility(
               visible: item.isExpanded.value,
               child: Column(
-                children: item.children.map((e) => _text(e, left: 24)).toList(),
+                children: item.children.toWidgets((e) {
+                  if (e.children.isNotEmpty) {
+                    return _tree(e, left: left + leftSpace);
+                  }
+                  return _text(e, left: left + leftSpace);
+                }),
               ));
         })
       ],

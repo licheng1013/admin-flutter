@@ -1,17 +1,14 @@
-import 'dart:math';
-
-import 'package:admin_flutter/app/home/pages/about/view.dart';
 import 'package:admin_flutter/app/home/pages/admin/view.dart';
-import 'package:admin_flutter/app/home/pages/analysis/view.dart';
+import 'package:admin_flutter/app/home/pages/demo/view.dart';
+import 'package:admin_flutter/app/home/pages/empty/view.dart';
 import 'package:admin_flutter/app/home/pages/rich_text/view.dart';
-import 'package:admin_flutter/app/home/pages/settings/view.dart';
 import 'package:admin_flutter/app/home/pages/user/view.dart';
-import 'package:admin_flutter/common/assets_util.dart';
-import 'package:admin_flutter/component/upload/view.dart';
+import 'package:admin_flutter/app/home/system/about/view.dart';
+import 'package:admin_flutter/app/home/system/analysis/view.dart';
+import 'package:admin_flutter/app/home/system/settings/view.dart';
 import 'package:admin_flutter/ex/ex_int.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 
 class SidebarLogic extends GetxController {
   static var selectName = "".obs;
@@ -26,27 +23,45 @@ class SidebarLogic extends GetxController {
     SidebarTree(
       name: "示例页面",
       icon: Icons.expand,
-      children: testTree,
+      children: demoList,
     ),
-    UserPage.newThis(),
     AboutPage.newThis(),
     SettingsPage.newThis(),
   ];
 
+  static List<SidebarTree> demoList = [
+    AdminPage.newThis(),
+    RichTextPage.newThis(),
+    DemoPage.newThis(),
+    UserPage.newThis(),
+    SidebarTree(
+      name: "嵌套页面",
+      icon: Icons.extension,
+      children: demo2List,
+    ),
+  ];
 
-  static void selSidebarTree(SidebarTree sel){
-    if(breadcrumbList.isNotEmpty && breadcrumbList.last.name == sel.name){
+  static List<SidebarTree> demo2List = [
+    newThis("示例1"),
+    newThis("示例2"),
+    newThis("示例3"),
+    newThis("示例4"),
+  ];
+
+  /// 面包屑和侧边栏联动
+  static void selSidebarTree(SidebarTree sel) {
+    if (breadcrumbList.isNotEmpty && breadcrumbList.last.name == sel.name) {
       return;
     }
     breadcrumbList.clear();
-    32.toDelay((){
-      for(var item in treeList){
+    32.toDelay(() {
+      for (var item in treeList) {
         if (item.name == sel.name) {
           breadcrumbList.add(item);
           break;
         }
-        for(var child in item.children){
-          if(child.name == sel.name){
+        for (var child in item.children) {
+          if (child.name == sel.name) {
             breadcrumbList.add(item);
             breadcrumbList.add(child);
             break;
@@ -55,33 +70,6 @@ class SidebarLogic extends GetxController {
       }
     });
   }
-
-
-  static List<SidebarTree> testTree = [
-    AdminPage.newThis(),
-    RichTextPage.newThis(),
-    SidebarTree(
-      name: "上传组件",
-      icon: Icons.home,
-      page: Center(
-        child: Column(
-          children: [
-            const Text(
-              "当前限制只能上传10张图片",
-              style: TextStyle(fontSize: 28),
-            ),
-            SizedBox(
-                width: 500,
-                child: UploadPage(
-                  limit: 10,
-                  multiple: true,
-                  type: AssetsUtil.image(),
-                )),
-          ],
-        ),
-      ),
-    ),
-  ];
 }
 
 class SidebarTree {
@@ -95,12 +83,13 @@ class SidebarTree {
     required this.name,
     this.icon = Icons.ac_unit,
     this.children = const [],
-    this.page = const SizedBox(
-      child: Center(
-          child: Text(
-            "空",
-            style: TextStyle(fontSize: 26),
-          )),
-    ),
+    this.page = const EmptyPage(),
   });
+} 
+
+SidebarTree newThis(String name) {
+  return SidebarTree(
+    name: name,
+    icon: Icons.supervised_user_circle,
+  );
 }

@@ -1,6 +1,6 @@
 
-import 'package:admin_flutter/app/home/pages/analysis/view.dart';
 import 'package:admin_flutter/app/home/sidebar/logic.dart';
+import 'package:admin_flutter/app/home/system/analysis/view.dart';
 import 'package:admin_flutter/theme/ui_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
