@@ -55,20 +55,26 @@ class SidebarLogic extends GetxController {
     }
     breadcrumbList.clear();
     32.toDelay(() {
-      for (var item in treeList) {
-        if (item.name == sel.name) {
-          breadcrumbList.add(item);
-          break;
-        }
-        for (var child in item.children) {
-          if (child.name == sel.name) {
-            breadcrumbList.add(item);
-            breadcrumbList.add(child);
-            break;
-          }
+      findSidebarTree(sel,treeList);
+    });
+  }
+
+  /// 递归查找面包屑
+  static bool findSidebarTree(SidebarTree sel, List<SidebarTree> list) {
+    for (var item in list) {
+      if (item.name == sel.name) {
+        breadcrumbList.add(item);
+        return true;
+      }
+      if (item.children.isNotEmpty) {
+        /// 递归查找，当找到时，将当前节点插入到面包屑列表中，并返回true
+        if (findSidebarTree(sel, item.children)) {
+          breadcrumbList.insert(0, item);
+          return true;
         }
       }
-    });
+    }
+    return false;
   }
 }
 
@@ -85,7 +91,7 @@ class SidebarTree {
     this.children = const [],
     this.page = const EmptyPage(),
   });
-} 
+}
 
 SidebarTree newThis(String name) {
   return SidebarTree(
