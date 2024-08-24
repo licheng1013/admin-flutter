@@ -101,4 +101,22 @@ class TableEx {
             }),
         alignment: Alignment.center);
   }
+
+  static Widget input({String tip = "请输入搜索信息",Function(String)? onChanged}) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      // 内容偏移
+      child: TextField(
+        textAlign: TextAlign.center,
+        onChanged: onChanged,
+        decoration: InputDecoration(
+          hintText: tip,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 10),
+        ),
+      ),
+    );
+  }
 }

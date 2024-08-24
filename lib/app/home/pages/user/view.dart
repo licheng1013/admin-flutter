@@ -5,6 +5,7 @@ import 'package:admin_flutter/component/table/table_data.dart';
 import 'package:admin_flutter/component/table/view.dart';
 import 'package:admin_flutter/ex/ex_btn.dart';
 import 'package:admin_flutter/theme/theme_util.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -44,6 +45,11 @@ class UserPage extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
+              SizedBox(
+                width: 150,
+                child: TableEx.input(tip: "搜索姓名",onChanged: logic.nameChanged),
+              ),
+              ThemeUtil.width(),
               Obx(() {
                 return SegmentedButton(
                   selected: logic.sexSel.toSet(),

@@ -14,7 +14,12 @@ class UserLogic extends GetxController {
   var list = <Map<String, dynamic>>[].obs;
   var size = 0;
   var page = 0;
+  /// 选中列
   var selList = <Map<String, dynamic>>[].obs;
+  /// 性别选中
+  var sexSel = <int>{}.obs;
+  /// 名称选择
+  var nameSel = "";
 
   Map<String, dynamic> _data(int i) {
     return {
@@ -38,10 +43,10 @@ class UserLogic extends GetxController {
   void find() {
     list.clear();
     var findList = dbList.where((e) {
-      if (sexSel.isEmpty) {
+      if (sexSel.isEmpty && nameSel.isEmpty) {
         return true;
       }
-      return sexSel.contains(e["sex"]);
+      return sexSel.contains(e["sex"]) && e["name"].contains(nameSel);
     }).toList();
     total.value = findList.length;
     var start = (page - 1) * size;
@@ -69,7 +74,6 @@ class UserLogic extends GetxController {
         placeholder: "请输入手机"),
   ]);
 
-  var sexSel = <int>{}.obs;
 
   void add() {
     form.title = "新增";
@@ -129,5 +133,10 @@ class UserLogic extends GetxController {
       dbList[index]["enable"] = newValue;
       find();
     }
+  }
+
+  nameChanged(String findName) {
+    nameSel = findName;
+    find();
   }
 }
