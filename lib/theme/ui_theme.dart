@@ -16,6 +16,10 @@ class UiTheme {
     return Get.theme.colorScheme.primary;
   }
 
+  static Color primary2(){
+    return Get.theme.colorScheme.primary.withAlpha(50);
+  }
+
   static Color onPrimary() {
     return Get.theme.colorScheme.onPrimary;
   }

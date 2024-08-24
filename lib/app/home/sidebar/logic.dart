@@ -1,4 +1,5 @@
 import 'package:admin_flutter/app/home/pages/admin/view.dart';
+import 'package:admin_flutter/app/home/pages/chat/view.dart';
 import 'package:admin_flutter/app/home/pages/demo/view.dart';
 import 'package:admin_flutter/app/home/pages/empty/view.dart';
 import 'package:admin_flutter/app/home/pages/rich_text/view.dart';
@@ -34,6 +35,7 @@ class SidebarLogic extends GetxController {
     RichTextPage.newThis(),
     DemoPage.newThis(),
     UserPage.newThis(),
+    ChatPage.newThis(),
     SidebarTree(
       name: "嵌套页面",
       icon: Icons.extension,

@@ -37,7 +37,7 @@ class TablePage extends StatelessWidget {
     return ListView(children: tableData.rows.toWidgetsWithIndex((e, index) {
       var zebra = tableData.isZebra && index % 2 == 0;
       var color =
-          zebra ? UiTheme.background() : UiTheme.primary().withAlpha(50);
+          zebra ? UiTheme.background() : UiTheme.primary2();
       return Container(
         color: color,
         height: tableData.cellHeight,

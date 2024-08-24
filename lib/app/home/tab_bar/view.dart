@@ -1,4 +1,5 @@
 import 'package:admin_flutter/app/home/sidebar/logic.dart';
+import 'package:admin_flutter/common/keep_alive_wrapper.dart';
 import 'package:admin_flutter/ex/ex_anim.dart';
 import 'package:admin_flutter/ex/ex_list.dart';
 import 'package:admin_flutter/theme/ui_theme.dart';
@@ -17,16 +18,21 @@ class TabBarPage extends StatelessWidget {
     return Obx(() {
       if (logic.tabList.isEmpty) {
         return const Center(
-          child: Text("未选中任何标签",style: TextStyle(fontSize: 24),),
+          child: Text(
+            "未选中任何标签",
+            style: TextStyle(fontSize: 24),
+          ),
         );
       }
       return Column(
         children: [
           TabBar(
             controller: logic.tabController,
-            onTap: (e){
+            onTap: (e) {
+              var tab = logic.tabList[e];
               logic.currentIndex.value = e;
-              SidebarLogic.selSidebarTree(logic.tabList[e]);
+              SidebarLogic.selectName.value = tab.name;
+              SidebarLogic.selSidebarTree(tab);
             },
             // 允许滚动
             padding: EdgeInsets.zero,
@@ -74,7 +80,9 @@ class TabBarPage extends StatelessWidget {
             child: IndexedStack(
               index: logic.currentIndex.value,
               children: logic.tabList.toWidgetsWithIndex((e, index) =>
-                  e.page.toFadeIn(logic.currentIndex.value == index)),
+                  KeepAliveWrapper(
+                      child:
+                          e.page.toFadeIn(logic.currentIndex.value == index))),
             ),
           ),
         ],
