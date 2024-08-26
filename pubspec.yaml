@@ -21,7 +21,6 @@ dependencies:
   image_picker: ^1.0.7 # 图片选择
   flutter_animate: ^4.5.0 # 动画库
   fl_chart: ^0.68.0 # 图表库
-  msix: ^3.16.8 # Windows构建包  dart run msix:create 打包
   flutter_localizations:
     sdk: flutter
   intl: any
