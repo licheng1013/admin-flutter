@@ -33,7 +33,14 @@ class PlayPage extends StatelessWidget {
           ),
         ),
         Expanded(child: Obx(() {
-          return logic.isLoad.value ? VideoPage(logic.inputController.text) : UiTheme.loading();
+          return logic.isLoad.value
+              ? VideoPage(logic.inputController.text)
+              : const Center(
+                  child: Text(
+                    "请加载视频！",
+                    style: TextStyle(fontSize: 28),
+                  ),
+                );
         })),
       ],
     );
