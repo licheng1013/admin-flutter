@@ -74,4 +74,12 @@ class UiTheme {
       ),
     );
   }
+
+  static Widget progress({required double value}) {
+    return LinearProgressIndicator(
+      value: value,
+      backgroundColor: onPrimary(),
+      valueColor: AlwaysStoppedAnimation(primary()),
+    );
+  }
 }

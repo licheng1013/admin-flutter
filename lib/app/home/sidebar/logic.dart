@@ -2,6 +2,7 @@ import 'package:admin_flutter/app/home/pages/admin/view.dart';
 import 'package:admin_flutter/app/home/pages/chat/view.dart';
 import 'package:admin_flutter/app/home/pages/demo/view.dart';
 import 'package:admin_flutter/app/home/pages/empty/view.dart';
+import 'package:admin_flutter/app/home/pages/play/view.dart';
 import 'package:admin_flutter/app/home/pages/rich_text/view.dart';
 import 'package:admin_flutter/app/home/pages/user/view.dart';
 import 'package:admin_flutter/app/home/system/about/view.dart';
@@ -36,6 +37,7 @@ class SidebarLogic extends GetxController {
     DemoPage.newThis(),
     UserPage.newThis(),
     ChatPage.newThis(),
+    PlayPage.newThis(),
     SidebarTree(
       name: "嵌套页面",
       icon: Icons.extension,
