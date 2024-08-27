@@ -14,7 +14,6 @@ class ChatPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    logic.jumpToBottom(enableAnim: false);
     return Column(
       children: [
         Expanded(

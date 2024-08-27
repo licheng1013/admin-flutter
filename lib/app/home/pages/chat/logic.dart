@@ -16,7 +16,7 @@ class ChatLogic extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    for (var i = 0; i < 100; i++) {
+    for (var i = 0; i < 30; i++) {
       var chatInfo = ChatInfo();
       chatInfo.userId = i % 2 == 0 ? meUserId : otherUserId;
       chatInfo.msg = "你好呀，小明。$i";
