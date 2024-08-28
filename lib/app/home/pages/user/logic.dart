@@ -124,14 +124,9 @@ class UserLogic extends GetxController {
         content: const Text("正在进行删除操作！"));
   }
 
-  changed(Map<String, dynamic> row, newValue) {
-    var index = dbList.indexWhere((e) {
-      return e["id"] == row["id"];
-    });
-    if (index != -1) {
-      dbList[index]["enable"] = newValue;
-      find();
-    }
+  changed(Map<String, dynamic> row, newValue,int index) {
+    list.removeAt(index);
+    list.insert(index, row);
   }
 
   nameChanged(String findName) {

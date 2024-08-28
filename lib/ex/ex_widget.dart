@@ -32,4 +32,12 @@ extension ExWidget on Widget {
     );
   }
 
+  /// 套一个提示
+  Widget toTooltip(String message){
+    return Tooltip(
+      message: message,
+      child: this,
+    );
+  }
+
 }

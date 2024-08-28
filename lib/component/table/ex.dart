@@ -20,10 +20,11 @@ class TableEx {
   /// 切换
   static ColumnData switchTo(String key,
       {String title = "启用",
-      double width = 0,
-      dynamic on = 0,
-      dynamic off = 1,
-      Function(Map<String, dynamic> row, dynamic newValue)? changed}) {
+        double width = 0,
+        dynamic on = 0,
+        dynamic off = 1,
+        String tooltip = "",
+        Function(Map<String, dynamic> row, dynamic newValue,int index)? changed}) {
     return ColumnData(
         title: title,
         key: key,
@@ -31,8 +32,9 @@ class TableEx {
         render: (value, row, index, table) => Switch(
             value: value.toString() == on.toString(),
             onChanged: (newValue) {
-              changed?.call(row, newValue ? on : off);
-            }),
+              row[key] = newValue ? on : off;
+              changed?.call(row, row[key],index);
+            }).toTooltip(tooltip),
         alignment: Alignment.center);
   }
 
@@ -118,5 +120,13 @@ class TableEx {
         ),
       ),
     );
+  }
+
+  static Widget Function(dynamic value, Map<String, dynamic> data, int index,
+      TableData tableData) easyRender(Widget Function(dynamic value) render) {
+    return (dynamic value, Map<String, dynamic> data, int index,
+        TableData tableData) {
+      return SelectionArea(child: render(value));
+    };
   }
 }
