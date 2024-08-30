@@ -20,11 +20,12 @@ class TableEx {
   /// 切换
   static ColumnData switchTo(String key,
       {String title = "启用",
-        double width = 0,
-        dynamic on = 0,
-        dynamic off = 1,
-        String tooltip = "",
-        Function(Map<String, dynamic> row, dynamic newValue,int index)? changed}) {
+      double width = 0,
+      dynamic on = 0,
+      dynamic off = 1,
+      String tooltip = "",
+      Function(Map<String, dynamic> row, dynamic newValue, int index)?
+          changed}) {
     return ColumnData(
         title: title,
         key: key,
@@ -33,7 +34,7 @@ class TableEx {
             value: value.toString() == on.toString(),
             onChanged: (newValue) {
               row[key] = newValue ? on : off;
-              changed?.call(row, row[key],index);
+              changed?.call(row, row[key], index);
             }).toTooltip(tooltip),
         alignment: Alignment.center);
   }
@@ -42,8 +43,8 @@ class TableEx {
   static ColumnData edit(
       {bool enableRemove = true,
       bool enableEdit = true,
-      Function(Map<String, dynamic>,int index)? delete,
-      Function(Map<String, dynamic>,int index)? edit}) {
+      Function(Map<String, dynamic>, int index)? delete,
+      Function(Map<String, dynamic>, int index)? edit}) {
     return ColumnData(
         title: "操作",
         key: "id-edit",
@@ -52,13 +53,13 @@ class TableEx {
               children: [
                 "编辑".toBtn(
                   onTap: () {
-                    edit?.call(row,index);
+                    edit?.call(row, index);
                   },
                 ).toShow(enableEdit),
                 ThemeUtil.width().toShow(enableEdit && enableRemove),
                 "删除".toBtn(onTap: () {
                   UiEdit.confirm(submit: () {
-                    delete?.call(row,index);
+                    delete?.call(row, index);
                   });
                 }).toShow(enableRemove),
               ],
@@ -104,7 +105,7 @@ class TableEx {
         alignment: Alignment.center);
   }
 
-  static Widget input({String tip = "请输入搜索信息",Function(String)? onChanged}) {
+  static Widget input({String tip = "请输入搜索信息", Function(String)? onChanged}) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
       // 内容偏移
@@ -128,5 +129,16 @@ class TableEx {
         TableData tableData) {
       return SelectionArea(child: render(value));
     };
+  }
+
+  /// 统一表格头
+  static Widget actions({List<Widget> children = const []}) {
+    return SizedBox(
+      height: 52,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: children,
+      ),
+    );
   }
 }

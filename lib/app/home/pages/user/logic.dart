@@ -3,6 +3,8 @@ import 'dart:math';
 
 import 'package:admin_flutter/component/form/enum.dart';
 import 'package:admin_flutter/component/form/form_data.dart';
+import 'package:admin_flutter/component/table/ex.dart';
+import 'package:admin_flutter/component/table/table_data.dart';
 import 'package:admin_flutter/component/ui_edit.dart';
 import 'package:admin_flutter/ex/ex_hint.dart';
 import 'package:flutter/cupertino.dart';
@@ -32,13 +34,36 @@ class UserLogic extends GetxController {
     };
   }
 
+  var columns = <ColumnData>[];
   @override
   void onInit() {
     super.onInit();
     for (var i = 1; i <= total.value; i++) {
       dbList.add(_data(i));
     }
+    columns = [
+      TableEx.multipleSelect(
+        selectList: (e) {
+          selList.value = e;
+        },
+      ),
+      ColumnData(title: "Id", key: "id"),
+      TableEx.switchTo("enable", changed: changed),
+      ColumnData(title: "姓名", key: "name"),
+      ColumnData(title: "年龄", key: "age"),
+      ColumnData(
+          title: "性别",
+          key: "sex",
+          render: (v, d, i, t) {
+            return Text(v == 1 ? "男" : "女");
+          }),
+      ColumnData(title: "手机", key: "tel"),
+      TableEx.edit(delete: delete, edit: updateData),
+    ];
+
   }
+
+
 
   void find() {
     list.clear();

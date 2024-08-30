@@ -1,5 +1,6 @@
 import 'package:admin_flutter/app/home/sidebar/logic.dart';
 import 'package:admin_flutter/component/pagination/view.dart';
+import 'package:admin_flutter/component/table/ex.dart';
 import 'package:admin_flutter/component/table/table_data.dart';
 import 'package:admin_flutter/component/table/view.dart';
 import 'package:admin_flutter/theme/theme_util.dart';
@@ -17,25 +18,21 @@ class AdminPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(
-          height: 52,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              ThemeUtil.width(),
-              const Text(
-                "运行mock目录下的服务器体验",
-                style: TextStyle(fontSize: 18),
-              ),
-              const Spacer(),
-              FilledButton(
-                  onPressed: () {
-                    logic.add();
-                  },
-                  child: const Text("新增")),
-              ThemeUtil.width(),
-            ],
-          ),
+        TableEx.actions(
+          children: [
+            ThemeUtil.width(),
+            const Text(
+              "运行mock目录下的服务器体验",
+              style: TextStyle(fontSize: 18),
+            ),
+            const Spacer(),
+            FilledButton(
+                onPressed: () {
+                  logic.add();
+                },
+                child: const Text("新增")),
+            ThemeUtil.width(),
+          ],
         ),
         ThemeUtil.lineH(),
         Expanded(
@@ -61,8 +58,7 @@ class AdminPage extends StatelessWidget {
     );
   }
 
-
-  static SidebarTree newThis(){
+  static SidebarTree newThis() {
     return SidebarTree(
       name: "管理列表",
       icon: Icons.deblur,
