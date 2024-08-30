@@ -47,28 +47,21 @@ class AdminLogic extends GetxController {
       ColumnData(title: "盐", key: "salt"),
       ColumnData(title: "昵称", key: "nickName"),
       ColumnData(title: "创建时间", key: "createTime"),
-      TableEx.edit(edit: (d) {
+      TableEx.edit(edit: (d,index) {
         form.data = d;
         form.title = "编辑";
-        UiEdit.requestForm(form,
+        form.edit(
             submit: (data) => {
                   UserApi.userUpdate(params: data).then((value) {
                     "更新成功!".toHint();
-                    var index = list.indexWhere((e) {
-                      return e["id"] == d["id"];
-                    });
-                    if (index != -1) {
-                      list.removeAt(index);
-                      list.insert(index, data);
-                    }
+                    list.removeAt(index);
+                    list.insert(index, data);
                     Get.back();
                   })
                 });
-      }, delete: (d) {
+      }, delete: (d,index) {
         UserApi.userDelete(params: {"id": d["id"]}).then((value) {
-          list.removeWhere((e){
-            return e["id"] == d["id"];
-          });
+          list.removeAt(index);
         });
       }),
     ];
@@ -100,7 +93,7 @@ class AdminLogic extends GetxController {
   void add() {
     form.data = {};
     form.title = "添加";
-    UiEdit.requestForm(form,
+    form.edit(
         submit: (data) => {
               UserApi.userInsert(params: data).then((value) {
                 "插入成功!".toHint();

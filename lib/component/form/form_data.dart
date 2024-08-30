@@ -1,3 +1,4 @@
+import 'package:admin_flutter/component/ui_edit.dart';
 import 'package:flutter/material.dart';
 
 import 'enum.dart';
@@ -22,6 +23,17 @@ class FormDto {
       this.labelWidth = 55,
       this.labelAlignment = Alignment.centerLeft});
 }
+
+
+extension FormDtoEx on FormDto {
+  void edit({Function(Map<String, dynamic>)? submit,bool reset = false}){
+    if(reset){
+      data = {};
+    }
+    UiEdit.requestForm(this,submit: submit);
+  }
+}
+
 
 class FormColumnDto {
   /// 标签

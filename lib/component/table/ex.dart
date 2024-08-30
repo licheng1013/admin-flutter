@@ -42,8 +42,8 @@ class TableEx {
   static ColumnData edit(
       {bool enableRemove = true,
       bool enableEdit = true,
-      Function(Map<String, dynamic>)? delete,
-      Function(Map<String, dynamic>)? edit}) {
+      Function(Map<String, dynamic>,int index)? delete,
+      Function(Map<String, dynamic>,int index)? edit}) {
     return ColumnData(
         title: "操作",
         key: "id-edit",
@@ -52,13 +52,13 @@ class TableEx {
               children: [
                 "编辑".toBtn(
                   onTap: () {
-                    edit?.call(row);
+                    edit?.call(row,index);
                   },
                 ).toShow(enableEdit),
                 ThemeUtil.width().toShow(enableEdit && enableRemove),
                 "删除".toBtn(onTap: () {
                   UiEdit.confirm(submit: () {
-                    delete?.call(row);
+                    delete?.call(row,index);
                   });
                 }).toShow(enableRemove),
               ],

@@ -1,4 +1,3 @@
-import 'package:admin_flutter/app/home/head/view.dart';
 import 'package:admin_flutter/component/table/table_data.dart';
 import 'package:admin_flutter/ex/ex_list.dart';
 import 'package:admin_flutter/theme/theme_util.dart';

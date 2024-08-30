@@ -76,7 +76,7 @@ class UserLogic extends GetxController {
 
   void add() {
     form.title = "新增";
-    UiEdit.requestForm(form, submit: (d) {
+    form.edit( submit: (d) {
       var m = jsonDecode(jsonEncode(d));
       m["id"] = dbList.length * 2;
       dbList.insert(0, m);
@@ -87,24 +87,19 @@ class UserLogic extends GetxController {
     });
   }
 
-  void updateData(Map<String, dynamic> d) {
+  void updateData(Map<String, dynamic> d,int index) {
     form.data = d;
     form.title = "编辑";
-    UiEdit.requestForm(form, submit: (data) {
-      var index = dbList.indexWhere((e) {
-        return e["id"] == d["id"];
-      });
-      if (index != -1) {
-        dbList[index] = data;
-        find();
-      }
+    form.edit(submit: (data) {
+      dbList[index] = data;
+      find();
       "更新成功!".toHint();
       Get.back();
     });
   }
 
-  void delete(Map<String, dynamic> d) {
-    dbList.remove(d);
+  void delete(Map<String, dynamic> d,int index) {
+    dbList.removeAt(index);
     total.value = dbList.length;
     find();
     "删除了: ${d["name"]}".toHint();
