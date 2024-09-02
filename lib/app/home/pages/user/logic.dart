@@ -100,8 +100,7 @@ class UserLogic extends GetxController {
 
 
   void add() {
-    form.title = "新增";
-    form.edit( submit: (d) {
+    form.add( submit: (d) {
       var m = jsonDecode(jsonEncode(d));
       m["id"] = dbList.length * 2;
       dbList.insert(0, m);
@@ -114,7 +113,6 @@ class UserLogic extends GetxController {
 
   void updateData(Map<String, dynamic> d,int index) {
     form.data = d;
-    form.title = "编辑";
     form.edit(submit: (data) {
       dbList[index] = data;
       find();

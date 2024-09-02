@@ -26,11 +26,15 @@ class FormDto {
 
 
 extension FormDtoEx on FormDto {
-  void edit({Function(Map<String, dynamic>)? submit,bool reset = false}){
+  void edit({Function(Map<String, dynamic>)? submit,bool reset = false,String title = "编辑"}){
+    this.title = title;
     if(reset){
       data = {};
     }
     UiEdit.requestForm(this,submit: submit);
+  }
+  void add({Function(Map<String, dynamic>)? submit,bool reset = true,String title = "添加"}){
+    edit(submit: submit,reset: reset,title: title);
   }
 }
 

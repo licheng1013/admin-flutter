@@ -64,7 +64,7 @@ class FormPage extends StatelessWidget {
   }
 
   Widget _column(FormDto form, FormColumnDto column) {
-    var text = TextEditingController(text: form.data[column.key]);
+    var text = TextEditingController(text: (form.data[column.key] ?? "").toString());
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Row(

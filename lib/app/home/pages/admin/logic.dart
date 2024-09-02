@@ -49,7 +49,6 @@ class AdminLogic extends GetxController {
       ColumnData(title: "创建时间", key: "createTime"),
       TableEx.edit(edit: (d,index) {
         form.data = d;
-        form.title = "编辑";
         form.edit(
             submit: (data) => {
                   UserApi.userUpdate(params: data).then((value) {
@@ -91,9 +90,8 @@ class AdminLogic extends GetxController {
   ]);
 
   void add() {
-    form.data = {};
-    form.title = "添加";
-    form.edit(
+    form.add(
+      reset: true,
         submit: (data) => {
               UserApi.userInsert(params: data).then((value) {
                 "插入成功!".toHint();
