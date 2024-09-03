@@ -133,6 +133,7 @@ class TabBarLogic extends GetxController with GetTickerProviderStateMixin {
           tabController = TabController(
               length: tabList.length, vsync: this, initialIndex: index);
           SidebarLogic.selectName.value = tabList[index].name;
+          currentIndex.value = index;
         } else {
           tabController = null;
         }
