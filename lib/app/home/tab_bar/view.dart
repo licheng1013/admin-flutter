@@ -1,5 +1,4 @@
 import 'package:admin_flutter/app/home/sidebar/logic.dart';
-import 'package:admin_flutter/common/keep_alive_wrapper.dart';
 import 'package:admin_flutter/ex/ex_anim.dart';
 import 'package:admin_flutter/ex/ex_list.dart';
 import 'package:admin_flutter/theme/ui_theme.dart';
@@ -80,10 +79,7 @@ class TabBarPage extends StatelessWidget {
           Expanded(
             child: IndexedStack(
               index: logic.currentIndex.value,
-              children: logic.tabList.toWidgetsWithIndex((e, index) =>
-                  KeepAliveWrapper(
-                      child:
-                          e.page.toFadeIn(logic.currentIndex.value == index))),
+              children: logic.tabList.toWidgetsWithIndex((e, index) => e.page),
             ),
           ),
         ],

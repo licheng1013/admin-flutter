@@ -2,6 +2,7 @@ import 'package:admin_flutter/app/home/pages/admin/view.dart';
 import 'package:admin_flutter/app/home/pages/chat/view.dart';
 import 'package:admin_flutter/app/home/pages/demo/view.dart';
 import 'package:admin_flutter/app/home/pages/demo2/view.dart';
+import 'package:admin_flutter/app/home/pages/demo3/view.dart';
 import 'package:admin_flutter/app/home/pages/empty/view.dart';
 import 'package:admin_flutter/app/home/pages/play/view.dart';
 import 'package:admin_flutter/app/home/pages/rich_text/view.dart';
@@ -37,6 +38,7 @@ class SidebarLogic extends GetxController {
     RichTextPage.newThis(),
     DemoPage.newThis(),
     Demo2Page.newThis(),
+    Demo3Page.newThis(),
     UserPage.newThis(),
     ChatPage.newThis(),
     PlayPage.newThis(),
