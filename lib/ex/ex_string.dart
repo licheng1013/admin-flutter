@@ -50,6 +50,12 @@ extension ExString on String {
   Widget toImage() {
     return ImageUtil.image(this);
   }
+
+  /// 解析 2025-09-05T00:00:00Z 为 2025-09-05
+  String toYMD() {
+    var split = this.split("T");
+    return split.first;
+  }
 }
 
 // const Color white60 = Color(0x1elf22);
