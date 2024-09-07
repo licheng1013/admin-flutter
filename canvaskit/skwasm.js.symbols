@@ -2739,7 +2739,7 @@
 2738:SkGradientBaseShader::ValidGradient\28SkRGBA4f<\28SkAlphaType\293>\20const*\2c\20int\2c\20SkTileMode\2c\20SkGradientShader::Interpolation\20const&\29
 2739:SkGradientBaseShader::SkGradientBaseShader\28SkGradientBaseShader::Descriptor\20const&\2c\20SkMatrix\20const&\29
 2740:SkGradientBaseShader::MakeDegenerateGradient\28SkRGBA4f<\28SkAlphaType\293>\20const*\2c\20float\20const*\2c\20int\2c\20sk_sp<SkColorSpace>\2c\20SkTileMode\29
-2741:SkGlyph::setPath\28SkArenaAlloc*\2c\20SkPath\20const*\2c\20bool\29
+2741:SkGlyph::setPath\28SkArenaAlloc*\2c\20SkPath\20const*\2c\20bool\2c\20bool\29
 2742:SkGetPolygonWinding\28SkPoint\20const*\2c\20int\29
 2743:SkFontMgr::RefEmpty\28\29
 2744:SkFont::setTypeface\28sk_sp<SkTypeface>\29
@@ -10592,13 +10592,13 @@
 10591:SkScan::AntiHairPath\28SkPath\20const&\2c\20SkRasterClip\20const&\2c\20SkBlitter*\29
 10592:SkScan::AntiFillPath\28SkPath\20const&\2c\20SkRasterClip\20const&\2c\20SkBlitter*\29
 10593:SkScalerContext_FreeType::~SkScalerContext_FreeType\28\29.1
-10594:SkScalerContext_FreeType::generatePath\28SkGlyph\20const&\2c\20SkPath*\29
+10594:SkScalerContext_FreeType::generatePath\28SkGlyph\20const&\2c\20SkPath*\2c\20bool*\29
 10595:SkScalerContext_FreeType::generateMetrics\28SkGlyph\20const&\2c\20SkArenaAlloc*\29
 10596:SkScalerContext_FreeType::generateImage\28SkGlyph\20const&\2c\20void*\29
 10597:SkScalerContext_FreeType::generateFontMetrics\28SkFontMetrics*\29
 10598:SkScalerContext_FreeType::generateDrawable\28SkGlyph\20const&\29
 10599:SkScalerContext::MakeEmpty\28sk_sp<SkTypeface>\2c\20SkScalerContextEffects\20const&\2c\20SkDescriptor\20const*\29::SkScalerContext_Empty::~SkScalerContext_Empty\28\29
-10600:SkScalerContext::MakeEmpty\28sk_sp<SkTypeface>\2c\20SkScalerContextEffects\20const&\2c\20SkDescriptor\20const*\29::SkScalerContext_Empty::generatePath\28SkGlyph\20const&\2c\20SkPath*\29
+10600:SkScalerContext::MakeEmpty\28sk_sp<SkTypeface>\2c\20SkScalerContextEffects\20const&\2c\20SkDescriptor\20const*\29::SkScalerContext_Empty::generatePath\28SkGlyph\20const&\2c\20SkPath*\2c\20bool*\29
 10601:SkScalerContext::MakeEmpty\28sk_sp<SkTypeface>\2c\20SkScalerContextEffects\20const&\2c\20SkDescriptor\20const*\29::SkScalerContext_Empty::generateMetrics\28SkGlyph\20const&\2c\20SkArenaAlloc*\29
 10602:SkScalerContext::MakeEmpty\28sk_sp<SkTypeface>\2c\20SkScalerContextEffects\20const&\2c\20SkDescriptor\20const*\29::SkScalerContext_Empty::generateFontMetrics\28SkFontMetrics*\29
 10603:SkSRGBColorSpaceLuminance::toLuma\28float\2c\20float\29\20const
