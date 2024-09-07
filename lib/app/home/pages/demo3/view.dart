@@ -26,6 +26,7 @@ class Demo3Page extends StatelessWidget {
         ThemeUtil.lineH(),
         Expanded(
           child: PagedListView<int, String>(
+            scrollController: logic.scrollController,
             padding: EdgeInsets.zero,
             pagingController: logic.pagingController,
             builderDelegate: PagedChildBuilderDelegate<String>(

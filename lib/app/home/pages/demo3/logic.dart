@@ -7,11 +7,12 @@ import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 class Demo3Logic extends GetxController {
   static const pageSize = 20;
 
-
   final PagingController<int, String> pagingController =
-  PagingController(firstPageKey: 0);
+      PagingController(firstPageKey: 0);
 
   var dbList = <String>[].obs;
+
+  var scrollController = ScrollController();
 
   @override
   void onInit() {
@@ -41,17 +42,17 @@ class Demo3Logic extends GetxController {
   }
 
   delete(int index) {
-    UiEdit.confirm(submit: () {
-      pagingController.itemList?.removeAt(index);
-      dbList.removeAt(index);
-      pagingController.refresh();
-      "删除成功!".toHint();
-    }, content: const Text("正在进行删除操作！"));
+    pagingController.itemList?.removeAt(index);
+    dbList.removeAt(index);
+    pagingController.appendPage(<String>[], pagingController.nextPageKey);
+    "删除成功!".toHint();
   }
 
   void add(int index) {
-    pagingController.itemList?.insert(index, "${dbList.length}");
-    dbList.insert(index, "${dbList.length}");
-    pagingController.refresh();
+    var item = "插入 ${dbList.length}";
+    pagingController.itemList?.insert(index, item);
+    dbList.insert(index, item);
+    pagingController.appendPage(<String>[], pagingController.nextPageKey);
+    "插入成功!".toHint();
   }
 }
