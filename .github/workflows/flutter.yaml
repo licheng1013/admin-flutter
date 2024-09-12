@@ -17,6 +17,7 @@ jobs:
         with:
           #flutter-version: '3.16.0'    # 这里修改为你的 Flutter 版本
           channel: 'master'
+          cache: true
 
       - name: Install dependencies
         run: flutter pub get
