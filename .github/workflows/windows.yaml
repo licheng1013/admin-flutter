@@ -22,7 +22,7 @@ jobs:
         run: flutter pub get
 
       - name: Build
-        run: dart run msix:create
+        run: dart run msix:create --install-certificate false # 跳过证书
 
       - name: Release
         uses: softprops/action-gh-release@v2
