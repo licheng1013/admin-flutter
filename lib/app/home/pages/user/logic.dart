@@ -7,7 +7,9 @@ import 'package:admin_flutter/component/table/ex.dart';
 import 'package:admin_flutter/component/table/table_data.dart';
 import 'package:admin_flutter/component/ui_edit.dart';
 import 'package:admin_flutter/ex/ex_hint.dart';
+import 'package:city_pickers/city_pickers.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class UserLogic extends GetxController {
@@ -16,10 +18,13 @@ class UserLogic extends GetxController {
   var list = <Map<String, dynamic>>[].obs;
   var size = 0;
   var page = 0;
+
   /// 选中列
   var selList = <Map<String, dynamic>>[].obs;
+
   /// 性别选中
   var sexSel = <int>{}.obs;
+
   /// 名称选择
   var nameSel = "";
 
@@ -35,6 +40,7 @@ class UserLogic extends GetxController {
   }
 
   var columns = <ColumnData>[];
+
   @override
   void onInit() {
     super.onInit();
@@ -60,10 +66,7 @@ class UserLogic extends GetxController {
       ColumnData(title: "手机", key: "tel"),
       TableEx.edit(delete: delete, edit: updateData),
     ];
-
   }
-
-
 
   void find() {
     var findList = dbList.where((e) {
@@ -98,9 +101,8 @@ class UserLogic extends GetxController {
         placeholder: "请输入手机"),
   ]);
 
-
   void add() {
-    form.add( submit: (d) {
+    form.add(submit: (d) {
       var m = jsonDecode(jsonEncode(d));
       m["id"] = dbList.length * 2;
       dbList.insert(0, m);
@@ -111,7 +113,7 @@ class UserLogic extends GetxController {
     });
   }
 
-  void updateData(Map<String, dynamic> d,int index) {
+  void updateData(Map<String, dynamic> d, int index) {
     form.data = d;
     form.edit(submit: (data) {
       dbList[index] = data;
@@ -121,7 +123,7 @@ class UserLogic extends GetxController {
     });
   }
 
-  void delete(Map<String, dynamic> d,int index) {
+  void delete(Map<String, dynamic> d, int index) {
     dbList.removeAt(index);
     total.value = dbList.length;
     find();
@@ -142,7 +144,7 @@ class UserLogic extends GetxController {
         content: const Text("正在进行删除操作！"));
   }
 
-  changed(Map<String, dynamic> row, newValue,int index) {
+  changed(Map<String, dynamic> row, newValue, int index) {
     list.removeAt(index);
     list.insert(index, row);
   }
@@ -150,5 +152,24 @@ class UserLogic extends GetxController {
   nameChanged(String findName) {
     nameSel = findName;
     find();
+  }
+
+  selectCity() async {
+    Result? result = await CityPickers.showFullPageCityPicker(
+      theme: Get.theme,
+      context: Get.context!,
+    );
+    if (result != null) {
+      var info = "${result.provinceName} ${result.cityName} ${result.areaName}";
+      var provinceId = result.provinceId?.substring(0,2);
+      var cityId = result.cityId?.substring(0,4);
+      var areaId = result.areaId?.substring(0,6);
+      var code = "$provinceId $cityId $areaId";
+      UiEdit.confirm(
+          content: SelectionArea(child: Text("$info-$code")),
+          submit: () {
+            "选择城市: $info-$code".toHint();
+          });
+    }
   }
 }

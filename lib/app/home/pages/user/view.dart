@@ -42,6 +42,8 @@ class UserPage extends StatelessWidget {
               );
             }),
             ThemeUtil.width(),
+            "选择城市".toBtn(onTap: logic.selectCity),
+            ThemeUtil.width(),
             "多选删除".toBtn(onTap: logic.deleteSel),
             ThemeUtil.width(),
             "新增".toBtn(onTap: logic.add),
