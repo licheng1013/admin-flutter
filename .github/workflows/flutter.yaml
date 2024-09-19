@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  build-and-deploy:
+  build-web:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -30,3 +30,28 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build/web
+
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter actions
+        uses: subosito/flutter-action@v2
+        with:
+          #flutter-version: '3.16.0'    # 这里修改为你的 Flutter 版本
+          channel: 'master'
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build
+        run: dart run msix:create --install-certificate false # 跳过证书
+
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v0.1.2
+          files: build/windows/x64/runner/Release/admin_flutter.msix
