@@ -25,31 +25,26 @@ class Demo3Page extends StatelessWidget {
         ]),
         ThemeUtil.lineH(),
         Expanded(
-          child: PagedListView<int, String>(
-            scrollController: logic.scrollController,
-            padding: EdgeInsets.zero,
-            pagingController: logic.pagingController,
-            builderDelegate: PagedChildBuilderDelegate<String>(
-                itemBuilder: (context, item, index) =>
-                    SizedBox(
-                        height: 100,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Expanded(
-                              child: Center(child: Text(item)),
-                            ),
-                            "删除".toBtn(onTap: () {
-                              logic.delete(index);
-                            }),
-                            ThemeUtil.width(),
-                            "插入".toBtn(onTap: () {
-                              logic.add(index);
-                            }),
-                            ThemeUtil.width()
-                          ],
-                        ))),
-          ),
+          child: logic.myPage.build((item,index){
+            return SizedBox(
+                height: 100,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Expanded(
+                      child: Center(child: Text(item)),
+                    ),
+                    "删除".toBtn(onTap: () {
+                      logic.delete(index);
+                    }),
+                    ThemeUtil.width(),
+                    "插入".toBtn(onTap: () {
+                      logic.add(index);
+                    }),
+                    ThemeUtil.width()
+                  ],
+                ));
+          }),
         ),
       ],
     );

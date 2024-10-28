@@ -8,6 +8,11 @@
 - 示例: [licheng1013.github.io/admin-flutter/](https://licheng1013.github.io/admin-flutter/)
 
 
+## flutter版本
+
+- 3.22.0+
+
+
 ## 主题
 
 - 内置主题体验，更容易的主题定制

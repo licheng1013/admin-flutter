@@ -1,12 +1,14 @@
 import 'dart:convert';
 import 'dart:math';
 
+import 'package:admin_flutter/common/assets_info.dart';
 import 'package:admin_flutter/component/form/enum.dart';
 import 'package:admin_flutter/component/form/form_data.dart';
 import 'package:admin_flutter/component/table/ex.dart';
 import 'package:admin_flutter/component/table/table_data.dart';
 import 'package:admin_flutter/component/ui_edit.dart';
 import 'package:admin_flutter/ex/ex_hint.dart';
+import 'package:admin_flutter/ex/ex_string.dart';
 import 'package:city_pickers/city_pickers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -36,6 +38,7 @@ class UserLogic extends GetxController {
       "sex": i % 2,
       "tel": "张三$i",
       "enable": 0,
+      "image": AssetsInfo.cat
     };
   }
 
@@ -55,6 +58,17 @@ class UserLogic extends GetxController {
       ),
       ColumnData(title: "Id", key: "id"),
       TableEx.switchTo("enable", changed: changed),
+      ColumnData(
+          title: "头像",
+          key: "image",
+          render: TableEx.easyRender((data) {
+            return ClipOval(
+              child: SizedBox(
+                  width: 30,
+                  height: 30,
+                  child: data.toString().toImage()),
+            );
+          })),
       ColumnData(title: "姓名", key: "name"),
       ColumnData(title: "年龄", key: "age"),
       ColumnData(
@@ -161,9 +175,9 @@ class UserLogic extends GetxController {
     );
     if (result != null) {
       var info = "${result.provinceName} ${result.cityName} ${result.areaName}";
-      var provinceId = result.provinceId?.substring(0,2);
-      var cityId = result.cityId?.substring(0,4);
-      var areaId = result.areaId?.substring(0,6);
+      var provinceId = result.provinceId?.substring(0, 2);
+      var cityId = result.cityId?.substring(0, 4);
+      var areaId = result.areaId?.substring(0, 6);
       var code = "$provinceId $cityId $areaId";
       UiEdit.confirm(
           content: SelectionArea(child: Text("$info-$code")),
