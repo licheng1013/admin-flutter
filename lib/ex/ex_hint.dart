@@ -6,5 +6,4 @@ extension ExHint on String {
     BotToast.showText(text: this); //弹出一个文本框;
   }
 
-  /// 
 }

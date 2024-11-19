@@ -83,4 +83,23 @@ class PageInfo<T> {
   static Widget noMoreItems() {
     return const Center(child: Text("没有更多数据了..."));
   }
+
+  Widget buildGrid(
+      Widget Function(T item, int index) fun, SliverGridDelegate gridDelegate,
+      {ScrollController? controller}) {
+    return PagedGridView<int, T>(
+      scrollController: controller,
+      padding: EdgeInsets.zero,
+      pagingController: pagingController,
+      builderDelegate: PagedChildBuilderDelegate<T>(
+          noItemsFoundIndicatorBuilder: (context) => noItems(),
+          firstPageErrorIndicatorBuilder: (context) => firstPage(),
+          newPageErrorIndicatorBuilder: (context) => newPageError(),
+          noMoreItemsIndicatorBuilder: (context) => noMoreItems(),
+          itemBuilder: (context, item, index) {
+            return fun(item, index);
+          }),
+      gridDelegate: gridDelegate,
+    );
+  }
 }
