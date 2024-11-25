@@ -1,16 +1,18 @@
-
 import 'package:admin_flutter/app/home/sidebar/logic.dart';
 import 'package:admin_flutter/app/home/system/analysis/view.dart';
 import 'package:admin_flutter/theme/ui_theme.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
 class TabBarLogic extends GetxController with GetTickerProviderStateMixin {
-  TabController? tabController;
   var tabList = <SidebarTree>[].obs;
+
+  /// 当前右键的索引位置
   var index = (-1).obs;
   var height = 36.0;
+
+  /// 标签索引位子
   var currentIndex = (-1).obs;
 
   @override
@@ -21,7 +23,6 @@ class TabBarLogic extends GetxController with GetTickerProviderStateMixin {
     addTab(info);
     SidebarLogic.selectName.value = info.name;
     SidebarLogic.selSidebarTree(info);
-
   }
 
   static void addPage(SidebarTree page) {
@@ -29,7 +30,6 @@ class TabBarLogic extends GetxController with GetTickerProviderStateMixin {
     // 判断是否已经存在
     for (var item in logic.tabList) {
       if (item.name == page.name) {
-        logic.tabController?.animateTo(logic.tabList.indexOf(item));
         logic.currentIndex.value = logic.tabList.indexOf(item);
         return;
       }
@@ -39,14 +39,8 @@ class TabBarLogic extends GetxController with GetTickerProviderStateMixin {
 
   void addTab(SidebarTree page) {
     tabList.add(page);
-    var lastIndex = tabController?.index;
-    tabController?.dispose();
-    tabController = TabController(
-        length: tabList.length, vsync: this, initialIndex: lastIndex ?? 0);
-    tabController?.animateTo(tabList.length - 1);
     currentIndex.value = tabList.length - 1;
   }
-
 
   void contextMenu(int i, TapDownDetails details) {
     // 获取点击的位置
@@ -55,21 +49,18 @@ class TabBarLogic extends GetxController with GetTickerProviderStateMixin {
     // -去相对组件的位置这样得到了组件的垂直中心点
     dy = dy - details.localPosition.dy + height / 2;
     //MessageUtil.show("右键: $i: $dx $dy");
-    var closeMenuMap = contextMenuItem();
+    var menuList = CloseMenu.values.toList();
     if (i == tabList.length - 1) {
-      closeMenuMap.remove(CloseMenu.closeRight);
-      closeMenuMap.remove(CloseMenu.closeOther);
+      menuList.remove(CloseMenu.closeRight);
+      menuList.remove(CloseMenu.closeOther);
     }
     if (i == 0) {
-      closeMenuMap.remove(CloseMenu.closeLeft);
-      closeMenuMap.remove(CloseMenu.closeOther);
+      menuList.remove(CloseMenu.closeLeft);
+      menuList.remove(CloseMenu.closeOther);
     }
 
     if (tabList.length == 1) {
-      closeMenuMap.remove(CloseMenu.closeAll);
-      closeMenuMap.remove(CloseMenu.closeOther);
-      closeMenuMap.remove(CloseMenu.closeLeft);
-      closeMenuMap.remove(CloseMenu.closeRight);
+      menuList = [CloseMenu.close];
     }
 
     // 弹出上下文菜单
@@ -83,14 +74,14 @@ class TabBarLogic extends GetxController with GetTickerProviderStateMixin {
                 offset: Offset(dx, dy),
                 child: Container(
                   width: 150,
-                  height: closeMenuMap.length * 34.0,
+                  height: menuList.length * 34.0,
                   decoration: UiTheme.decoration(radius: 0),
                   child: Scaffold(
                     backgroundColor: Colors.transparent,
                     body: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        for (var item in closeMenuMap.keys)
+                        for (var item in menuList)
                           InkWell(
                             onTap: () {
                               onCloseTab(item, i);
@@ -98,7 +89,16 @@ class TabBarLogic extends GetxController with GetTickerProviderStateMixin {
                             child: Container(
                               height: 32,
                               alignment: Alignment.center,
-                              child: Text(closeMenuMap[item]!),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  item.icon,
+                                  const SizedBox(
+                                    width: 4,
+                                  ),
+                                  Text(item.desc),
+                                ],
+                              ),
                             ),
                           )
                       ],
@@ -111,56 +111,37 @@ class TabBarLogic extends GetxController with GetTickerProviderStateMixin {
         });
   }
 
-  static Map<CloseMenu, String> contextMenuItem() {
-    var closeMenuMap = {
-      CloseMenu.close: "关闭当前",
-      CloseMenu.closeAll: "关闭所有",
-      CloseMenu.closeOther: "关闭其他",
-      CloseMenu.closeRight: "关闭右侧",
-      CloseMenu.closeLeft: "关闭左侧",
-    };
-    return closeMenuMap;
-  }
-
   void onCloseTab(CloseMenu item, int i) {
     // 如果是默认的一个tab不允许关闭
     switch (item) {
       case CloseMenu.close:
-        tabController?.dispose();
         tabList.removeAt(i);
-        if (tabList.isNotEmpty) {
-          var index = i == 0 ? 0 : tabController!.index - 1;
-          tabController = TabController(
-              length: tabList.length, vsync: this, initialIndex: index);
-          SidebarLogic.selectName.value = tabList[index].name;
-          currentIndex.value = index;
-        } else {
-          tabController = null;
+        if (i == currentIndex.value) {
+          currentIndex.value =  i > 0 ? i - 1 : 0;
+        } else if (i < currentIndex.value) {
+          currentIndex.value--;
         }
+        SidebarLogic.selectName.value =
+        tabList.isEmpty ? "" : tabList.last.name;
         break;
       case CloseMenu.closeAll:
-        tabList.clear();
-        tabController?.dispose();
-        tabController = null;
+        tabList.value = [];
         SidebarLogic.selectName.value = "";
         break;
       case CloseMenu.closeOther:
         var temp = tabList[i];
-        tabList.clear();
-        tabList.add(temp);
-        tabController?.dispose();
-        tabController = TabController(length: tabList.length, vsync: this);
+        tabList.value = [temp];
+        SidebarLogic.selectName.value = tabList.last.name;
+        currentIndex.value = 0;
         break;
       case CloseMenu.closeRight:
         tabList.removeRange(i + 1, tabList.length);
-        tabController?.dispose();
-        tabController =
-            TabController(length: tabList.length, vsync: this, initialIndex: i);
+        SidebarLogic.selectName.value = tabList.last.name;
         break;
       case CloseMenu.closeLeft:
         tabList.removeRange(0, i);
-        tabController?.dispose();
-        tabController = TabController(length: tabList.length, vsync: this);
+        currentIndex.value = 0;
+        SidebarLogic.selectName.value = tabList.last.name;
         break;
     }
     Get.back();
@@ -169,9 +150,15 @@ class TabBarLogic extends GetxController with GetTickerProviderStateMixin {
 
 // 关闭菜单枚举
 enum CloseMenu {
-  close, //关闭当前
-  closeAll, //关闭所有
-  closeOther, //关闭其他
-  closeRight, //关闭右侧
-  closeLeft, //关闭左侧
+  close(Icon(Icons.close), "关闭当前"), //关闭当前
+  closeAll(Icon(Icons.clear_all_sharp), "关闭所有"), //关闭所有
+  closeOther(Icon(Icons.delete_outline), "关闭其他"), //关闭其他
+  closeRight(Icon(Icons.chevron_right), "关闭右侧"), //关闭右侧
+  closeLeft(Icon(Icons.chevron_left), "关闭左侧"), //关闭左侧
+  ;
+
+  final Widget icon;
+  final String desc;
+
+  const CloseMenu(this.icon, this.desc);
 }

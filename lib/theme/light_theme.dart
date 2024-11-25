@@ -78,3 +78,30 @@ class Light2 extends MyTheme {
   }
 
 }
+
+class Light3 extends MyTheme {
+  @override
+  Color background() {
+    return Colors.white;
+  }
+  @override
+  Color onBackground() {
+    return Colors.black;
+  }
+
+  @override
+  String name() {
+    return "杏色";
+  }
+
+  @override
+  Color primary() {
+    return "#d39d6f".toColor();
+  }
+
+  @override
+  Color onPrimary() {
+    return Colors.white;
+  }
+
+}

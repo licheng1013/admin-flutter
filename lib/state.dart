@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 
 /// 全局状态
 /// 默认主题
-var theme = Light().theme();
+var theme = Light3().theme();
 
 /// 多语言
 var message = Messages();

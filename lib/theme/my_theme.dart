@@ -57,6 +57,7 @@ var themeList = <MyTheme>[
   Light(),
   Light1(),
   Light2(),
+  Light3(),
   Dark(),
   Dark1(),
   Dark2(),
