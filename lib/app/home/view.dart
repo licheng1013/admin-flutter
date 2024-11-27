@@ -5,7 +5,6 @@ import 'package:admin_flutter/app/home/sidebar/view.dart';
 import 'package:admin_flutter/app/home/tab_bar/view.dart';
 import 'package:admin_flutter/component/watermark.dart';
 import 'package:admin_flutter/ex/ex_anim.dart';
-import 'package:admin_flutter/main.dart';
 import 'package:admin_flutter/state.dart';
 import 'package:admin_flutter/theme/theme_util.dart';
 import 'package:flutter/material.dart';

@@ -117,12 +117,12 @@ class TabBarLogic extends GetxController with GetTickerProviderStateMixin {
       case CloseMenu.close:
         tabList.removeAt(i);
         if (i == currentIndex.value) {
-          currentIndex.value =  i > 0 ? i - 1 : 0;
+          currentIndex.value = i > 0 ? i - 1 : 0;
         } else if (i < currentIndex.value) {
           currentIndex.value--;
         }
         SidebarLogic.selectName.value =
-        tabList.isEmpty ? "" : tabList.last.name;
+            tabList.isEmpty ? "" : tabList[currentIndex.value].name;
         break;
       case CloseMenu.closeAll:
         tabList.value = [];
@@ -136,6 +136,7 @@ class TabBarLogic extends GetxController with GetTickerProviderStateMixin {
         break;
       case CloseMenu.closeRight:
         tabList.removeRange(i + 1, tabList.length);
+        currentIndex.value = tabList.length - 1;
         SidebarLogic.selectName.value = tabList.last.name;
         break;
       case CloseMenu.closeLeft:
