@@ -34,7 +34,7 @@
 
     <script>
         // The value below is injected by flutter build, do not touch.
-        "3822705576"
+        const serviceWorkerVersion = "2445433586";
     </script>
     <!-- This script adds the flutter initialization JS code -->
     <script src="flutter.js" defer></script>
@@ -43,7 +43,7 @@
 <script>
     window.addEventListener('load', function(ev) {
       // Download main.dart.js
-      _flutter.loader.load({
+      _flutter.loader.loadEntrypoint({
         serviceWorker: {
           serviceWorkerVersion: serviceWorkerVersion,
         },
