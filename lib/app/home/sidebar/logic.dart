@@ -1,4 +1,5 @@
 import 'package:admin_flutter/app/home/pages/admin/view.dart';
+import 'package:admin_flutter/app/home/pages/carousel/view.dart';
 import 'package:admin_flutter/app/home/pages/chat/view.dart';
 import 'package:admin_flutter/app/home/pages/demo/view.dart';
 import 'package:admin_flutter/app/home/pages/demo2/view.dart';
@@ -42,6 +43,7 @@ class SidebarLogic extends GetxController {
     UserPage.newThis(),
     ChatPage.newThis(),
     PlayPage.newThis(),
+    CarouselPage.newThis(),
     SidebarTree(
       name: "嵌套页面",
       icon: Icons.extension,
