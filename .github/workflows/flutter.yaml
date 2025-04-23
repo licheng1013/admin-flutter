@@ -16,7 +16,7 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           #flutter-version: '3.16.0'    # 这里修改为你的 Flutter 版本
-          channel: 'master'
+          channel: stable
           cache: true
 
       - name: Install dependencies
@@ -61,5 +61,5 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v0.1.6
+          tag_name: v0.1.7
           files: build/windows/x64/runner/Release/admin_flutter.msix
