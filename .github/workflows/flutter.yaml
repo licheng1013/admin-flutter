@@ -23,7 +23,7 @@ jobs:
         run: flutter pub get
 
       - name: Build Web
-        run: flutter build web --web-renderer html --base-href /admin-flutter/
+        run: flutter build web --base-href /admin-flutter/
 
       - name: Deploy to Github Pages
         uses: peaceiris/actions-gh-pages@v3 # 需要在仓库开启写入权限  settings/actions/General/Workflow permissions 选择 Read and write permissions
